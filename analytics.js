@@ -1,15 +1,15 @@
 (function(f) {
-  if (typeof exports === 'object' && typeof module !== 'undefined') {
+  if (typeof exports === "object" && typeof module !== "undefined") {
     module.exports = f()
-  } else if (typeof define === 'function' && define.amd) {
+  } else if (typeof define === "function" && define.amd) {
     define([], f)
   } else {
     var g;
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       g = window
-    } else if (typeof global !== 'undefined') {
+    } else if (typeof global !== "undefined") {
       g = global
-    } else if (typeof self !== 'undefined') {
+    } else if (typeof self !== "undefined") {
       g = self
     } else {
       g = this
@@ -22,11 +22,11 @@
     function s(o, u) {
       if (!n[o]) {
         if (!t[o]) {
-          var a = typeof require == 'function' && require;
+          var a = typeof require == "function" && require;
           if (!u && a) return a(o, !0);
           if (i) return i(o, !0);
-          var f = new Error('Cannot find module \'' + o + '\'');
-          throw f.code = 'MODULE_NOT_FOUND', f
+          var f = new Error("Cannot find module '" + o + "'");
+          throw f.code = "MODULE_NOT_FOUND", f
         }
         var l = n[o] = { exports: {} };
         t[o][0].call(l.exports, function(e) {
@@ -37,7 +37,7 @@
       return n[o].exports
     }
 
-    var i = typeof require == 'function' && require;
+    var i = typeof require == "function" && require;
     for (var o = 0; o < r.length; o++) s(r[o]);
     return s
   })({
@@ -130,7 +130,7 @@
 
       module.exports = AdLearnOpenPlatform;
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 2 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 2 }],
     2: [function(require, module, exports) {
       'use strict';
 
@@ -197,14 +197,14 @@
       module.exports = createIntegration;
 
     }, {
-      './protos': 3,
-      './statics': 4,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'slug-component': 667
+      "./protos": 3,
+      "./statics": 4,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "slug-component": 667
     }],
     3: [function(require, module, exports) {
       'use strict';
@@ -700,18 +700,18 @@
       }
 
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 5,
-      'component-emitter': 613,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 5,
+      "component-emitter": 613,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     4: [function(require, module, exports) {
       'use strict';
@@ -878,7 +878,7 @@
         };
       }
 
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626 }],
     5: [function(require, module, exports) {
 
       module.exports = {
@@ -1200,15 +1200,13 @@
         if (!this.options.disableVisitorId) {
           var userId = this.analytics.user().id();
           if (userId) {
-            if (this.options.timestampOption === 'disabled') {
+            if (this.options.timestampOption === 'disabled')
               window.s.visitorID = userId;
-            }
             if (
               this.options.timestampOption === 'hybrid' &&
               this.options.preferVisitorId
-            ) {
+            )
               window.s.visitorID = userId;
-            }
           }
         }
 
@@ -1427,14 +1425,13 @@
 
         // Some customers have said that adding pageName to s.tl() calls are having adverse effects on their pageview reporting
         // But since it is not reported by all users, we will make this an option.
-        if (options.enableTrackPageName && facade.type() === 'track') {
+        if (options.enableTrackPageName && facade.type() === 'track')
           update(
             properties.pageName ||
             options.pageName ||
             facade.proxy('context.page.title'),
             'pageName'
           );
-        }
       }
 
       /**
@@ -1473,9 +1470,8 @@
         if (typeof timestamp !== 'string') timestamp = iso(timestamp);
         if (setting === 'disabled') return;
         if (setting === 'enabled') update(timestamp, 'timestamp');
-        if (setting === 'hybrid' && !options.preferVisitorId) {
+        if (setting === 'hybrid' && !options.preferVisitorId)
           update(timestamp, 'timestamp');
-        }
       }
 
       /**
@@ -2063,12 +2059,12 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 574,
-      '@segment/to-iso-string': 601,
-      '@segment/trample': 603,
-      'obj-case': 647,
-      'segmentio-facade': 661
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 574,
+      "@segment/to-iso-string": 601,
+      "@segment/trample": 603,
+      "obj-case": 647,
+      "segmentio-facade": 661
     }],
     7: [function(require, module, exports) {
       'use strict';
@@ -2151,43 +2147,43 @@
         return mbox;
       }
 
-    }, { '@segment/analytics.js-integration': 8 }],
+    }, { "@segment/analytics.js-integration": 8 }],
     8: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 9,
-      './statics': 10,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 9,
+      "./statics": 10,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     9: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 11,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 11,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     10: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     11: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     12: [function(require, module, exports) {
       'use strict';
 
@@ -2305,50 +2301,50 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/entries': 198,
-      '@ndhoule/extend': 200,
-      '@ndhoule/map': 204,
-      '@ndhoule/pick': 205,
-      '@ndhoule/values': 207,
-      '@segment/analytics.js-integration': 13
+      "@ndhoule/each": 197,
+      "@ndhoule/entries": 198,
+      "@ndhoule/extend": 200,
+      "@ndhoule/map": 204,
+      "@ndhoule/pick": 205,
+      "@ndhoule/values": 207,
+      "@segment/analytics.js-integration": 13
     }],
     13: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 14,
-      './statics': 15,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 14,
+      "./statics": 15,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     14: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 16,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 16,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     15: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     16: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     17: [function(require, module, exports) {
       'use strict';
 
@@ -2431,7 +2427,7 @@
             this._q = [];
             return this
           };
-          var a = ['add', 'append', 'clearAll', 'prepend', 'set', 'setOnce', 'unset'];
+          var a = ["add", "append", "clearAll", "prepend", "set", "setOnce", "unset"];
           for (var u = 0; u < a.length; u++) {
             s(o, a[u])
           }
@@ -2440,12 +2436,12 @@
             this._q = [];
             return this
           };
-          var l = ['setProductId', 'setQuantity', 'setPrice', 'setRevenueType', 'setEventProperties'];
+          var l = ["setProductId", "setQuantity", "setPrice", "setRevenueType", "setEventProperties"];
           for (var p = 0; p < l.length; p++) {
             s(c, l[p])
           }
           n.Revenue = c;
-          var d = ['init', 'logEvent', 'logRevenue', 'setUserId', 'setUserProperties', 'setOptOut', 'setVersionName', 'setDomain', 'setDeviceId', 'setGlobalUserProperties', 'identify', 'clearUserProperties', 'setGroup', 'logRevenueV2', 'regenerateDeviceId', 'groupIdentify', 'onInit', 'logEventWithTimestamp', 'logEventWithGroups', 'setSessionId', 'resetSessionId'];
+          var d = ["init", "logEvent", "logRevenue", "setUserId", "setUserProperties", "setOptOut", "setVersionName", "setDomain", "setDeviceId", "setGlobalUserProperties", "identify", "clearUserProperties", "setGroup", "logRevenueV2", "regenerateDeviceId", "groupIdentify", "onInit", "logEventWithTimestamp", "logEventWithGroups", "setSessionId", "resetSessionId"];
 
           function v(e) {
             function t(t) {
@@ -2461,7 +2457,7 @@
 
           v(n);
           n.getInstance = function(e) {
-            e = (!e || e.length === 0 ? '$default_instance' : e).toLowerCase();
+            e = (!e || e.length === 0 ? "$default_instance" : e).toLowerCase();
             if (!n._iq.hasOwnProperty(e)) {
               n._iq[e] = { _q: [] };
               v(n._iq[e])
@@ -2589,9 +2585,8 @@
         var groups = identify.options(this.name).groups;
         if (groups && is.object(groups)) {
           for (var group in groups) {
-            if (groups.hasOwnProperty(group)) {
+            if (groups.hasOwnProperty(group))
               window.amplitude.getInstance().setGroup(group, groups[group]);
-            }
           }
         }
       };
@@ -2651,9 +2646,8 @@
             type === 'user_properties' ? (params[key] = query) : (props[key] = query);
           }, mapQueryParams);
 
-          if (type === 'user_properties') {
+          if (type === 'user_properties')
             window.amplitude.getInstance().setUserProperties(params);
-          }
         }
 
         // track the event
@@ -2668,9 +2662,8 @@
         // Ideally, user's will track revenue using an Order Completed event.
         // However, we have previously setRevenue for any event given it had a revenue property.
         // We need to keep this behavior around for backwards compatibility.
-        if (track.revenue() && !dontSetRevenue) {
+        if (track.revenue() && !dontSetRevenue)
           this.setRevenue(mapRevenueAttributes(track));
-        }
       }
 
       Amplitude.prototype.orderCompleted = function(track) {
@@ -2701,9 +2694,8 @@
             // Price and quantity are both required by Amplitude:
             // https://amplitude.zendesk.com/hc/en-us/articles/115001361248#tracking-revenue
             // Price could potentially be 0 so handle that edge case.
-            if (trackRevenuePerProduct && price != null && quantity) {
+            if (trackRevenuePerProduct && price != null && quantity)
               this.setRevenue(mapRevenueAttributes(new Track(clonedTrack)));
-            }
             logEvent.call(this, new Track(clonedTrack), trackRevenuePerProduct);
           }.bind(this),
           products
@@ -2852,13 +2844,13 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 18,
-      '@segment/top-domain': 602,
-      'component-bind': 608,
-      'do-when': 625,
-      'is': 633,
-      'segmentio-facade': 661
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 18,
+      "@segment/top-domain": 602,
+      "component-bind": 608,
+      "do-when": 625,
+      "is": 633,
+      "segmentio-facade": 661
     }],
     18: [function(require, module, exports) {
       'use strict';
@@ -2927,13 +2919,13 @@
       module.exports = createIntegration;
 
     }, {
-      './protos': 19,
-      './statics': 20,
-      '@ndhoule/defaults': 195,
-      'component-bind': 608,
-      'debug': 623,
-      'extend': 627,
-      'slug-component': 667
+      "./protos": 19,
+      "./statics": 20,
+      "@ndhoule/defaults": 195,
+      "component-bind": 608,
+      "debug": 623,
+      "extend": 627,
+      "slug-component": 667
     }],
     19: [function(require, module, exports) {
       'use strict';
@@ -3416,18 +3408,18 @@
       }
 
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 605,
-      'component-emitter': 613,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 605,
+      "component-emitter": 613,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     20: [function(require, module, exports) {
       'use strict';
@@ -3594,7 +3586,7 @@
         };
       }
 
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626 }],
     21: [function(require, module, exports) {
       'use strict';
 
@@ -3682,9 +3674,8 @@
             i < s.length;
             i++
           ) {
-            for (var k = appboy, l = s[i].split('.'), j = 0; j < l.length - 1; j++) {
+            for (var k = appboy, l = s[i].split('.'), j = 0; j < l.length - 1; j++)
               k = k[l[j]];
-            }
             k[l[j]] = function() {
               console && console.error('The Appboy SDK has not yet been loaded.');
             };
@@ -3715,9 +3706,8 @@
             us03: 'https://sdk.iad-03.braze.com',
             eu: 'https://sdk.fra-01.braze.eu'
           };
-          if (options.safariWebsitePushId) {
+          if (options.safariWebsitePushId)
             config.safariWebsitePushId = options.safariWebsitePushId;
-          }
           if (options.enableHtmlInAppMessages) config.enableHtmlInAppMessages = true;
 
           // Setup custom endpoints
@@ -3737,9 +3727,8 @@
           self.initializeTester(options.apiKey, config);
           window.appboy.initialize(options.apiKey, config);
 
-          if (options.automaticallyDisplayMessages) {
+          if (options.automaticallyDisplayMessages)
             window.appboy.display.automaticallyShowNewInAppMessages();
-          }
           if (userId) window.appboy.changeUser(userId);
 
           window.appboy.openSession();
@@ -3773,9 +3762,8 @@
               var m = s[i], k = appboy, l = m.split('.'), j = 0;
               j < l.length - 1;
               j++
-            ) {
+            )
               k = k[l[j]];
-            }
             k[l[j]] = new Function(
               'return function ' +
               m.replace(/\./g, '_') +
@@ -3813,9 +3801,8 @@
         this.initializeTester(options.apiKey, config);
         window.appboy.initialize(options.apiKey, config);
 
-        if (options.automaticallyDisplayMessages) {
+        if (options.automaticallyDisplayMessages)
           window.appboy.display.automaticallyShowNewInAppMessages();
-        }
         if (userId) window.appboy.changeUser(userId);
 
         window.appboy.openSession();
@@ -4036,15 +4023,12 @@
         var maleGenders = ['man', 'male', 'm'];
         var otherGenders = ['other', 'o'];
 
-        if (femaleGenders.indexOf(gender.toLowerCase()) > -1) {
+        if (femaleGenders.indexOf(gender.toLowerCase()) > -1)
           return window.appboy.ab.User.Genders.FEMALE;
-        }
-        if (maleGenders.indexOf(gender.toLowerCase()) > -1) {
+        if (maleGenders.indexOf(gender.toLowerCase()) > -1)
           return window.appboy.ab.User.Genders.MALE;
-        }
-        if (otherGenders.indexOf(gender.toLowerCase()) > -1) {
+        if (otherGenders.indexOf(gender.toLowerCase()) > -1)
           return window.appboy.ab.User.Genders.OTHER;
-        }
       }
 
       /**
@@ -4137,11 +4121,11 @@
       }
 
     }, {
-      '@ndhoule/clone': 194,
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 574,
-      'obj-case': 647,
-      'segmentio-facade': 661
+      "@ndhoule/clone": 194,
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 574,
+      "obj-case": 647,
+      "segmentio-facade": 661
     }],
     22: [function(require, module, exports) {
       'use strict';
@@ -4188,9 +4172,8 @@
         for (var i = 0; i < this.options.events.length; i++) {
           var item = this.options.events[i];
           if (item.value) {
-            if (toNoCase(item.key) === toNoCase(track.event())) {
+            if (toNoCase(item.key) === toNoCase(track.event()))
               events.push(item.value);
-            }
           } else if (toNoCase(item.event) === toNoCase(track.event())) {
             events.push(item);
           }
@@ -4230,48 +4213,48 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 23,
-      'component-querystring': 617,
-      'to-no-case': 672,
-      'use-https': 681
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 23,
+      "component-querystring": 617,
+      "to-no-case": 672,
+      "use-https": 681
     }],
     23: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 24,
-      './statics': 25,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 24,
+      "./statics": 25,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     24: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 26,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 26,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     25: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     26: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     27: [function(require, module, exports) {
       'use strict';
 
@@ -4413,7 +4396,7 @@
         window.clevertap.event.push('Charged', transaction);
       };
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 574, 'is': 633, 'use-https': 681 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 574, "is": 633, "use-https": 681 }],
     28: [function(require, module, exports) {
       'use strict';
 
@@ -4533,7 +4516,7 @@
         }
       };
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 574, 'global-queue': 628 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 574, "global-queue": 628 }],
     29: [function(require, module, exports) {
       'use strict';
 
@@ -4791,16 +4774,16 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/extend': 200,
-      '@ndhoule/pick': 205,
-      '@ndhoule/values': 207,
-      '@segment/analytics.js-integration': 574,
-      'is': 633,
-      'is-email': 30,
-      'md5': 641,
-      'obj-case': 647,
-      'use-https': 681
+      "@ndhoule/each": 197,
+      "@ndhoule/extend": 200,
+      "@ndhoule/pick": 205,
+      "@ndhoule/values": 207,
+      "@segment/analytics.js-integration": 574,
+      "is": 633,
+      "is-email": 30,
+      "md5": 641,
+      "obj-case": 647,
+      "use-https": 681
     }],
     30: [function(require, module, exports) {
       'use strict';
@@ -4880,43 +4863,43 @@
         push('elqTrackPageView', props.url, props.referrer);
       };
 
-    }, { '@segment/analytics.js-integration': 32, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 32, "global-queue": 628 }],
     32: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 33,
-      './statics': 34,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 33,
+      "./statics": 34,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     33: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 35,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 35,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     34: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     35: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     36: [function(require, module, exports) {
       'use strict';
 
@@ -4960,43 +4943,43 @@
         return !!window.EmailAptitudeTracker;
       };
 
-    }, { '@segment/analytics.js-integration': 37 }],
+    }, { "@segment/analytics.js-integration": 37 }],
     37: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 38,
-      './statics': 39,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 38,
+      "./statics": 39,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     38: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 40,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 40,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     39: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     40: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     41: [function(require, module, exports) {
       'use strict';
 
@@ -5701,15 +5684,15 @@
       FacebookPixel.merge = merge;
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/foldl': 201,
-      '@segment/analytics.js-integration': 574,
-      'dateformat': 622,
-      'is': 633,
-      'js-sha256': 637,
-      'reject': 654,
-      'segmentio-facade': 661,
-      'to-camel-case': 670
+      "@ndhoule/each": 197,
+      "@ndhoule/foldl": 201,
+      "@segment/analytics.js-integration": 574,
+      "dateformat": 622,
+      "is": 633,
+      "js-sha256": 637,
+      "reject": 654,
+      "segmentio-facade": 661,
+      "to-camel-case": 670
     }],
     42: [function(require, module, exports) {
       'use strict';
@@ -5945,13 +5928,13 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 574,
-      'is': 633,
-      'obj-case': 647,
-      'reject': 654,
-      'segmentio-facade': 49,
-      'to-no-case': 55
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 574,
+      "is": 633,
+      "obj-case": 647,
+      "reject": 654,
+      "segmentio-facade": 49,
+      "to-no-case": 55
     }],
     43: [function(require, module, exports) {
       'use strict';
@@ -5989,7 +5972,7 @@
         }
       };
 
-    }, { 'obj-case': 647 }],
+    }, { "obj-case": 647 }],
     44: [function(require, module, exports) {
       'use strict';
 
@@ -6071,7 +6054,7 @@
 
       module.exports = Alias;
 
-    }, { './facade': 46, './utils': 54 }],
+    }, { "./facade": 46, "./utils": 54 }],
     45: [function(require, module, exports) {
       'use strict';
 
@@ -6106,7 +6089,7 @@
 
       module.exports = Delete;
 
-    }, { './facade': 46, './utils': 54 }],
+    }, { "./facade": 46, "./utils": 54 }],
     46: [function(require, module, exports) {
       'use strict';
 
@@ -6149,11 +6132,8 @@
         if (!('clone' in opts)) opts.clone = true;
         if (opts.clone) obj = clone(obj);
         if (!('traverse' in opts)) opts.traverse = true;
-        if (!('timestamp' in obj)) {
-          obj.timestamp = new Date();
-        } else {
-          obj.timestamp = newDate(obj.timestamp);
-        }
+        if (!('timestamp' in obj)) obj.timestamp = new Date();
+        else obj.timestamp = newDate(obj.timestamp);
         if (opts.traverse) traverse(obj);
         this.opts = opts;
         this.obj = obj;
@@ -6657,12 +6637,12 @@
       module.exports = Facade;
 
     }, {
-      './address': 43,
-      './is-enabled': 50,
-      './utils': 54,
-      '@segment/isodate-traverse': 584,
-      'new-date': 643,
-      'obj-case': 647
+      "./address": 43,
+      "./is-enabled": 50,
+      "./utils": 54,
+      "@segment/isodate-traverse": 584,
+      "new-date": 643,
+      "obj-case": 647
     }],
     47: [function(require, module, exports) {
       'use strict';
@@ -6831,7 +6811,7 @@
 
       module.exports = Group;
 
-    }, { './facade': 46, './utils': 54, 'is-email': 632, 'new-date': 643 }],
+    }, { "./facade": 46, "./utils": 54, "is-email": 632, "new-date": 643 }],
     48: [function(require, module, exports) {
       'use strict';
 
@@ -7212,7 +7192,7 @@
 
       module.exports = Identify;
 
-    }, { './facade': 46, './utils': 54, 'is-email': 632, 'new-date': 643, 'obj-case': 647, 'trim': 677 }],
+    }, { "./facade": 46, "./utils": 54, "is-email": 632, "new-date": 643, "obj-case": 647, "trim": 677 }],
     49: [function(require, module, exports) {
       'use strict';
 
@@ -7229,14 +7209,14 @@
       module.exports = Facade;
 
     }, {
-      './alias': 44,
-      './delete': 45,
-      './facade': 46,
-      './group': 47,
-      './identify': 48,
-      './page': 51,
-      './screen': 52,
-      './track': 53
+      "./alias": 44,
+      "./delete": 45,
+      "./facade": 46,
+      "./group": 47,
+      "./identify": 48,
+      "./page": 51,
+      "./screen": 52,
+      "./track": 53
     }],
     50: [function(require, module, exports) {
       'use strict';
@@ -7475,7 +7455,7 @@
 
       module.exports = Page;
 
-    }, { './facade': 46, './track': 53, './utils': 54, 'is-email': 632 }],
+    }, { "./facade": 46, "./track": 53, "./utils": 54, "is-email": 632 }],
     52: [function(require, module, exports) {
       'use strict';
 
@@ -7548,7 +7528,7 @@
 
       module.exports = Screen;
 
-    }, { './page': 51, './track': 53, './utils': 54 }],
+    }, { "./page": 51, "./track": 53, "./utils": 54 }],
     53: [function(require, module, exports) {
       'use strict';
 
@@ -8138,7 +8118,7 @@
 
       module.exports = Track;
 
-    }, { './facade': 46, './identify': 48, './utils': 54, 'is-email': 632, 'obj-case': 647 }],
+    }, { "./facade": 46, "./identify": 48, "./utils": 54, "is-email": 632, "obj-case": 647 }],
     54: [function(require, module, exports) {
       'use strict';
 
@@ -8146,7 +8126,7 @@
       exports.clone = require('@ndhoule/clone');
       exports.type = require('type-component');
 
-    }, { '@ndhoule/clone': 194, 'inherits': 630, 'type-component': 678 }],
+    }, { "@ndhoule/clone": 194, "inherits": 630, "type-component": 678 }],
     55: [function(require, module, exports) {
 
       /**
@@ -8279,13 +8259,13 @@
             g('event', { n: i, p: v }, s)
           };
           g.shutdown = function() {
-            g('rec', !1)
+            g("rec", !1)
           };
           g.restart = function() {
-            g('rec', !0)
+            g("rec", !0)
           };
           g.consent = function(a) {
-            g('consent', !arguments.length || a)
+            g("consent", !arguments.length || a)
           };
           g.identifyAccount = function(i, v) {
             o = 'account';
@@ -8383,43 +8363,43 @@
         return camel(fieldName);
       }
 
-    }, { '@ndhoule/foldl': 201, '@segment/analytics.js-integration': 57, 'camelcase': 61 }],
+    }, { "@ndhoule/foldl": 201, "@segment/analytics.js-integration": 57, "camelcase": 61 }],
     57: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 58,
-      './statics': 59,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 58,
+      "./statics": 59,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     58: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 60,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 60,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     59: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     60: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     61: [function(require, module, exports) {
       'use strict';
 
@@ -8565,7 +8545,7 @@
         return ret;
       }
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 574, 'is': 633, 'use-https': 681 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 574, "is": 633, "use-https": 681 }],
     63: [function(require, module, exports) {
       'use strict';
 
@@ -8633,7 +8613,7 @@
         this.ready();
       };
 
-    }, { '@segment/analytics.js-integration': 574, 'is': 633 }],
+    }, { "@segment/analytics.js-integration": 574, "is": 633 }],
     64: [function(require, module, exports) {
       'use strict';
 
@@ -8810,66 +8790,66 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 574,
-      '@segment/convert-dates': 581,
-      'global-queue': 628,
-      'segmentio-facade': 71
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 574,
+      "@segment/convert-dates": 581,
+      "global-queue": 628,
+      "segmentio-facade": 71
     }],
     65: [function(require, module, exports) {
       arguments[4][43][0].apply(exports, arguments)
-    }, { 'dup': 43, 'obj-case': 647 }],
+    }, { "dup": 43, "obj-case": 647 }],
     66: [function(require, module, exports) {
       arguments[4][44][0].apply(exports, arguments)
-    }, { './facade': 68, './utils': 76, 'dup': 44 }],
+    }, { "./facade": 68, "./utils": 76, "dup": 44 }],
     67: [function(require, module, exports) {
       arguments[4][45][0].apply(exports, arguments)
-    }, { './facade': 68, './utils': 76, 'dup': 45 }],
+    }, { "./facade": 68, "./utils": 76, "dup": 45 }],
     68: [function(require, module, exports) {
       arguments[4][46][0].apply(exports, arguments)
     }, {
-      './address': 65,
-      './is-enabled': 72,
-      './utils': 76,
-      '@segment/isodate-traverse': 584,
-      'dup': 46,
-      'new-date': 643,
-      'obj-case': 647
+      "./address": 65,
+      "./is-enabled": 72,
+      "./utils": 76,
+      "@segment/isodate-traverse": 584,
+      "dup": 46,
+      "new-date": 643,
+      "obj-case": 647
     }],
     69: [function(require, module, exports) {
       arguments[4][47][0].apply(exports, arguments)
-    }, { './facade': 68, './utils': 76, 'dup': 47, 'is-email': 632, 'new-date': 643 }],
+    }, { "./facade": 68, "./utils": 76, "dup": 47, "is-email": 632, "new-date": 643 }],
     70: [function(require, module, exports) {
       arguments[4][48][0].apply(exports, arguments)
-    }, { './facade': 68, './utils': 76, 'dup': 48, 'is-email': 632, 'new-date': 643, 'obj-case': 647, 'trim': 677 }],
+    }, { "./facade": 68, "./utils": 76, "dup": 48, "is-email": 632, "new-date": 643, "obj-case": 647, "trim": 677 }],
     71: [function(require, module, exports) {
       arguments[4][49][0].apply(exports, arguments)
     }, {
-      './alias': 66,
-      './delete': 67,
-      './facade': 68,
-      './group': 69,
-      './identify': 70,
-      './page': 73,
-      './screen': 74,
-      './track': 75,
-      'dup': 49
+      "./alias": 66,
+      "./delete": 67,
+      "./facade": 68,
+      "./group": 69,
+      "./identify": 70,
+      "./page": 73,
+      "./screen": 74,
+      "./track": 75,
+      "dup": 49
     }],
     72: [function(require, module, exports) {
       arguments[4][50][0].apply(exports, arguments)
-    }, { 'dup': 50 }],
+    }, { "dup": 50 }],
     73: [function(require, module, exports) {
       arguments[4][51][0].apply(exports, arguments)
-    }, { './facade': 68, './track': 75, './utils': 76, 'dup': 51, 'is-email': 632 }],
+    }, { "./facade": 68, "./track": 75, "./utils": 76, "dup": 51, "is-email": 632 }],
     74: [function(require, module, exports) {
       arguments[4][52][0].apply(exports, arguments)
-    }, { './page': 73, './track': 75, './utils': 76, 'dup': 52 }],
+    }, { "./page": 73, "./track": 75, "./utils": 76, "dup": 52 }],
     75: [function(require, module, exports) {
       arguments[4][53][0].apply(exports, arguments)
-    }, { './facade': 68, './identify': 70, './utils': 76, 'dup': 53, 'is-email': 632, 'obj-case': 647 }],
+    }, { "./facade": 68, "./identify": 70, "./utils": 76, "dup": 53, "is-email": 632, "obj-case": 647 }],
     76: [function(require, module, exports) {
       arguments[4][54][0].apply(exports, arguments)
-    }, { '@ndhoule/clone': 194, 'dup': 54, 'inherits': 630, 'type-component': 678 }],
+    }, { "@ndhoule/clone": 194, "dup": 54, "inherits": 630, "type-component": 678 }],
     77: [function(require, module, exports) {
       'use strict';
 
@@ -9005,13 +8985,13 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/extend': 200,
-      '@ndhoule/keys': 203,
-      '@segment/analytics.js-integration': 574,
-      '@segment/trample': 603,
-      'obj-case': 647,
-      'reject': 654
+      "@ndhoule/each": 197,
+      "@ndhoule/extend": 200,
+      "@ndhoule/keys": 203,
+      "@segment/analytics.js-integration": 574,
+      "@segment/trample": 603,
+      "obj-case": 647,
+      "reject": 654
     }],
     78: [function(require, module, exports) {
       'use strict';
@@ -9045,43 +9025,43 @@
         return window._linkedin_data_partner_id;
       };
 
-    }, { '@segment/analytics.js-integration': 79 }],
+    }, { "@segment/analytics.js-integration": 79 }],
     79: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 80,
-      './statics': 81,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 80,
+      "./statics": 81,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     80: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 82,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 82,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     81: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     82: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     83: [function(require, module, exports) {
       'use strict';
 
@@ -9227,43 +9207,43 @@
         });
       };
 
-    }, { '@segment/analytics.js-integration': 84, 'component-each': 611 }],
+    }, { "@segment/analytics.js-integration": 84, "component-each": 611 }],
     84: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 85,
-      './statics': 86,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 85,
+      "./statics": 86,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     85: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 87,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 87,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     86: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     87: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     88: [function(require, module, exports) {
       'use strict';
 
@@ -9434,21 +9414,17 @@
         var address = identify.address();
 
         traitsToSendMarketo.Email = email;
-        if (identify.birthday()) {
+        if (identify.birthday())
           traitsToSendMarketo.DateofBirth = identify.birthday();
-        }
-        if (identify.firstName()) {
+        if (identify.firstName())
           traitsToSendMarketo.FirstName = identify.firstName();
-        }
-        if (identify.gender()) {
+        if (identify.gender())
           traitsToSendMarketo.MarketoSocialGender = identify.gender();
-        }
         if (identify.lastName()) traitsToSendMarketo.LastName = identify.lastName();
         if (identify.phone()) traitsToSendMarketo.Phone = identify.phone();
         if (identify.userId()) traitsToSendMarketo.userId = identify.userId();
-        if (identify.anonymousId()) {
+        if (identify.anonymousId())
           traitsToSendMarketo.anonymousId = identify.anonymousId();
-        }
 
         if (address) {
           if (is.object(address)) {
@@ -9536,50 +9512,50 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 89,
-      '@segment/fmt': 582,
-      'component-url': 620,
-      'do-when': 625,
-      'is': 633,
-      'jsonp': 639
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 89,
+      "@segment/fmt": 582,
+      "component-url": 620,
+      "do-when": 625,
+      "is": 633,
+      "jsonp": 639
     }],
     89: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 90,
-      './statics': 91,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 90,
+      "./statics": 91,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     90: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 92,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 92,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     91: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     92: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     93: [function(require, module, exports) {
       'use strict';
 
@@ -9777,49 +9753,49 @@
       };
 
     }, {
-      '@segment/analytics.js-integration': 94,
-      '@segment/fmt': 582,
-      'component-url': 620,
-      'do-when': 625,
-      'is': 633,
-      'jsonp': 639
+      "@segment/analytics.js-integration": 94,
+      "@segment/fmt": 582,
+      "component-url": 620,
+      "do-when": 625,
+      "is": 633,
+      "jsonp": 639
     }],
     94: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 95,
-      './statics': 96,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 95,
+      "./statics": 96,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     95: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 97,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 97,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     96: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     97: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     98: [function(require, module, exports) {
       'use strict';
 
@@ -9890,9 +9866,8 @@
         for (var i = 0; i < this.options.events.length; i++) {
           var item = this.options.events[i];
           if (item.value) {
-            if (toNoCase(item.key) === toNoCase(track.event())) {
+            if (toNoCase(item.key) === toNoCase(track.event()))
               events.push(item.value);
-            }
           } else if (toNoCase(item.event) === toNoCase(track.event())) {
             events.push(item);
           }
@@ -9946,48 +9921,48 @@
       };
 
     }, {
-      '@ndhoule/foldl': 201,
-      '@segment/analytics.js-integration': 99,
-      'component-each': 611,
-      'component-querystring': 617,
-      'to-no-case': 672
+      "@ndhoule/foldl": 201,
+      "@segment/analytics.js-integration": 99,
+      "component-each": 611,
+      "component-querystring": 617,
+      "to-no-case": 672
     }],
     99: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 100,
-      './statics': 101,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 100,
+      "./statics": 101,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     100: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 102,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 102,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     101: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     102: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     103: [function(require, module, exports) {
       'use strict';
 
@@ -10123,9 +10098,8 @@
           if (key === 'name') {
             // MoEngage asked to map `name` to `add_user_name` for their existing user base
             if (identify.name()) self._client.add_user_name(identify.name());
-            if (identify.name() && identify.username()) {
-              return self._client.add_user_attribute('username', identify.username());
-            } // if they are sending `traits.name` as a semantic trait, there's no other way to get username other than as a custom user attribute
+            if (identify.name() && identify.username())
+              return self._client.add_user_attribute('username', identify.username()); // if they are sending `traits.name` as a semantic trait, there's no other way to get username other than as a custom user attribute
           }
           // check if there are sendable semantic traits
           if (find(traitsMethodMap, key)) {
@@ -10173,11 +10147,11 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 574,
-      'do-when': 625,
-      'obj-case': 647,
-      'reject': 654
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 574,
+      "do-when": 625,
+      "obj-case": 647,
+      "reject": 654
     }],
     104: [function(require, module, exports) {
       'use strict';
@@ -10236,7 +10210,7 @@
               }
             }
         }
-        (window, 'NOLBUNDLE');
+        (window, "NOLBUNDLE");
         /* eslint-enable */
 
         // debug mode
@@ -10626,7 +10600,7 @@
         this.heartbeatId = null;
       };
 
-    }, { '@segment/analytics.js-integration': 574, 'obj-case': 647, 'reject': 654 }],
+    }, { "@segment/analytics.js-integration": 574, "obj-case": 647, "reject": 654 }],
     105: [function(require, module, exports) {
       'use strict';
 
@@ -11068,49 +11042,49 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/map': 204,
-      '@segment/analytics.js-integration': 106,
-      '@segment/to-iso-string': 601,
-      'obj-case': 647,
-      'type-of': 679
+      "@ndhoule/each": 197,
+      "@ndhoule/map": 204,
+      "@segment/analytics.js-integration": 106,
+      "@segment/to-iso-string": 601,
+      "obj-case": 647,
+      "type-of": 679
     }],
     106: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 107,
-      './statics': 108,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 107,
+      "./statics": 108,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     107: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 109,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 109,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     108: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     109: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     110: [function(require, module, exports) {
       'use strict';
 
@@ -11150,43 +11124,43 @@
         this.load({ accountId: this.options.accountId }, this.ready);
       };
 
-    }, { '@segment/analytics.js-integration': 111 }],
+    }, { "@segment/analytics.js-integration": 111 }],
     111: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 112,
-      './statics': 113,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 112,
+      "./statics": 113,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     112: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 114,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 114,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     113: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     114: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     115: [function(require, module, exports) {
       'use strict';
 
@@ -11432,9 +11406,8 @@
             for (var j = 0; j < variationIds.length; j++) {
               var activeVariation = variationIds[j];
               var activeSection = variationIdsToSectionsMap[activeVariation];
-              if (activeSection) {
+              if (activeSection)
                 activeSections[activeSection.id] = activeSection.name;
-              }
             }
 
             // Sorting for consistency across browsers
@@ -11788,13 +11761,13 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/foldl': 201,
-      '@ndhoule/keys': 203,
-      '@ndhoule/values': 207,
-      '@segment/analytics.js-integration': 574,
-      'global-queue': 628,
-      'next-tick': 116
+      "@ndhoule/each": 197,
+      "@ndhoule/foldl": 201,
+      "@ndhoule/keys": 203,
+      "@ndhoule/values": 207,
+      "@segment/analytics.js-integration": 574,
+      "global-queue": 628,
+      "next-tick": 116
     }],
     116: [function(require, module, exports) {
       (function(process) {
@@ -11803,7 +11776,7 @@
         var callable, byObserver;
 
         callable = function(fn) {
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+          if (typeof fn !== 'function') throw new TypeError(fn + " is not a function");
           return fn;
         };
 
@@ -11835,11 +11808,8 @@
           return function(fn) {
             callable(fn);
             if (queue) {
-              if (typeof queue === 'function') {
-                queue = [queue, fn];
-              } else {
-                queue.push(fn);
-              }
+              if (typeof queue === 'function') queue = [queue, fn];
+              else queue.push(fn);
               return;
             }
             queue = fn;
@@ -11878,7 +11848,7 @@
         }());
 
       }).call(this, require('_process'))
-    }, { '_process': 653 }],
+    }, { "_process": 653 }],
     117: [function(require, module, exports) {
       'use strict';
 
@@ -11911,7 +11881,7 @@
               window.pintrk.queue.push(Array.prototype.slice.call(arguments))
             };
             var n = window.pintrk;
-            n.queue = [], n.version = '3.0';
+            n.queue = [], n.version = "3.0";
           }
         })(); // eslint-disable-line
 
@@ -12077,43 +12047,43 @@
         return pinterestProps;
       };
 
-    }, { '@segment/analytics.js-integration': 118, 'analytics-events': 605 }],
+    }, { "@segment/analytics.js-integration": 118, "analytics-events": 605 }],
     118: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 119,
-      './statics': 120,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 119,
+      "./statics": 120,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     119: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 121,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 121,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     120: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     121: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     122: [function(require, module, exports) {
       'use strict';
 
@@ -12166,43 +12136,43 @@
         }
       };
 
-    }, { '@segment/analytics.js-integration': 123 }],
+    }, { "@segment/analytics.js-integration": 123 }],
     123: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 124,
-      './statics': 125,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 124,
+      "./statics": 125,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     124: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 126,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 126,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     125: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     126: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     127: [function(require, module, exports) {
       'use strict';
 
@@ -12325,43 +12295,43 @@
         return identify.email();
       }
 
-    }, { '@segment/analytics.js-integration': 128, 'component-each': 611, 'segmentio-facade': 661 }],
+    }, { "@segment/analytics.js-integration": 128, "component-each": 611, "segmentio-facade": 661 }],
     128: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 129,
-      './statics': 130,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 129,
+      "./statics": 130,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     129: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 131,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 131,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     130: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     131: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     132: [function(require, module, exports) {
       'use strict';
 
@@ -12467,43 +12437,43 @@
         return Math.round(Math.random() * 99999999);
       };
 
-    }, { '@segment/analytics.js-integration': 133, 'component-each': 611 }],
+    }, { "@segment/analytics.js-integration": 133, "component-each": 611 }],
     133: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 134,
-      './statics': 135,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 134,
+      "./statics": 135,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     134: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 136,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 136,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     135: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     136: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     137: [function(require, module, exports) {
       'use strict';
 
@@ -12598,9 +12568,8 @@
         // This re-fires the Krux tag with the given namespace without counting it as a new page view.
         // Namespace starts with 'ns:'
         var namespace = this.options.namespace;
-        if (namespace.length <= 3 || namespace.toLowerCase().slice(0, 3) !== 'ns:') {
+        if (namespace.length <= 3 || namespace.toLowerCase().slice(0, 3) !== 'ns:')
           namespace = 'ns:' + namespace;
-        }
 
         // This re-fires the pixel.gif. It will silently fail if `namespace` does not match the namespace on the main Krux instance!
         window.Krux(
@@ -12674,14 +12643,12 @@
           }
 
           if (msg.userId()) window.kruxDataLayer.segmentio_user_id = msg.userId();
-          if (msg.anonymousId()) {
+          if (msg.anonymousId())
             window.kruxDataLayer.segmentio_anonymous_id = msg.anonymousId();
-          }
-          if (msg.proxy('context.traits.crossDomainId')) {
+          if (msg.proxy('context.traits.crossDomainId'))
             window.kruxDataLayer.segmentio_xid = msg.proxy(
               'context.traits.crossDomainId'
             );
-          }
         }
 
         this.firePixel(resetDataLayer);
@@ -12695,9 +12662,8 @@
         // This re-fires the Krux tag with the given namespace without counting it as a new page view.
         // Namespace starts with 'ns:'
         var namespace = this.options.namespace;
-        if (namespace.length <= 3 || namespace.toLowerCase().slice(0, 3) !== 'ns:') {
+        if (namespace.length <= 3 || namespace.toLowerCase().slice(0, 3) !== 'ns:')
           namespace = 'ns:' + namespace;
-        }
 
         // This re-fires the pixel.gif. It will silently fail if `namespace` does not match the namespace on the main Krux instance!
         window.Krux(
@@ -12724,43 +12690,43 @@
         return false;
       }
 
-    }, { '@segment/analytics.js-integration': 138 }],
+    }, { "@segment/analytics.js-integration": 138 }],
     138: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 139,
-      './statics': 140,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 139,
+      "./statics": 140,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     139: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 141,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 141,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     140: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     141: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     142: [function(require, module, exports) {
       'use strict';
 
@@ -12876,43 +12842,43 @@
         return !!window.liveagent;
       };
 
-    }, { '@segment/analytics.js-integration': 143 }],
+    }, { "@segment/analytics.js-integration": 143 }],
     143: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 144,
-      './statics': 145,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 144,
+      "./statics": 145,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     144: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 146,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 146,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     145: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     146: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     147: [function(require, module, exports) {
       'use strict';
 
@@ -13017,7 +12983,7 @@
         }
       };
 
-    }, { '@segment/analytics.js-integration': 574, 'component-each': 611, 'segmentio-facade': 661 }],
+    }, { "@segment/analytics.js-integration": 574, "component-each": 611, "segmentio-facade": 661 }],
     148: [function(require, module, exports) {
       'use strict';
 
@@ -13128,43 +13094,43 @@
         });
       };
 
-    }, { '@segment/analytics.js-integration': 149, 'component-each': 611 }],
+    }, { "@segment/analytics.js-integration": 149, "component-each": 611 }],
     149: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 150,
-      './statics': 151,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 150,
+      "./statics": 151,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     150: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 152,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 152,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     151: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     152: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     153: [function(require, module, exports) {
       'use strict';
 
@@ -13282,47 +13248,47 @@
       }
 
     }, {
-      '@ndhoule/foldl': 201,
-      '@segment/analytics.js-integration': 154,
-      'component-each': 611,
-      'segmentio-facade': 661
+      "@ndhoule/foldl": 201,
+      "@segment/analytics.js-integration": 154,
+      "component-each": 611,
+      "segmentio-facade": 661
     }],
     154: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 155,
-      './statics': 156,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 155,
+      "./statics": 156,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     155: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 157,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 157,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     156: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     157: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     158: [function(require, module, exports) {
       'use strict';
 
@@ -13375,7 +13341,7 @@
         return window.Stripe && window.Stripe.setPublishableKey;
       };
 
-    }, { '@segment/analytics.js-integration': 574, 'do-when': 625 }],
+    }, { "@segment/analytics.js-integration": 574, "do-when": 625 }],
     159: [function(require, module, exports) {
       'use strict';
 
@@ -13462,7 +13428,7 @@
         ].join(';\n');
       }
 
-    }, { '@segment/analytics.js-integration': 574 }],
+    }, { "@segment/analytics.js-integration": 574 }],
     160: [function(require, module, exports) {
       'use strict';
 
@@ -13553,9 +13519,8 @@
         if (category && opts.trackCategorizedPages) this.track(page.track(category));
         if (name && opts.trackNamedPages) this.track(page.track(name));
         this._category = category;
-        if (!user.id() || !group.id()) {
+        if (!user.id() || !group.id())
           return this.debug('must identify and group first');
-        }
         if (!category) return this.debug('category required');
         this.go({ module: category });
       };
@@ -13635,48 +13600,48 @@
       };
 
     }, {
-      '@ndhoule/extend': 200,
-      '@segment/analytics.js-integration': 161,
-      '@segment/convert-dates': 581,
-      '@segment/to-iso-string': 601,
-      'segmentio-facade': 661
+      "@ndhoule/extend": 200,
+      "@segment/analytics.js-integration": 161,
+      "@segment/convert-dates": 581,
+      "@segment/to-iso-string": 601,
+      "segmentio-facade": 661
     }],
     161: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 162,
-      './statics': 163,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 162,
+      "./statics": 163,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     162: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 164,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 164,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     163: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     164: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     165: [function(require, module, exports) {
       'use strict';
 
@@ -13772,43 +13737,43 @@
         };
       }
 
-    }, { '@ndhoule/defaults': 195, '@segment/analytics.js-integration': 166, 'is': 633 }],
+    }, { "@ndhoule/defaults": 195, "@segment/analytics.js-integration": 166, "is": 633 }],
     166: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 167,
-      './statics': 168,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 167,
+      "./statics": 168,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     167: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 169,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 169,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     168: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     169: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     170: [function(require, module, exports) {
       'use strict';
 
@@ -13941,43 +13906,43 @@
         window._tvq.push(['trackPageView']);
       };
 
-    }, { '@segment/analytics.js-integration': 171, 'json3': 638, 'use-https': 681 }],
+    }, { "@segment/analytics.js-integration": 171, "json3": 638, "use-https": 681 }],
     171: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 172,
-      './statics': 173,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 172,
+      "./statics": 173,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     172: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 174,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 174,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     173: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     174: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     175: [function(require, module, exports) {
       'use strict';
 
@@ -14148,51 +14113,51 @@
       }
 
     }, {
-      '@ndhoule/foldl': 201,
-      '@segment/analytics.js-integration': 176,
-      'component-each': 611,
-      'is': 633,
-      'isostring': 636,
-      'json3': 638,
-      'to-snake-case': 673,
-      'unix-time': 680
+      "@ndhoule/foldl": 201,
+      "@segment/analytics.js-integration": 176,
+      "component-each": 611,
+      "is": 633,
+      "isostring": 636,
+      "json3": 638,
+      "to-snake-case": 673,
+      "unix-time": 680
     }],
     176: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 177,
-      './statics': 178,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 177,
+      "./statics": 178,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     177: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 179,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 179,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     178: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     179: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     180: [function(require, module, exports) {
       'use strict';
 
@@ -14365,9 +14330,8 @@
        */
 
       function survey(email, createdAt, properties, eventName) {
-        if (createdAt && createdAt.getTime) {
+        if (createdAt && createdAt.getTime)
           window.wootricSettings.created_at = Math.round(createdAt.getTime() / 1000);
-        }
         window.wootricSettings.email = email;
         window.wootricSettings.event_name = eventName;
 
@@ -14391,43 +14355,43 @@
         window.wootric('run');
       }
 
-    }, { '@ndhoule/foldl': 201, '@segment/analytics.js-integration': 181, 'is': 633, 'omit': 649 }],
+    }, { "@ndhoule/foldl": 201, "@segment/analytics.js-integration": 181, "is": 633, "omit": 649 }],
     181: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 182,
-      './statics': 183,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 182,
+      "./statics": 183,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     182: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 184,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 184,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     183: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     184: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     185: [function(require, module, exports) {
       'use strict';
 
@@ -14559,43 +14523,43 @@
         );
       };
 
-    }, { '@segment/analytics.js-integration': 186, '@segment/fmt': 582, 'do-when': 625, 'reject': 654 }],
+    }, { "@segment/analytics.js-integration": 186, "@segment/fmt": 582, "do-when": 625, "reject": 654 }],
     186: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 187,
-      './statics': 188,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 187,
+      "./statics": 188,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     187: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 189,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 189,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     188: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     189: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     190: [function(require, module, exports) {
       'use strict';
       /**
@@ -14633,7 +14597,7 @@
         analytics.use(Integrations[name]);
       });
 
-    }, { '../package.json': 687, './integrations': 191, '@segment/analytics.js-core': 214 }],
+    }, { "../package.json": 687, "./integrations": 191, "@segment/analytics.js-core": 214 }],
     191: [function(require, module, exports) {
       /* eslint quote-props: 0 */
       'use strict';
@@ -14783,137 +14747,137 @@
       };
 
     }, {
-      '@segment/analytics.js-integration-adlearn-open-platform': 1,
-      '@segment/analytics.js-integration-adobe-analytics': 6,
-      '@segment/analytics.js-integration-adobe-target': 7,
-      '@segment/analytics.js-integration-adometry': 12,
-      '@segment/analytics.js-integration-adroll': 225,
-      '@segment/analytics.js-integration-adwords': 226,
-      '@segment/analytics.js-integration-alexa': 231,
-      '@segment/analytics.js-integration-amplitude': 17,
-      '@segment/analytics.js-integration-appboy': 21,
-      '@segment/analytics.js-integration-appcues': 236,
-      '@segment/analytics.js-integration-appnexus': 22,
-      '@segment/analytics.js-integration-atatus': 241,
-      '@segment/analytics.js-integration-autosend': 246,
-      '@segment/analytics.js-integration-awesm': 251,
-      '@segment/analytics.js-integration-bing-ads': 256,
-      '@segment/analytics.js-integration-blueshift': 261,
-      '@segment/analytics.js-integration-boomtrain': 266,
-      '@segment/analytics.js-integration-bronto': 271,
-      '@segment/analytics.js-integration-bugherd': 272,
-      '@segment/analytics.js-integration-bugsnag': 277,
-      '@segment/analytics.js-integration-chameleon': 282,
-      '@segment/analytics.js-integration-chartbeat': 287,
-      '@segment/analytics.js-integration-clevertap': 27,
-      '@segment/analytics.js-integration-clicky': 288,
-      '@segment/analytics.js-integration-comscore': 293,
-      '@segment/analytics.js-integration-convertro': 28,
-      '@segment/analytics.js-integration-crazy-egg': 298,
-      '@segment/analytics.js-integration-criteo': 29,
-      '@segment/analytics.js-integration-curebit': 303,
-      '@segment/analytics.js-integration-customerio': 304,
-      '@segment/analytics.js-integration-drift': 309,
-      '@segment/analytics.js-integration-drip': 314,
-      '@segment/analytics.js-integration-elevio': 315,
-      '@segment/analytics.js-integration-eloqua': 31,
-      '@segment/analytics.js-integration-email-aptitude': 36,
-      '@segment/analytics.js-integration-errorception': 317,
-      '@segment/analytics.js-integration-evergage': 323,
-      '@segment/analytics.js-integration-extole': 328,
-      '@segment/analytics.js-integration-facebook-conversion-tracking': 333,
-      '@segment/analytics.js-integration-facebook-custom-audiences': 338,
-      '@segment/analytics.js-integration-facebook-pixel': 41,
-      '@segment/analytics.js-integration-foxmetrics': 339,
-      '@segment/analytics.js-integration-friendbuy': 42,
-      '@segment/analytics.js-integration-frontleaf': 340,
-      '@segment/analytics.js-integration-fullstory': 56,
-      '@segment/analytics.js-integration-gauges': 345,
-      '@segment/analytics.js-integration-get-satisfaction': 350,
-      '@segment/analytics.js-integration-google-analytics': 355,
-      '@segment/analytics.js-integration-google-tag-manager': 356,
-      '@segment/analytics.js-integration-gosquared': 357,
-      '@segment/analytics.js-integration-heap': 358,
-      '@segment/analytics.js-integration-hellobar': 359,
-      '@segment/analytics.js-integration-hindsight': 62,
-      '@segment/analytics.js-integration-hittail': 364,
-      '@segment/analytics.js-integration-hotjar': 63,
-      '@segment/analytics.js-integration-hubspot': 64,
-      '@segment/analytics.js-integration-improvely': 369,
-      '@segment/analytics.js-integration-inspectlet': 374,
-      '@segment/analytics.js-integration-intercom': 379,
-      '@segment/analytics.js-integration-keen-io': 384,
-      '@segment/analytics.js-integration-kenshoo': 389,
-      '@segment/analytics.js-integration-kenshoo-infinity': 77,
-      '@segment/analytics.js-integration-kissmetrics': 394,
-      '@segment/analytics.js-integration-klaviyo': 399,
-      '@segment/analytics.js-integration-linkedin-insight-tag': 78,
-      '@segment/analytics.js-integration-livechat': 400,
-      '@segment/analytics.js-integration-localytics': 83,
-      '@segment/analytics.js-integration-lucky-orange': 405,
-      '@segment/analytics.js-integration-lytics': 406,
-      '@segment/analytics.js-integration-madkudu': 411,
-      '@segment/analytics.js-integration-marketo': 93,
-      '@segment/analytics.js-integration-marketo-v2': 88,
-      '@segment/analytics.js-integration-mediamath': 98,
-      '@segment/analytics.js-integration-mixpanel': 416,
-      '@segment/analytics.js-integration-moengage': 103,
-      '@segment/analytics.js-integration-mojn': 421,
-      '@segment/analytics.js-integration-mouseflow': 426,
-      '@segment/analytics.js-integration-mousestats': 427,
-      '@segment/analytics.js-integration-navilytics': 432,
-      '@segment/analytics.js-integration-nielsen-dcr': 104,
-      '@segment/analytics.js-integration-nudgespot': 437,
-      '@segment/analytics.js-integration-olark': 442,
-      '@segment/analytics.js-integration-omniture': 105,
-      '@segment/analytics.js-integration-onespot': 110,
-      '@segment/analytics.js-integration-optimizely': 115,
-      '@segment/analytics.js-integration-outbound': 447,
-      '@segment/analytics.js-integration-parsely': 454,
-      '@segment/analytics.js-integration-perfect-audience': 455,
-      '@segment/analytics.js-integration-pingdom': 456,
-      '@segment/analytics.js-integration-pinterest-tag': 117,
-      '@segment/analytics.js-integration-piwik': 461,
-      '@segment/analytics.js-integration-qualaroo': 466,
-      '@segment/analytics.js-integration-quantcast': 471,
-      '@segment/analytics.js-integration-quanticmind': 472,
-      '@segment/analytics.js-integration-quora-conversion-pixel': 122,
-      '@segment/analytics.js-integration-ramen': 477,
-      '@segment/analytics.js-integration-rockerbox': 127,
-      '@segment/analytics.js-integration-rocket-fuel': 132,
-      '@segment/analytics.js-integration-rollbar': 482,
-      '@segment/analytics.js-integration-route': 487,
-      '@segment/analytics.js-integration-saasquatch': 492,
-      '@segment/analytics.js-integration-salesforce-dmp': 137,
-      '@segment/analytics.js-integration-salesforce-live-agent': 142,
-      '@segment/analytics.js-integration-satismeter': 497,
-      '@segment/analytics.js-integration-segmentio': 502,
-      '@segment/analytics.js-integration-sentry': 507,
-      '@segment/analytics.js-integration-shareasale': 147,
-      '@segment/analytics.js-integration-simplereach': 512,
-      '@segment/analytics.js-integration-simplifi': 148,
-      '@segment/analytics.js-integration-snapengage': 517,
-      '@segment/analytics.js-integration-spinnakr': 522,
-      '@segment/analytics.js-integration-steelhouse': 153,
-      '@segment/analytics.js-integration-stripe-radar': 158,
-      '@segment/analytics.js-integration-supporthero': 527,
-      '@segment/analytics.js-integration-tag-injector': 159,
-      '@segment/analytics.js-integration-taplytics': 532,
-      '@segment/analytics.js-integration-tapstream': 537,
-      '@segment/analytics.js-integration-totango': 160,
-      '@segment/analytics.js-integration-trackjs': 165,
-      '@segment/analytics.js-integration-trakio': 542,
-      '@segment/analytics.js-integration-tvsquared': 170,
-      '@segment/analytics.js-integration-twitter-ads': 547,
-      '@segment/analytics.js-integration-userlike': 548,
-      '@segment/analytics.js-integration-uservoice': 553,
-      '@segment/analytics.js-integration-vero': 558,
-      '@segment/analytics.js-integration-visual-website-optimizer': 563,
-      '@segment/analytics.js-integration-webengage': 564,
-      '@segment/analytics.js-integration-woopra': 175,
-      '@segment/analytics.js-integration-wootric': 180,
-      '@segment/analytics.js-integration-yandex-metrica': 569,
-      '@segment/analytics.js-integration-zopim': 185
+      "@segment/analytics.js-integration-adlearn-open-platform": 1,
+      "@segment/analytics.js-integration-adobe-analytics": 6,
+      "@segment/analytics.js-integration-adobe-target": 7,
+      "@segment/analytics.js-integration-adometry": 12,
+      "@segment/analytics.js-integration-adroll": 225,
+      "@segment/analytics.js-integration-adwords": 226,
+      "@segment/analytics.js-integration-alexa": 231,
+      "@segment/analytics.js-integration-amplitude": 17,
+      "@segment/analytics.js-integration-appboy": 21,
+      "@segment/analytics.js-integration-appcues": 236,
+      "@segment/analytics.js-integration-appnexus": 22,
+      "@segment/analytics.js-integration-atatus": 241,
+      "@segment/analytics.js-integration-autosend": 246,
+      "@segment/analytics.js-integration-awesm": 251,
+      "@segment/analytics.js-integration-bing-ads": 256,
+      "@segment/analytics.js-integration-blueshift": 261,
+      "@segment/analytics.js-integration-boomtrain": 266,
+      "@segment/analytics.js-integration-bronto": 271,
+      "@segment/analytics.js-integration-bugherd": 272,
+      "@segment/analytics.js-integration-bugsnag": 277,
+      "@segment/analytics.js-integration-chameleon": 282,
+      "@segment/analytics.js-integration-chartbeat": 287,
+      "@segment/analytics.js-integration-clevertap": 27,
+      "@segment/analytics.js-integration-clicky": 288,
+      "@segment/analytics.js-integration-comscore": 293,
+      "@segment/analytics.js-integration-convertro": 28,
+      "@segment/analytics.js-integration-crazy-egg": 298,
+      "@segment/analytics.js-integration-criteo": 29,
+      "@segment/analytics.js-integration-curebit": 303,
+      "@segment/analytics.js-integration-customerio": 304,
+      "@segment/analytics.js-integration-drift": 309,
+      "@segment/analytics.js-integration-drip": 314,
+      "@segment/analytics.js-integration-elevio": 315,
+      "@segment/analytics.js-integration-eloqua": 31,
+      "@segment/analytics.js-integration-email-aptitude": 36,
+      "@segment/analytics.js-integration-errorception": 317,
+      "@segment/analytics.js-integration-evergage": 323,
+      "@segment/analytics.js-integration-extole": 328,
+      "@segment/analytics.js-integration-facebook-conversion-tracking": 333,
+      "@segment/analytics.js-integration-facebook-custom-audiences": 338,
+      "@segment/analytics.js-integration-facebook-pixel": 41,
+      "@segment/analytics.js-integration-foxmetrics": 339,
+      "@segment/analytics.js-integration-friendbuy": 42,
+      "@segment/analytics.js-integration-frontleaf": 340,
+      "@segment/analytics.js-integration-fullstory": 56,
+      "@segment/analytics.js-integration-gauges": 345,
+      "@segment/analytics.js-integration-get-satisfaction": 350,
+      "@segment/analytics.js-integration-google-analytics": 355,
+      "@segment/analytics.js-integration-google-tag-manager": 356,
+      "@segment/analytics.js-integration-gosquared": 357,
+      "@segment/analytics.js-integration-heap": 358,
+      "@segment/analytics.js-integration-hellobar": 359,
+      "@segment/analytics.js-integration-hindsight": 62,
+      "@segment/analytics.js-integration-hittail": 364,
+      "@segment/analytics.js-integration-hotjar": 63,
+      "@segment/analytics.js-integration-hubspot": 64,
+      "@segment/analytics.js-integration-improvely": 369,
+      "@segment/analytics.js-integration-inspectlet": 374,
+      "@segment/analytics.js-integration-intercom": 379,
+      "@segment/analytics.js-integration-keen-io": 384,
+      "@segment/analytics.js-integration-kenshoo": 389,
+      "@segment/analytics.js-integration-kenshoo-infinity": 77,
+      "@segment/analytics.js-integration-kissmetrics": 394,
+      "@segment/analytics.js-integration-klaviyo": 399,
+      "@segment/analytics.js-integration-linkedin-insight-tag": 78,
+      "@segment/analytics.js-integration-livechat": 400,
+      "@segment/analytics.js-integration-localytics": 83,
+      "@segment/analytics.js-integration-lucky-orange": 405,
+      "@segment/analytics.js-integration-lytics": 406,
+      "@segment/analytics.js-integration-madkudu": 411,
+      "@segment/analytics.js-integration-marketo": 93,
+      "@segment/analytics.js-integration-marketo-v2": 88,
+      "@segment/analytics.js-integration-mediamath": 98,
+      "@segment/analytics.js-integration-mixpanel": 416,
+      "@segment/analytics.js-integration-moengage": 103,
+      "@segment/analytics.js-integration-mojn": 421,
+      "@segment/analytics.js-integration-mouseflow": 426,
+      "@segment/analytics.js-integration-mousestats": 427,
+      "@segment/analytics.js-integration-navilytics": 432,
+      "@segment/analytics.js-integration-nielsen-dcr": 104,
+      "@segment/analytics.js-integration-nudgespot": 437,
+      "@segment/analytics.js-integration-olark": 442,
+      "@segment/analytics.js-integration-omniture": 105,
+      "@segment/analytics.js-integration-onespot": 110,
+      "@segment/analytics.js-integration-optimizely": 115,
+      "@segment/analytics.js-integration-outbound": 447,
+      "@segment/analytics.js-integration-parsely": 454,
+      "@segment/analytics.js-integration-perfect-audience": 455,
+      "@segment/analytics.js-integration-pingdom": 456,
+      "@segment/analytics.js-integration-pinterest-tag": 117,
+      "@segment/analytics.js-integration-piwik": 461,
+      "@segment/analytics.js-integration-qualaroo": 466,
+      "@segment/analytics.js-integration-quantcast": 471,
+      "@segment/analytics.js-integration-quanticmind": 472,
+      "@segment/analytics.js-integration-quora-conversion-pixel": 122,
+      "@segment/analytics.js-integration-ramen": 477,
+      "@segment/analytics.js-integration-rockerbox": 127,
+      "@segment/analytics.js-integration-rocket-fuel": 132,
+      "@segment/analytics.js-integration-rollbar": 482,
+      "@segment/analytics.js-integration-route": 487,
+      "@segment/analytics.js-integration-saasquatch": 492,
+      "@segment/analytics.js-integration-salesforce-dmp": 137,
+      "@segment/analytics.js-integration-salesforce-live-agent": 142,
+      "@segment/analytics.js-integration-satismeter": 497,
+      "@segment/analytics.js-integration-segmentio": 502,
+      "@segment/analytics.js-integration-sentry": 507,
+      "@segment/analytics.js-integration-shareasale": 147,
+      "@segment/analytics.js-integration-simplereach": 512,
+      "@segment/analytics.js-integration-simplifi": 148,
+      "@segment/analytics.js-integration-snapengage": 517,
+      "@segment/analytics.js-integration-spinnakr": 522,
+      "@segment/analytics.js-integration-steelhouse": 153,
+      "@segment/analytics.js-integration-stripe-radar": 158,
+      "@segment/analytics.js-integration-supporthero": 527,
+      "@segment/analytics.js-integration-tag-injector": 159,
+      "@segment/analytics.js-integration-taplytics": 532,
+      "@segment/analytics.js-integration-tapstream": 537,
+      "@segment/analytics.js-integration-totango": 160,
+      "@segment/analytics.js-integration-trackjs": 165,
+      "@segment/analytics.js-integration-trakio": 542,
+      "@segment/analytics.js-integration-tvsquared": 170,
+      "@segment/analytics.js-integration-twitter-ads": 547,
+      "@segment/analytics.js-integration-userlike": 548,
+      "@segment/analytics.js-integration-uservoice": 553,
+      "@segment/analytics.js-integration-vero": 558,
+      "@segment/analytics.js-integration-visual-website-optimizer": 563,
+      "@segment/analytics.js-integration-webengage": 564,
+      "@segment/analytics.js-integration-woopra": 175,
+      "@segment/analytics.js-integration-wootric": 180,
+      "@segment/analytics.js-integration-yandex-metrica": 569,
+      "@segment/analytics.js-integration-zopim": 185
     }],
     192: [function(require, module, exports) {
       'use strict';
@@ -14990,7 +14954,7 @@
 
       module.exports = after;
 
-    }, { '@ndhoule/arity': 193 }],
+    }, { "@ndhoule/arity": 193 }],
     193: [function(require, module, exports) {
       'use strict';
 
@@ -15209,7 +15173,7 @@
 
       module.exports = clone;
 
-    }, { 'component-type': 619 }],
+    }, { "component-type": 619 }],
     195: [function(require, module, exports) {
       'use strict';
 
@@ -15362,7 +15326,7 @@
       module.exports = defaults;
       module.exports.deep = defaultsDeep;
 
-    }, { '@ndhoule/drop': 196, '@ndhoule/rest': 206 }],
+    }, { "@ndhoule/drop": 196, "@ndhoule/rest": 206 }],
     196: [function(require, module, exports) {
       'use strict';
 
@@ -15542,7 +15506,7 @@
 
       module.exports = each;
 
-    }, { '@ndhoule/keys': 203 }],
+    }, { "@ndhoule/keys": 203 }],
     198: [function(require, module, exports) {
       'use strict';
 
@@ -15627,7 +15591,7 @@
 
       module.exports = every;
 
-    }, { '@ndhoule/each': 197 }],
+    }, { "@ndhoule/each": 197 }],
     200: [function(require, module, exports) {
       'use strict';
 
@@ -15730,7 +15694,7 @@
 
       module.exports = foldl;
 
-    }, { '@ndhoule/each': 197 }],
+    }, { "@ndhoule/each": 197 }],
     202: [function(require, module, exports) {
       'use strict';
 
@@ -15815,7 +15779,7 @@
 
       module.exports = includes;
 
-    }, { '@ndhoule/each': 197 }],
+    }, { "@ndhoule/each": 197 }],
     203: [function(require, module, exports) {
       'use strict';
 
@@ -16029,7 +15993,7 @@
 
       module.exports = map;
 
-    }, { '@ndhoule/each': 197 }],
+    }, { "@ndhoule/each": 197 }],
     205: [function(require, module, exports) {
       'use strict';
 
@@ -16182,7 +16146,7 @@
 
       module.exports = values;
 
-    }, { '@ndhoule/keys': 203 }],
+    }, { "@ndhoule/keys": 203 }],
     208: [function(require, module, exports) {
       'use strict';
 
@@ -16230,7 +16194,7 @@
 
       module.exports = ads;
 
-    }, { 'component-querystring': 617 }],
+    }, { "component-querystring": 617 }],
     209: [function(require, module, exports) {
 
       var type = require('component-type');
@@ -16292,7 +16256,7 @@
         return output;
       }
 
-    }, { 'component-clone': 609, 'component-type': 619 }],
+    }, { "component-clone": 609, "component-type": 619 }],
     210: [function(require, module, exports) {
       (function(global) {
         'use strict';
@@ -16400,9 +16364,8 @@
          */
 
         Analytics.prototype.addIntegrationMiddleware = function(middleware) {
-          if (this.initialized) {
+          if (this.initialized)
             throw new Error('attempted to add middleware after initialization');
-          }
 
           this._integrationMiddlewares.add(middleware);
           return this;
@@ -16639,9 +16602,8 @@
           // Argument reshuffling.
           /* eslint-disable no-unused-expressions, no-sequences */
           if (is.fn(options)) (fn = options), (options = null);
-          if (is.fn(properties)) {
+          if (is.fn(properties))
             (fn = properties), (options = null), (properties = null);
-          }
           /* eslint-enable no-unused-expressions, no-sequences */
 
           // figure out if the event is archived.
@@ -16758,9 +16720,8 @@
 
           var self = this;
           each(function(el) {
-            if (type(el) !== 'element') {
+            if (type(el) !== 'element')
               throw new TypeError('Must pass HTMLElement to `analytics.trackForm`.');
-            }
 
             function handler(e) {
               prevent(e);
@@ -16805,15 +16766,12 @@
           if (is.fn(options)) (fn = options), (options = null);
           if (is.fn(properties)) (fn = properties), (options = properties = null);
           if (is.fn(name)) (fn = name), (options = properties = name = null);
-          if (type(category) === 'object') {
+          if (type(category) === 'object')
             (options = name), (properties = category), (name = category = null);
-          }
-          if (type(name) === 'object') {
+          if (type(name) === 'object')
             (options = properties), (properties = name), (name = null);
-          }
-          if (type(category) === 'string' && type(name) !== 'string') {
+          if (type(category) === 'string' && type(name) !== 'string')
             (name = category), (category = null);
-          }
           /* eslint-enable no-unused-expressions, no-sequences */
 
           properties = clone(properties) || {};
@@ -17201,36 +17159,36 @@
         module.exports.store = store;
         module.exports.metrics = metrics;
 
-      }).call(this, typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {})
+      }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
     }, {
-      './cookie': 211,
-      './group': 213,
-      './memory': 215,
-      './metrics': 216,
-      './middleware': 217,
-      './normalize': 218,
-      './pageDefaults': 219,
-      './store': 220,
-      './user': 221,
-      '@ndhoule/after': 192,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/each': 197,
-      '@ndhoule/foldl': 201,
-      '@ndhoule/keys': 203,
-      '@ndhoule/pick': 205,
-      '@segment/is-meta': 583,
-      '@segment/prevent-default': 597,
-      'bind-all': 606,
-      'component-emitter': 613,
-      'component-event': 614,
-      'component-querystring': 617,
-      'component-type': 619,
-      'debug': 222,
-      'extend': 223,
-      'is': 633,
-      'next-tick': 646,
-      'segmentio-facade': 661
+      "./cookie": 211,
+      "./group": 213,
+      "./memory": 215,
+      "./metrics": 216,
+      "./middleware": 217,
+      "./normalize": 218,
+      "./pageDefaults": 219,
+      "./store": 220,
+      "./user": 221,
+      "@ndhoule/after": 192,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/each": 197,
+      "@ndhoule/foldl": 201,
+      "@ndhoule/keys": 203,
+      "@ndhoule/pick": 205,
+      "@segment/is-meta": 583,
+      "@segment/prevent-default": 597,
+      "bind-all": 606,
+      "component-emitter": 613,
+      "component-event": 614,
+      "component-querystring": 617,
+      "component-type": 619,
+      "debug": 222,
+      "extend": 223,
+      "is": 633,
+      "next-tick": 646,
+      "segmentio-facade": 661
     }],
     211: [function(require, module, exports) {
       'use strict';
@@ -17361,13 +17319,13 @@
       module.exports.Cookie = Cookie;
 
     }, {
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@segment/top-domain': 602,
-      'bind-all': 606,
-      'component-cookie': 610,
-      'debug': 222,
-      'json3': 638
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@segment/top-domain": 602,
+      "bind-all": 606,
+      "component-cookie": 610,
+      "debug": 222,
+      "json3": 638
     }],
     212: [function(require, module, exports) {
       'use strict';
@@ -17618,9 +17576,8 @@
       Entity.prototype.identify = function(id, traits) {
         traits = traits || {};
         var current = this.id();
-        if (current === null || current === id) {
+        if (current === null || current === id)
           traits = extend(this.traits(), traits);
-        }
         if (id) this.id(id);
         this.debug('identify %o, %o', id, traits);
         this.traits(traits);
@@ -17671,14 +17628,14 @@
       };
 
     }, {
-      './cookie': 211,
-      './memory': 215,
-      './store': 220,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      '@segment/isodate-traverse': 584,
-      'debug': 222
+      "./cookie": 211,
+      "./memory": 215,
+      "./store": 220,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "@segment/isodate-traverse": 584,
+      "debug": 222
     }],
     213: [function(require, module, exports) {
       'use strict';
@@ -17736,7 +17693,7 @@
 
       module.exports.Group = Group;
 
-    }, { './entity': 212, 'bind-all': 606, 'debug': 222, 'inherits': 630 }],
+    }, { "./entity": 212, "bind-all": 606, "debug": 222, "inherits": 630 }],
     214: [function(require, module, exports) {
       'use strict';
 
@@ -17764,7 +17721,7 @@
 
       module.exports = analytics;
 
-    }, { '../package.json': 224, './analytics': 210 }],
+    }, { "../package.json": 224, "./analytics": 210 }],
     215: [function(require, module, exports) {
       'use strict';
 
@@ -17831,7 +17788,7 @@
         return true;
       };
 
-    }, { '@ndhoule/clone': 194, 'bind-all': 606 }],
+    }, { "@ndhoule/clone": 194, "bind-all": 606 }],
     216: [function(require, module, exports) {
       'use strict';
 
@@ -17929,7 +17886,7 @@
 
       module.exports.Metrics = Metrics;
 
-    }, { '@segment/send-json': 599, 'bind-all': 606, 'debug': 222 }],
+    }, { "@segment/send-json": 599, "bind-all": 606, "debug": 222 }],
     217: [function(require, module, exports) {
       'use strict';
 
@@ -17945,25 +17902,21 @@
         };
 
         this.add = function(middleware) {
-          if (typeof middleware !== 'function') {
+          if (typeof middleware !== 'function')
             throw new Error('attempted to add non-function middleware');
-          }
 
           // Check for identical object references - bug check.
-          if (middlewares.indexOf(middleware) !== -1) {
+          if (middlewares.indexOf(middleware) !== -1)
             throw new Error('middleware is already registered');
-          }
           middlewares.push(middleware);
         };
 
         // fn is the callback to be run once all middlewares have been applied.
         this.applyMiddlewares = function(facade, integration, fn) {
-          if (typeof facade !== 'object') {
+          if (typeof facade !== 'object')
             throw new Error('applyMiddlewares requires a payload object');
-          }
-          if (typeof fn !== 'function') {
+          if (typeof fn !== 'function')
             throw new Error('applyMiddlewares requires a function callback');
-          }
 
           // Attach callback to the end of the chain.
           var middlewaresToApply = middlewares.slice();
@@ -18000,7 +17953,7 @@
 
       module.exports.Chain = Chain;
 
-    }, { 'segmentio-facade': 661 }],
+    }, { "segmentio-facade": 661 }],
     218: [function(require, module, exports) {
       'use strict';
 
@@ -18067,9 +18020,8 @@
         each(function(value, key) {
           if (!integration(key)) return;
           if (type(integrations[key]) === 'object') return;
-          if (has.call(integrations, key) && typeof providers[key] === 'boolean') {
+          if (has.call(integrations, key) && typeof providers[key] === 'boolean')
             return;
-          }
           integrations[key] = value;
         }, providers);
 
@@ -18104,15 +18056,15 @@
       }
 
     }, {
-      '@ndhoule/defaults': 195,
-      '@ndhoule/each': 197,
-      '@ndhoule/includes': 202,
-      '@ndhoule/map': 204,
-      'component-type': 619,
-      'debug': 222,
-      'json3': 638,
-      'spark-md5': 668,
-      'uuid': 684
+      "@ndhoule/defaults": 195,
+      "@ndhoule/each": 197,
+      "@ndhoule/includes": 202,
+      "@ndhoule/map": 204,
+      "component-type": 619,
+      "debug": 222,
+      "json3": 638,
+      "spark-md5": 668,
+      "uuid": 684
     }],
     219: [function(require, module, exports) {
       'use strict';
@@ -18178,7 +18130,7 @@
 
       module.exports = pageDefaults;
 
-    }, { '@ndhoule/includes': 202, '@segment/canonical': 580, 'component-url': 620 }],
+    }, { "@ndhoule/includes": 202, "@segment/canonical": 580, "component-url": 620 }],
     220: [function(require, module, exports) {
       'use strict';
 
@@ -18264,7 +18216,7 @@
 
       module.exports.Store = Store;
 
-    }, { '@ndhoule/defaults': 195, '@segment/store': 600, 'bind-all': 606 }],
+    }, { "@ndhoule/defaults": 195, "@segment/store": 600, "bind-all": 606 }],
     221: [function(require, module, exports) {
       'use strict';
 
@@ -18469,14 +18421,14 @@
       module.exports.User = User;
 
     }, {
-      './cookie': 211,
-      './entity': 212,
-      './store': 220,
-      'bind-all': 606,
-      'component-cookie': 610,
-      'debug': 222,
-      'inherits': 630,
-      'uuid': 684
+      "./cookie": 211,
+      "./entity": 212,
+      "./store": 220,
+      "bind-all": 606,
+      "component-cookie": 610,
+      "debug": 222,
+      "inherits": 630,
+      "uuid": 684
     }],
     222: [function(require, module, exports) {
 
@@ -18495,10 +18447,8 @@
        */
 
       function debug(name) {
-        if (!debug.enabled(name)) {
-          return function() {
-          };
-        }
+        if (!debug.enabled(name)) return function() {
+        };
 
         return function(fmt) {
           fmt = coerce(fmt);
@@ -18745,162 +18695,162 @@
     }, {}],
     224: [function(require, module, exports) {
       module.exports = {
-        '_from': '@segment/analytics.js-core@3.9.0',
-        '_id': '@segment/analytics.js-core@3.9.0',
-        '_inBundle': false,
-        '_integrity': 'sha512-gxS1v1iphKcSJv51Ft0V8YSFQthMhojtUEce0UbCM90fPJltnY0ceelQKEVdA+IJ3mXfQUcUW0/IyWPHZNKauA==',
-        '_location': '/@segment/analytics.js-core',
-        '_phantomChildren': {},
-        '_requested': {
-          'type': 'version',
-          'registry': true,
-          'raw': '@segment/analytics.js-core@3.9.0',
-          'name': '@segment/analytics.js-core',
-          'escapedName': '@segment%2fanalytics.js-core',
-          'scope': '@segment',
-          'rawSpec': '3.9.0',
-          'saveSpec': null,
-          'fetchSpec': '3.9.0'
+        "_from": "@segment/analytics.js-core@3.9.0",
+        "_id": "@segment/analytics.js-core@3.9.0",
+        "_inBundle": false,
+        "_integrity": "sha512-gxS1v1iphKcSJv51Ft0V8YSFQthMhojtUEce0UbCM90fPJltnY0ceelQKEVdA+IJ3mXfQUcUW0/IyWPHZNKauA==",
+        "_location": "/@segment/analytics.js-core",
+        "_phantomChildren": {},
+        "_requested": {
+          "type": "version",
+          "registry": true,
+          "raw": "@segment/analytics.js-core@3.9.0",
+          "name": "@segment/analytics.js-core",
+          "escapedName": "@segment%2fanalytics.js-core",
+          "scope": "@segment",
+          "rawSpec": "3.9.0",
+          "saveSpec": null,
+          "fetchSpec": "3.9.0"
         },
-        '_requiredBy': [
-          '#USER',
-          '/'
+        "_requiredBy": [
+          "#USER",
+          "/"
         ],
-        '_resolved': 'https://registry.npmjs.org/@segment/analytics.js-core/-/analytics.js-core-3.9.0.tgz',
-        '_shasum': 'eaf575b784c45b2184340b1a8856906771e7e39d',
-        '_spec': '@segment/analytics.js-core@3.9.0',
-        '_where': '/home/admin/analytics.js',
-        'author': {
-          'name': 'Segment',
-          'email': 'friends@segment.com'
+        "_resolved": "https://registry.npmjs.org/@segment/analytics.js-core/-/analytics.js-core-3.9.0.tgz",
+        "_shasum": "eaf575b784c45b2184340b1a8856906771e7e39d",
+        "_spec": "@segment/analytics.js-core@3.9.0",
+        "_where": "/home/admin/analytics.js",
+        "author": {
+          "name": "Segment",
+          "email": "friends@segment.com"
         },
-        'bugs': {
-          'url': 'https://github.com/segmentio/analytics.js-core/issues'
+        "bugs": {
+          "url": "https://github.com/segmentio/analytics.js-core/issues"
         },
-        'bundleDependencies': false,
-        'commitlint': {
-          'extends': [
-            '@commitlint/config-conventional'
+        "bundleDependencies": false,
+        "commitlint": {
+          "extends": [
+            "@commitlint/config-conventional"
           ]
         },
-        'config': {
-          'commitizen': {
-            'path': 'cz-conventional-changelog'
+        "config": {
+          "commitizen": {
+            "path": "cz-conventional-changelog"
           }
         },
-        'dependencies': {
-          '@ndhoule/after': '^1.0.0',
-          '@ndhoule/clone': '^1.0.0',
-          '@ndhoule/defaults': '^2.0.1',
-          '@ndhoule/each': '^2.0.1',
-          '@ndhoule/extend': '^2.0.0',
-          '@ndhoule/foldl': '^2.0.1',
-          '@ndhoule/includes': '^2.0.1',
-          '@ndhoule/keys': '^2.0.0',
-          '@ndhoule/map': '^2.0.1',
-          '@ndhoule/pick': '^2.0.0',
-          '@segment/canonical': '^1.0.0',
-          '@segment/is-meta': '^1.0.0',
-          '@segment/isodate': '^1.0.2',
-          '@segment/isodate-traverse': '^1.0.1',
-          '@segment/prevent-default': '^1.0.0',
-          '@segment/send-json': '^3.0.0',
-          '@segment/store': '^1.3.20',
-          '@segment/top-domain': '^3.0.0',
-          'bind-all': '^1.0.0',
-          'component-cookie': '^1.1.2',
-          'component-emitter': '^1.2.1',
-          'component-event': '^0.1.4',
-          'component-querystring': '^2.0.0',
-          'component-type': '^1.2.1',
-          'component-url': '^0.2.1',
-          'debug': '^0.7.4',
-          'extend': '3.0.2',
-          'inherits': '^2.0.1',
-          'install': '^0.7.3',
-          'is': '^3.1.0',
-          'json3': '^3.3.2',
-          'new-date': '^1.0.0',
-          'next-tick': '^0.2.2',
-          'segmentio-facade': '^3.0.2',
-          'spark-md5': '^2.0.2',
-          'uuid': '^2.0.2'
+        "dependencies": {
+          "@ndhoule/after": "^1.0.0",
+          "@ndhoule/clone": "^1.0.0",
+          "@ndhoule/defaults": "^2.0.1",
+          "@ndhoule/each": "^2.0.1",
+          "@ndhoule/extend": "^2.0.0",
+          "@ndhoule/foldl": "^2.0.1",
+          "@ndhoule/includes": "^2.0.1",
+          "@ndhoule/keys": "^2.0.0",
+          "@ndhoule/map": "^2.0.1",
+          "@ndhoule/pick": "^2.0.0",
+          "@segment/canonical": "^1.0.0",
+          "@segment/is-meta": "^1.0.0",
+          "@segment/isodate": "^1.0.2",
+          "@segment/isodate-traverse": "^1.0.1",
+          "@segment/prevent-default": "^1.0.0",
+          "@segment/send-json": "^3.0.0",
+          "@segment/store": "^1.3.20",
+          "@segment/top-domain": "^3.0.0",
+          "bind-all": "^1.0.0",
+          "component-cookie": "^1.1.2",
+          "component-emitter": "^1.2.1",
+          "component-event": "^0.1.4",
+          "component-querystring": "^2.0.0",
+          "component-type": "^1.2.1",
+          "component-url": "^0.2.1",
+          "debug": "^0.7.4",
+          "extend": "3.0.2",
+          "inherits": "^2.0.1",
+          "install": "^0.7.3",
+          "is": "^3.1.0",
+          "json3": "^3.3.2",
+          "new-date": "^1.0.0",
+          "next-tick": "^0.2.2",
+          "segmentio-facade": "^3.0.2",
+          "spark-md5": "^2.0.2",
+          "uuid": "^2.0.2"
         },
-        'deprecated': false,
-        'description': 'The hassle-free way to integrate analytics into any web application.',
-        'devDependencies': {
-          '@commitlint/cli': '^7.0.0',
-          '@commitlint/config-conventional': '^7.0.1',
-          '@segment/analytics.js-integration': '^3.2.1',
-          '@segment/eslint-config': '^4.0.0',
-          'browserify': '13.0.0',
-          'browserify-istanbul': '^2.0.0',
-          'codecov': '^3.0.2',
-          'commitizen': '^2.10.1',
-          'commitlint-circle': '^1.0.0',
-          'compat-trigger-event': '^1.0.0',
-          'component-each': '^0.2.6',
-          'cz-conventional-changelog': '^2.1.0',
-          'eslint': '^4.19.1',
-          'eslint-config-prettier': '^2.9.0',
-          'eslint-plugin-mocha': '^5.0.0',
-          'eslint-plugin-react': '^7.9.1',
-          'eslint-plugin-require-path-exists': '^1.1.8',
-          'husky': '^0.14.3',
-          'istanbul': '^0.4.3',
-          'jquery': '^3.2.1',
-          'karma': '1.3.0',
-          'karma-browserify': '^5.0.4',
-          'karma-chrome-launcher': '^1.0.1',
-          'karma-coverage': '^1.0.0',
-          'karma-junit-reporter': '^1.0.0',
-          'karma-mocha': '1.0.1',
-          'karma-phantomjs-launcher': '^1.0.0',
-          'karma-sauce-launcher': '^1.0.0',
-          'karma-spec-reporter': '0.0.26',
-          'karma-summary-reporter': '^1.5.0',
-          'lint-staged': '^7.2.0',
-          'mocha': '^2.2.5',
-          'np': '^3.0.4',
-          'phantomjs-prebuilt': '^2.1.7',
-          'prettier-eslint-cli': '^4.7.1',
-          'proclaim': '^3.4.1',
-          'sinon': '^1.7.3',
-          'snyk': '^1.83.0',
-          'watchify': '^3.7.0'
+        "deprecated": false,
+        "description": "The hassle-free way to integrate analytics into any web application.",
+        "devDependencies": {
+          "@commitlint/cli": "^7.0.0",
+          "@commitlint/config-conventional": "^7.0.1",
+          "@segment/analytics.js-integration": "^3.2.1",
+          "@segment/eslint-config": "^4.0.0",
+          "browserify": "13.0.0",
+          "browserify-istanbul": "^2.0.0",
+          "codecov": "^3.0.2",
+          "commitizen": "^2.10.1",
+          "commitlint-circle": "^1.0.0",
+          "compat-trigger-event": "^1.0.0",
+          "component-each": "^0.2.6",
+          "cz-conventional-changelog": "^2.1.0",
+          "eslint": "^4.19.1",
+          "eslint-config-prettier": "^2.9.0",
+          "eslint-plugin-mocha": "^5.0.0",
+          "eslint-plugin-react": "^7.9.1",
+          "eslint-plugin-require-path-exists": "^1.1.8",
+          "husky": "^0.14.3",
+          "istanbul": "^0.4.3",
+          "jquery": "^3.2.1",
+          "karma": "1.3.0",
+          "karma-browserify": "^5.0.4",
+          "karma-chrome-launcher": "^1.0.1",
+          "karma-coverage": "^1.0.0",
+          "karma-junit-reporter": "^1.0.0",
+          "karma-mocha": "1.0.1",
+          "karma-phantomjs-launcher": "^1.0.0",
+          "karma-sauce-launcher": "^1.0.0",
+          "karma-spec-reporter": "0.0.26",
+          "karma-summary-reporter": "^1.5.0",
+          "lint-staged": "^7.2.0",
+          "mocha": "^2.2.5",
+          "np": "^3.0.4",
+          "phantomjs-prebuilt": "^2.1.7",
+          "prettier-eslint-cli": "^4.7.1",
+          "proclaim": "^3.4.1",
+          "sinon": "^1.7.3",
+          "snyk": "^1.83.0",
+          "watchify": "^3.7.0"
         },
-        'homepage': 'https://github.com/segmentio/analytics.js-core#readme',
-        'keywords': [
-          'analytics',
-          'analytics.js',
-          'segment',
-          'segment.io'
+        "homepage": "https://github.com/segmentio/analytics.js-core#readme",
+        "keywords": [
+          "analytics",
+          "analytics.js",
+          "segment",
+          "segment.io"
         ],
-        'license': 'SEE LICENSE IN LICENSE',
-        'lint-staged': {
-          'linters': {
-            '*.{js,json,md}': [
-              'prettier-eslint --write',
-              'git add'
+        "license": "SEE LICENSE IN LICENSE",
+        "lint-staged": {
+          "linters": {
+            "*.{js,json,md}": [
+              "prettier-eslint --write",
+              "git add"
             ]
           }
         },
-        'main': 'lib/index.js',
-        'name': '@segment/analytics.js-core',
-        'repository': {
-          'type': 'git',
-          'url': 'git+https://github.com/segmentio/analytics.js-core.git'
+        "main": "lib/index.js",
+        "name": "@segment/analytics.js-core",
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/segmentio/analytics.js-core.git"
         },
-        'scripts': {
-          'commitmsg': 'commitlint -E GIT_PARAMS',
-          'cz': 'git-cz',
-          'format': 'prettier-eslint --write --list-different "./{lib,test}/**/*.{js,json,md}"',
-          'lint': 'eslint "./{lib,test}/**/*.js"',
-          'np': 'np --no-publish',
-          'precommit': 'lint-staged',
-          'test': 'make test'
+        "scripts": {
+          "commitmsg": "commitlint -E GIT_PARAMS",
+          "cz": "git-cz",
+          "format": "prettier-eslint --write --list-different \"./{lib,test}/**/*.{js,json,md}\"",
+          "lint": "eslint \"./{lib,test}/**/*.js\"",
+          "np": "np --no-publish",
+          "precommit": "lint-staged",
+          "test": "make test"
         },
-        'version': '3.9.0'
+        "version": "3.9.0"
       }
 
     }, {}],
@@ -19110,12 +19060,12 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/foldl': 201,
-      '@ndhoule/map': 204,
-      '@segment/analytics.js-integration': 574,
-      'to-snake-case': 673,
-      'use-https': 681
+      "@ndhoule/each": 197,
+      "@ndhoule/foldl": 201,
+      "@ndhoule/map": 204,
+      "@segment/analytics.js-integration": 574,
+      "to-snake-case": 673,
+      "use-https": 681
     }],
     226: [function(require, module, exports) {
       'use strict';
@@ -19273,43 +19223,43 @@
         });
       };
 
-    }, { '@segment/analytics.js-integration': 227, 'do-when': 625 }],
+    }, { "@segment/analytics.js-integration": 227, "do-when": 625 }],
     227: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 228,
-      './statics': 229,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 228,
+      "./statics": 229,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     228: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 230,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 230,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     229: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     230: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     231: [function(require, module, exports) {
       'use strict';
 
@@ -19361,43 +19311,43 @@
         return !!window.atrk;
       };
 
-    }, { '@segment/analytics.js-integration': 232 }],
+    }, { "@segment/analytics.js-integration": 232 }],
     232: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 233,
-      './statics': 234,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 233,
+      "./statics": 234,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     233: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 235,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 235,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     234: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     235: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     236: [function(require, module, exports) {
       'use strict';
 
@@ -19502,43 +19452,43 @@
 
       exports.Integration = Appcues;
 
-    }, { '@segment/analytics.js-integration': 237, '@segment/load-script': 586, 'isobject': 635 }],
+    }, { "@segment/analytics.js-integration": 237, "@segment/load-script": 586, "isobject": 635 }],
     237: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 238,
-      './statics': 239,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 238,
+      "./statics": 239,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     238: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 240,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 240,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     239: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     240: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     241: [function(require, module, exports) {
       'use strict';
 
@@ -19622,43 +19572,43 @@
         window.atatus.setCustomData(traits);
       };
 
-    }, { '@segment/analytics.js-integration': 242, 'isobject': 635 }],
+    }, { "@segment/analytics.js-integration": 242, "isobject": 635 }],
     242: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 243,
-      './statics': 244,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 243,
+      "./statics": 244,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     243: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 245,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 245,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     244: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     245: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     246: [function(require, module, exports) {
       'use strict';
 
@@ -19695,7 +19645,7 @@
               window._autosend.push([f].concat(Array.prototype.slice.call(arguments, 0)));
             };
           };
-          b = ['identify', 'track', 'cb'];
+          b = ["identify", "track", "cb"];
           for (c = 0; c < b.length; c++) {
             window._autosend[b[c]] = a(b[c]);
           }
@@ -19746,43 +19696,43 @@
         window._autosend.track(track.event());
       };
 
-    }, { '@segment/analytics.js-integration': 247 }],
+    }, { "@segment/analytics.js-integration": 247 }],
     247: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 248,
-      './statics': 249,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 248,
+      "./statics": 249,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     248: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 250,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 250,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     249: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     250: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     251: [function(require, module, exports) {
       'use strict';
 
@@ -19843,43 +19793,43 @@
         }, goals);
       };
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 252 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 252 }],
     252: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 253,
-      './statics': 254,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 253,
+      "./statics": 254,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     253: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 255,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 255,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     254: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     255: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     256: [function(require, module, exports) {
       'use strict';
 
@@ -19968,43 +19918,43 @@
         window.uetq.push(event);
       };
 
-    }, { '@segment/analytics.js-integration': 257 }],
+    }, { "@segment/analytics.js-integration": 257 }],
     257: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 258,
-      './statics': 259,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 258,
+      "./statics": 259,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     258: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 260,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 260,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     259: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     260: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     261: [function(require, module, exports) {
       'use strict';
 
@@ -20043,7 +19993,7 @@
             return function() {
               blueshift.push([a].concat(Array.prototype.slice.call(arguments, 0)))
             }
-          }, e = ['identify', 'track', 'click', 'pageload', 'capture', 'retarget'];
+          }, e = ["identify", "track", "click", "pageload", "capture", "retarget"];
           for (var f = 0; f < e.length; f++) blueshift[e[f]] = d(e[f])
         };
         /* eslint-enable */
@@ -20158,43 +20108,43 @@
         }, {}, obj);
       }
 
-    }, { '@ndhoule/foldl': 201, '@segment/analytics.js-integration': 262 }],
+    }, { "@ndhoule/foldl": 201, "@segment/analytics.js-integration": 262 }],
     262: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 263,
-      './statics': 264,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 263,
+      "./statics": 264,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     263: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 265,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 265,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     264: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     265: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     266: [function(require, module, exports) {
       'use strict';
 
@@ -20321,43 +20271,43 @@
         return data.type;
       }
 
-    }, { '@segment/analytics.js-integration': 267, '@segment/convert-dates': 581, 'spark-md5': 668 }],
+    }, { "@segment/analytics.js-integration": 267, "@segment/convert-dates": 581, "spark-md5": 668 }],
     267: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 268,
-      './statics': 269,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 268,
+      "./statics": 269,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     268: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 270,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 270,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     269: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     270: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     271: [function(require, module, exports) {
       'use strict';
 
@@ -20461,10 +20411,10 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 574,
-      'component-querystring': 617,
-      'segmentio-facade': 661
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 574,
+      "component-querystring": 617,
+      "segmentio-facade": 661
     }],
     272: [function(require, module, exports) {
       'use strict';
@@ -20515,43 +20465,43 @@
         return !!window._bugHerd;
       };
 
-    }, { '@segment/analytics.js-integration': 273, 'next-tick': 646 }],
+    }, { "@segment/analytics.js-integration": 273, "next-tick": 646 }],
     273: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 274,
-      './statics': 275,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 274,
+      "./statics": 275,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     274: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 276,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 276,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     275: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     276: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     277: [function(require, module, exports) {
       'use strict';
 
@@ -20636,43 +20586,43 @@
         extend(window.Bugsnag.user, identify.traits());
       };
 
-    }, { '@ndhoule/extend': 200, '@segment/analytics.js-integration': 278, 'isobject': 635 }],
+    }, { "@ndhoule/extend": 200, "@segment/analytics.js-integration": 278, "isobject": 635 }],
     278: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 279,
-      './statics': 280,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 279,
+      "./statics": 280,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     279: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 281,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 281,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     280: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     281: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     282: [function(require, module, exports) {
       'use strict';
 
@@ -20781,43 +20731,43 @@
         window.chmln.alias({ from: alias.previousId() || alias.anonymousId(), to: alias.userId() });
       };
 
-    }, { '@segment/analytics.js-integration': 283 }],
+    }, { "@segment/analytics.js-integration": 283 }],
     283: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 284,
-      './statics': 285,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 284,
+      "./statics": 285,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     284: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 286,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 286,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     285: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     286: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     287: [function(require, module, exports) {
       'use strict';
 
@@ -20940,7 +20890,7 @@
         });
       };
 
-    }, { '@ndhoule/defaults': 195, '@segment/analytics.js-integration': 574, 'on-body': 651 }],
+    }, { "@ndhoule/defaults": 195, "@segment/analytics.js-integration": 574, "on-body": 651 }],
     288: [function(require, module, exports) {
       'use strict';
 
@@ -21043,43 +20993,43 @@
         window.clicky.goal(track.event(), track.revenue());
       };
 
-    }, { '@ndhoule/extend': 200, '@segment/analytics.js-integration': 289, 'isobject': 635, 'segmentio-facade': 661 }],
+    }, { "@ndhoule/extend": 200, "@segment/analytics.js-integration": 289, "isobject": 635, "segmentio-facade": 661 }],
     289: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 290,
-      './statics': 291,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 290,
+      "./statics": 291,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     290: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 292,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 292,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     291: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     292: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     293: [function(require, module, exports) {
       'use strict';
 
@@ -21173,43 +21123,43 @@
         return comScoreParams;
       };
 
-    }, { '@segment/analytics.js-integration': 294, 'use-https': 681 }],
+    }, { "@segment/analytics.js-integration": 294, "use-https": 681 }],
     294: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 295,
-      './statics': 296,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 295,
+      "./statics": 296,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     295: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 297,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 297,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     296: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     297: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     298: [function(require, module, exports) {
       'use strict';
 
@@ -21253,43 +21203,43 @@
         return !!window.CE2;
       };
 
-    }, { '@segment/analytics.js-integration': 299 }],
+    }, { "@segment/analytics.js-integration": 299 }],
     299: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 300,
-      './statics': 301,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 300,
+      "./statics": 301,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     300: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 302,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 302,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     301: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     302: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     303: [function(require, module, exports) {
       'use strict';
 
@@ -21481,14 +21431,14 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 574,
-      '@segment/to-iso-string': 601,
-      'component-bind': 608,
-      'do-when': 625,
-      'global-queue': 628,
-      'segmentio-facade': 661,
-      'throttleit': 669
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 574,
+      "@segment/to-iso-string": 601,
+      "component-bind": 608,
+      "do-when": 625,
+      "global-queue": 628,
+      "segmentio-facade": 661,
+      "throttleit": 669
     }],
     304: [function(require, module, exports) {
       'use strict';
@@ -21629,47 +21579,47 @@
       }
 
     }, {
-      '@segment/alias': 209,
-      '@segment/analytics.js-integration': 305,
-      '@segment/convert-dates': 581,
-      'segmentio-facade': 661
+      "@segment/alias": 209,
+      "@segment/analytics.js-integration": 305,
+      "@segment/convert-dates": 581,
+      "segmentio-facade": 661
     }],
     305: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 306,
-      './statics': 307,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 306,
+      "./statics": 307,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     306: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 308,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 308,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     307: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     308: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     309: [function(require, module, exports) {
       'use strict';
 
@@ -21787,43 +21737,43 @@
         window.drift.page(page.name());
       };
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 310, '@segment/convert-dates': 581 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 310, "@segment/convert-dates": 581 }],
     310: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 311,
-      './statics': 312,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 311,
+      "./statics": 312,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     311: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 313,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 313,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     312: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     313: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     314: [function(require, module, exports) {
       'use strict';
 
@@ -21931,11 +21881,11 @@
       }
 
     }, {
-      '@ndhoule/each': 197,
-      '@segment/analytics.js-integration': 574,
-      'global-queue': 628,
-      'isobject': 635,
-      'obj-case': 647
+      "@ndhoule/each": 197,
+      "@segment/analytics.js-integration": 574,
+      "global-queue": 628,
+      "isobject": 635,
+      "obj-case": 647
     }],
     315: [function(require, module, exports) {
       'use strict';
@@ -22013,15 +21963,15 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/keys': 203,
-      '@segment/analytics.js-integration': 574,
-      'next-tick': 316,
-      'obj-case': 647
+      "@ndhoule/each": 197,
+      "@ndhoule/keys": 203,
+      "@segment/analytics.js-integration": 574,
+      "next-tick": 316,
+      "obj-case": 647
     }],
     316: [function(require, module, exports) {
       arguments[4][116][0].apply(exports, arguments)
-    }, { '_process': 653, 'dup': 116 }],
+    }, { "_process": 653, "dup": 116 }],
     317: [function(require, module, exports) {
       'use strict';
 
@@ -22096,46 +22046,46 @@
         extend(window._errs.meta, traits);
       };
 
-    }, { '@ndhoule/extend': 318, '@segment/analytics.js-integration': 319, 'global-queue': 628 }],
+    }, { "@ndhoule/extend": 318, "@segment/analytics.js-integration": 319, "global-queue": 628 }],
     318: [function(require, module, exports) {
       arguments[4][200][0].apply(exports, arguments)
-    }, { 'dup': 200 }],
+    }, { "dup": 200 }],
     319: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 320,
-      './statics': 321,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 318,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 320,
+      "./statics": 321,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 318,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     320: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 322,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 322,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     321: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     322: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     323: [function(require, module, exports) {
       'use strict';
 
@@ -22258,43 +22208,43 @@
         push('trackAction', track.event(), track.properties());
       };
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 324, 'global-queue': 628 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 324, "global-queue": 628 }],
     324: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 325,
-      './statics': 326,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 325,
+      "./statics": 326,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     325: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 327,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 327,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     326: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     327: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     328: [function(require, module, exports) {
       'use strict';
 
@@ -22435,48 +22385,48 @@
       };
 
     }, {
-      '@ndhoule/each': 197,
-      '@ndhoule/extend': 200,
-      '@segment/analytics.js-integration': 329,
-      'domify': 626,
-      'json3': 638
+      "@ndhoule/each": 197,
+      "@ndhoule/extend": 200,
+      "@segment/analytics.js-integration": 329,
+      "domify": 626,
+      "json3": 638
     }],
     329: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 330,
-      './statics': 331,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 330,
+      "./statics": 331,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     330: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 332,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 332,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     331: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     332: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     333: [function(require, module, exports) {
       'use strict';
 
@@ -22557,43 +22507,43 @@
         }, events);
       };
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 334, 'global-queue': 628 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 334, "global-queue": 628 }],
     334: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 335,
-      './statics': 336,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 335,
+      "./statics": 336,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     335: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 337,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 337,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     336: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     337: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     338: [function(require, module, exports) {
       'use strict';
 
@@ -22735,10 +22685,10 @@
       };
 
     }, {
-      '@ndhoule/foldl': 201,
-      '@segment/analytics.js-integration': 574,
-      'global-queue': 628,
-      'segmentio-facade': 661
+      "@ndhoule/foldl": 201,
+      "@segment/analytics.js-integration": 574,
+      "global-queue": 628,
+      "segmentio-facade": 661
     }],
     339: [function(require, module, exports) {
       'use strict';
@@ -22939,10 +22889,10 @@
       }
 
     }, {
-      '@segment/analytics.js-integration': 574,
-      'component-each': 611,
-      'global-queue': 628,
-      'segmentio-facade': 661
+      "@segment/analytics.js-integration": 574,
+      "component-each": 611,
+      "global-queue": 628,
+      "segmentio-facade": 661
     }],
     340: [function(require, module, exports) {
       'use strict';
@@ -23179,43 +23129,43 @@
         return output;
       }
 
-    }, { '@ndhoule/each': 197, '@segment/analytics.js-integration': 341, 'is': 633 }],
+    }, { "@ndhoule/each": 197, "@segment/analytics.js-integration": 341, "is": 633 }],
     341: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 342,
-      './statics': 343,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 342,
+      "./statics": 343,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     342: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 344,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 344,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     343: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     344: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     345: [function(require, module, exports) {
       'use strict';
 
@@ -23271,43 +23221,43 @@
         push('track');
       };
 
-    }, { '@segment/analytics.js-integration': 346, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 346, "global-queue": 628 }],
     346: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 347,
-      './statics': 348,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 347,
+      "./statics": 348,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     347: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 349,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 349,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     348: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     349: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     350: [function(require, module, exports) {
       'use strict';
       /**
@@ -23362,43 +23312,43 @@
         return !!window.GSFN;
       };
 
-    }, { '@segment/analytics.js-integration': 351, 'on-body-ready': 650 }],
+    }, { "@segment/analytics.js-integration": 351, "on-body-ready": 650 }],
     351: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 352,
-      './statics': 353,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 352,
+      "./statics": 353,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     352: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 354,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 354,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     353: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     354: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     355: [function(require, module, exports) {
       'use strict';
 
@@ -24509,17 +24459,17 @@
       }
 
     }, {
-      '@ndhoule/defaults': 195,
-      '@segment/analytics.js-integration': 574,
-      'component-each': 611,
-      'extend': 627,
-      'global-queue': 628,
-      'is': 633,
-      'obj-case': 647,
-      'object-component': 648,
-      'reject': 654,
-      'segmentio-facade': 661,
-      'use-https': 681
+      "@ndhoule/defaults": 195,
+      "@segment/analytics.js-integration": 574,
+      "component-each": 611,
+      "extend": 627,
+      "global-queue": 628,
+      "is": 633,
+      "obj-case": 647,
+      "object-component": 648,
+      "reject": 654,
+      "segmentio-facade": 661,
+      "use-https": 681
     }],
     356: [function(require, module, exports) {
       'use strict';
@@ -24622,7 +24572,7 @@
         push(props);
       };
 
-    }, { '@segment/analytics.js-integration': 574, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 574, "global-queue": 628 }],
     357: [function(require, module, exports) {
       'use strict';
 
@@ -24816,11 +24766,11 @@
       }
 
     }, {
-      '@segment/analytics.js-integration': 574,
-      'component-each': 611,
-      'omit': 649,
-      'pick': 652,
-      'segmentio-facade': 661
+      "@segment/analytics.js-integration": 574,
+      "component-each": 611,
+      "omit": 649,
+      "pick": 652,
+      "segmentio-facade": 661
     }],
     358: [function(require, module, exports) {
       'use strict';
@@ -25051,11 +25001,11 @@
       }
 
     }, {
-      '@ndhoule/extend': 200,
-      '@segment/analytics.js-integration': 574,
-      '@segment/to-iso-string': 601,
-      'component-each': 611,
-      'is': 633
+      "@ndhoule/extend": 200,
+      "@segment/analytics.js-integration": 574,
+      "@segment/to-iso-string": 601,
+      "component-each": 611,
+      "is": 633
     }],
     359: [function(require, module, exports) {
       'use strict';
@@ -25091,43 +25041,43 @@
         return typeof window.hellobar === 'function';
       };
 
-    }, { '@segment/analytics.js-integration': 360 }],
+    }, { "@segment/analytics.js-integration": 360 }],
     360: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 361,
-      './statics': 362,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 361,
+      "./statics": 362,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     361: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 363,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 363,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     362: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     363: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     364: [function(require, module, exports) {
       'use strict';
 
@@ -25177,43 +25127,43 @@
         return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
       }
 
-    }, { '@segment/analytics.js-integration': 365 }],
+    }, { "@segment/analytics.js-integration": 365 }],
     365: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 366,
-      './statics': 367,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 366,
+      "./statics": 367,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     366: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 368,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 368,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     367: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     368: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     369: [function(require, module, exports) {
       'use strict';
 
@@ -25249,11 +25199,11 @@
         /* eslint-disable */
         window.improvely = {
           init: function(e, t) {
-            window._improvely.push(['init', e, t]);
+            window._improvely.push(["init", e, t]);
           }, goal: function(e) {
-            window._improvely.push(['goal', e]);
+            window._improvely.push(["goal", e]);
           }, label: function(e) {
-            window._improvely.push(['label', e]);
+            window._improvely.push(["label", e]);
           }
         };
         /* eslint-enable */
@@ -25304,43 +25254,43 @@
         window.improvely.goal(props);
       };
 
-    }, { '@segment/analytics.js-integration': 370 }],
+    }, { "@segment/analytics.js-integration": 370 }],
     370: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 371,
-      './statics': 372,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 371,
+      "./statics": 372,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     371: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 373,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 373,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     372: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     373: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     374: [function(require, module, exports) {
       'use strict';
 
@@ -25428,43 +25378,43 @@
         push('virtualPage');
       };
 
-    }, { '@segment/analytics.js-integration': 375, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 375, "global-queue": 628 }],
     375: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 376,
-      './statics': 377,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 376,
+      "./statics": 377,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     376: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 378,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 378,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     377: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     378: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     379: [function(require, module, exports) {
       'use strict';
 
@@ -25775,52 +25725,52 @@
       }
 
     }, {
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/each': 197,
-      '@ndhoule/extend': 200,
-      '@ndhoule/pick': 205,
-      '@segment/analytics.js-integration': 380,
-      '@segment/convert-dates': 581,
-      'is': 633,
-      'obj-case': 647
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/each": 197,
+      "@ndhoule/extend": 200,
+      "@ndhoule/pick": 205,
+      "@segment/analytics.js-integration": 380,
+      "@segment/convert-dates": 581,
+      "is": 633,
+      "obj-case": 647
     }],
     380: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 381,
-      './statics': 382,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 381,
+      "./statics": 382,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     381: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 383,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 383,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     382: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     383: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     384: [function(require, module, exports) {
       'use strict';
 
@@ -25878,21 +25828,21 @@
           /* eslint-disable */
           !(function(a, b) {
             if (void 0 === b[a]) {
-              b['_' + a] = {}, b[a] = function(c) {
-                b['_' + a].clients = b['_' + a].clients || {}, b['_' + a].clients[c.projectId] = this, this._config = c
+              b["_" + a] = {}, b[a] = function(c) {
+                b["_" + a].clients = b["_" + a].clients || {}, b["_" + a].clients[c.projectId] = this, this._config = c
               }, b[a].ready = function(c) {
-                b['_' + a].ready = b['_' + a].ready || [], b['_' + a].ready.push(c)
+                b["_" + a].ready = b["_" + a].ready || [], b["_" + a].ready.push(c)
               };
-              for (var c = ['addEvent', 'setGlobalProperties', 'trackExternalLink', 'on'], d = 0; d < c.length; d++) {
+              for (var c = ["addEvent", "setGlobalProperties", "trackExternalLink", "on"], d = 0; d < c.length; d++) {
                 var e = c[d], f = function(a) {
                   return function() {
-                    return this['_' + a] = this['_' + a] || [], this['_' + a].push(arguments), this
+                    return this["_" + a] = this["_" + a] || [], this["_" + a].push(arguments), this
                   }
                 };
                 b[a].prototype[e] = f(e)
               }
             }
-          })('Keen', window);
+          })("Keen", window);
           /* eslint-enable */
           // keen-js@3.4.0 will be installed once `.load()` is called
         }
@@ -26057,43 +26007,43 @@
         };
       };
 
-    }, { '@ndhoule/clone': 194, '@segment/analytics.js-integration': 385 }],
+    }, { "@ndhoule/clone": 194, "@segment/analytics.js-integration": 385 }],
     385: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 386,
-      './statics': 387,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 386,
+      "./statics": 387,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     386: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 388,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 388,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     387: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     388: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     389: [function(require, module, exports) {
       'use strict';
 
@@ -26175,43 +26125,43 @@
         window.k_trackevent(params, this.options.subdomain);
       };
 
-    }, { '@ndhoule/includes': 202, '@segment/analytics.js-integration': 390, 'is': 633 }],
+    }, { "@ndhoule/includes": 202, "@segment/analytics.js-integration": 390, "is": 633 }],
     390: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 391,
-      './statics': 392,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 391,
+      "./statics": 392,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     391: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 393,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 393,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     392: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     393: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     394: [function(require, module, exports) {
       'use strict';
 
@@ -26562,49 +26512,49 @@
       }
 
     }, {
-      '@ndhoule/extend': 200,
-      '@segment/analytics.js-integration': 395,
-      'component-each': 611,
-      'global-queue': 628,
-      'is': 633,
-      'obj-case': 647
+      "@ndhoule/extend": 200,
+      "@segment/analytics.js-integration": 395,
+      "component-each": 611,
+      "global-queue": 628,
+      "is": 633,
+      "obj-case": 647
     }],
     395: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 396,
-      './statics': 397,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 396,
+      "./statics": 397,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     396: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 398,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 398,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     397: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     398: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     399: [function(require, module, exports) {
       'use strict';
 
@@ -26896,13 +26846,13 @@
       }
 
     }, {
-      '@ndhoule/extend': 200,
-      '@ndhoule/foldl': 201,
-      '@segment/analytics.js-integration': 574,
-      'global-queue': 628,
-      'next-tick': 646,
-      'obj-case': 647,
-      'segmentio-facade': 661
+      "@ndhoule/extend": 200,
+      "@ndhoule/foldl": 201,
+      "@segment/analytics.js-integration": 574,
+      "global-queue": 628,
+      "next-tick": 646,
+      "obj-case": 647,
+      "segmentio-facade": 661
     }],
     400: [function(require, module, exports) {
       'use strict';
@@ -27058,49 +27008,49 @@
       }
 
     }, {
-      '@segment/analytics.js-integration': 401,
-      'component-clone': 609,
-      'component-each': 611,
-      'do-when': 625,
-      'next-tick': 646,
-      'segmentio-facade': 661
+      "@segment/analytics.js-integration": 401,
+      "component-clone": 609,
+      "component-each": 611,
+      "do-when": 625,
+      "next-tick": 646,
+      "segmentio-facade": 661
     }],
     401: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 402,
-      './statics': 403,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 402,
+      "./statics": 403,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     402: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 404,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 404,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     403: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     404: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     405: [function(require, module, exports) {
       'use strict';
 
@@ -27174,7 +27124,7 @@
         window.__wtw_custom_user_data = traits;
       };
 
-    }, { '@segment/analytics.js-integration': 574, 'segmentio-facade': 661, 'use-https': 681 }],
+    }, { "@segment/analytics.js-integration": 574, "segmentio-facade": 661, "use-https": 681 }],
     406: [function(require, module, exports) {
       'use strict';
 
@@ -27229,21 +27179,21 @@
           }
 
           function n() {
-            var n = ['ready'].concat(c.call(arguments));
+            var n = ["ready"].concat(c.call(arguments));
             return t(function() {
               n.push(c.call(arguments)), this._q.push(n)
             })
           }
 
-          var i = { _q: [], _c: {}, ts: (new Date).getTime(), ver: '2.0.0' }, c = Array.prototype.slice;
+          var i = { _q: [], _c: {}, ts: (new Date).getTime(), ver: "2.0.0" }, c = Array.prototype.slice;
           return i.init = function(t) {
             return i._c = t, t.synchronous || i.loadtagmgr(t), this
           }, i.loadtagmgr = function(t) {
-            var n = document.createElement('script');
-            n.type = 'text/javascript', n.async = !0, n.src = t.url + '/api/tag/' + t.cid + '/lio.js';
-            var i = document.getElementsByTagName('script')[0];
+            var n = document.createElement("script");
+            n.type = "text/javascript", n.async = !0, n.src = t.url + "/api/tag/" + t.cid + "/lio.js";
+            var i = document.getElementsByTagName("script")[0];
             i.parentNode.insertBefore(n, i)
-          }, i.ready = n(), i.send = n('send'), i.mock = n('mock'), i.identify = n('identify'), i.pageView = n('pageView'), i.bind = t(function(t) {
+          }, i.ready = n(), i.send = n("send"), i.mock = n("mock"), i.identify = n("identify"), i.pageView = n("pageView"), i.bind = t(function(t) {
             i._q.push([t, c.call(arguments, 1)])
           }), i.block = t(function() {
             i._c.blockload = !0
@@ -27308,43 +27258,43 @@
         window.jstag.send(this.options.stream, props);
       };
 
-    }, { '@segment/alias': 209, '@segment/analytics.js-integration': 407 }],
+    }, { "@segment/alias": 209, "@segment/analytics.js-integration": 407 }],
     407: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 408,
-      './statics': 409,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 408,
+      "./statics": 409,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     408: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 410,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 410,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     409: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     410: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     411: [function(require, module, exports) {
       'use strict';
 
@@ -27382,26 +27332,22 @@
         /* eslint-disable */
         !function() {
           var madkudu = window.madkudu = window.madkudu || [];
-          if (!madkudu.initialize) {
-            if (madkudu.invoked) {
-              window.console && console.error && console.error('MadKudu snippet included twice.');
-            } else {
-              madkudu.invoked = !0;
-              madkudu.methods = ['identify', 'reset', 'group', 'ready', 'page', 'track', 'once', 'on'];
-              ;madkudu.factory = function(t) {
-                return function() {
-                  var e = Array.prototype.slice.call(arguments);
-                  e.unshift(t);
-                  madkudu.push(e);
-                  return madkudu
-                }
-              };
-              for (var t = 0; t < madkudu.methods.length; t++) {
-                var e = madkudu.methods[t];
-                madkudu[e] = madkudu.factory(e)
+          if (!madkudu.initialize) if (madkudu.invoked) window.console && console.error && console.error("MadKudu snippet included twice."); else {
+            madkudu.invoked = !0;
+            madkudu.methods = ["identify", "reset", "group", "ready", "page", "track", "once", "on"];
+            ;madkudu.factory = function(t) {
+              return function() {
+                var e = Array.prototype.slice.call(arguments);
+                e.unshift(t);
+                madkudu.push(e);
+                return madkudu
               }
-              madkudu.SNIPPET_VERSION = '0.3.0';
+            };
+            for (var t = 0; t < madkudu.methods.length; t++) {
+              var e = madkudu.methods[t];
+              madkudu[e] = madkudu.factory(e)
             }
+            madkudu.SNIPPET_VERSION = "0.3.0";
           }
         }();
         /* eslint-enable */
@@ -27460,43 +27406,43 @@
         }
       };
 
-    }, { '@segment/analytics.js-integration': 412 }],
+    }, { "@segment/analytics.js-integration": 412 }],
     412: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 413,
-      './statics': 414,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 413,
+      "./statics": 414,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     413: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 415,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 415,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     414: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     415: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     416: [function(require, module, exports) {
       'use strict';
 
@@ -27567,9 +27513,9 @@
             try {
               var c, l, i, j = b.location, g = j.hash;
               c = function(a, b) {
-                return (l = a.match(RegExp(b + '=([^&]*)'))) ? l[1] : null
+                return (l = a.match(RegExp(b + "=([^&]*)"))) ? l[1] : null
               };
-              g && c(g, 'state') && (i = JSON.parse(decodeURIComponent(c(g, 'state'))), 'mpeditor' === i.action && (b.sessionStorage.setItem('_mpcehash', g), history.replaceState(i.desiredHash || '', e.title, j.pathname + j.search)))
+              g && c(g, "state") && (i = JSON.parse(decodeURIComponent(c(g, "state"))), "mpeditor" === i.action && (b.sessionStorage.setItem("_mpcehash", g), history.replaceState(i.desiredHash || "", e.title, j.pathname + j.search)))
             } catch (m) {
             }
             var k, h;
@@ -27577,7 +27523,7 @@
             a._i = [];
             a.init = function(b, c, f) {
               function e(b, a) {
-                var c = a.split('.');
+                var c = a.split(".");
                 2 == c.length && (b = b[c[0]], a = c[1]);
                 b[a] = function() {
                   b.push([a].concat(Array.prototype.slice.call(arguments,
@@ -27586,18 +27532,18 @@
               }
 
               var d = a;
-              'undefined' !== typeof f ? d = a[f] = [] : f = 'mixpanel';
+              "undefined" !== typeof f ? d = a[f] = [] : f = "mixpanel";
               d.people = d.people || [];
               d.toString = function(b) {
-                var a = 'mixpanel';
-                'mixpanel' !== f && (a += '.' + f);
-                b || (a += ' (stub)');
+                var a = "mixpanel";
+                "mixpanel" !== f && (a += "." + f);
+                b || (a += " (stub)");
                 return a
               };
               d.people.toString = function() {
-                return d.toString(1) + '.people (stub)'
+                return d.toString(1) + ".people (stub)"
               };
-              k = 'disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user'.split(' ');
+              k = "disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
               for (h = 0; h < k.length; h++) e(d, k[h]);
               a._i.push([b, c, f])
             };
@@ -28011,52 +27957,52 @@
       }
 
     }, {
-      '@ndhoule/includes': 202,
-      '@ndhoule/pick': 205,
-      '@segment/alias': 209,
-      '@segment/analytics.js-integration': 417,
-      '@segment/convert-dates': 581,
-      '@segment/to-iso-string': 601,
-      'component-indexof': 615,
-      'is': 633,
-      'obj-case': 647
+      "@ndhoule/includes": 202,
+      "@ndhoule/pick": 205,
+      "@segment/alias": 209,
+      "@segment/analytics.js-integration": 417,
+      "@segment/convert-dates": 581,
+      "@segment/to-iso-string": 601,
+      "component-indexof": 615,
+      "is": 633,
+      "obj-case": 647
     }],
     417: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 418,
-      './statics': 419,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 418,
+      "./statics": 419,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     418: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 420,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 420,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     419: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     420: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     421: [function(require, module, exports) {
       'use strict';
 
@@ -28157,43 +28103,43 @@
         this.load('sync', { cid: this.options.customerCode, uid: this.analytics.user().anonymousId() });
       };
 
-    }, { '@segment/analytics.js-integration': 422, 'component-bind': 608, 'do-when': 625, 'is': 633 }],
+    }, { "@segment/analytics.js-integration": 422, "component-bind": 608, "do-when": 625, "is": 633 }],
     422: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 423,
-      './statics': 424,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 423,
+      "./statics": 424,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     423: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 425,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 425,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     424: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     425: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     426: [function(require, module, exports) {
       'use strict';
 
@@ -28294,7 +28240,7 @@
         });
       }
 
-    }, { '@segment/analytics.js-integration': 574, 'component-each': 611, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 574, "component-each": 611, "global-queue": 628 }],
     427: [function(require, module, exports) {
       'use strict';
 
@@ -28361,43 +28307,43 @@
         });
       };
 
-    }, { '@segment/analytics.js-integration': 428, 'component-each': 611, 'is': 633, 'use-https': 681 }],
+    }, { "@segment/analytics.js-integration": 428, "component-each": 611, "is": 633, "use-https": 681 }],
     428: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 429,
-      './statics': 430,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 429,
+      "./statics": 430,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     429: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 431,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 431,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     430: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     431: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     432: [function(require, module, exports) {
       'use strict';
 
@@ -28455,43 +28401,43 @@
         push('tagRecording', track.event());
       };
 
-    }, { '@segment/analytics.js-integration': 433, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 433, "global-queue": 628 }],
     433: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 434,
-      './statics': 435,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 434,
+      "./statics": 435,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     434: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 436,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 436,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     435: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     436: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     437: [function(require, module, exports) {
       'use strict';
 
@@ -28528,14 +28474,14 @@
         !function(e) {
           e.init = function(p) {
             function t(e, p) {
-              var t = p.split('.');
+              var t = p.split(".");
               2 == t.length && (e = e[t[0]], p = t[1]), e[p] = function() {
                 e.push([p].concat(Array.prototype.slice.call(arguments, 0)))
               }
             }
 
             e._version = .1, e._globals = [p], e.people = e.people || [], e.params = e.params || [];
-            for (var o = 'track register unregister identify set_config people.delete people.create people.update people.create_property people.tag people.remove_Tag'.split(' '), r = 0; r < o.length; r++) t(e, o[r])
+            for (var o = "track register unregister identify set_config people.delete people.create people.update people.create_property people.tag people.remove_Tag".split(" "), r = 0; r < o.length; r++) t(e, o[r])
           }
         }(window.nudgespot);
         /* eslint-enable */
@@ -28580,43 +28526,43 @@
         window.nudgespot.track(track.event(), track.properties());
       };
 
-    }, { '@segment/alias': 209, '@segment/analytics.js-integration': 438 }],
+    }, { "@segment/alias": 209, "@segment/analytics.js-integration": 438 }],
     438: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 439,
-      './statics': 440,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 439,
+      "./statics": 440,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     439: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 441,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 441,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     440: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     441: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     442: [function(require, module, exports) {
       'use strict';
 
@@ -28693,7 +28639,7 @@
       Olark.prototype.load = function(callback) {
         /* eslint-disable */
         window.olark || (function(c) {
-          var f = window, d = document, l = https() ? 'https:' : 'http:', z = c.name, r = 'load';
+          var f = window, d = document, l = https() ? "https:" : "http:", z = c.name, r = "load";
           var nt = function() {
             f[z] = function() {
               (a.s = a.s || []).push(arguments)
@@ -28702,7 +28648,7 @@
             while (q--) {
               (function(n) {
                 f[z][n] = function() {
-                  f[z]('call', n, arguments)
+                  f[z]("call", n, arguments)
                 }
               })(c.methods[q])
             }
@@ -28718,35 +28664,35 @@
               f[z](r)
             }
 
-            f.addEventListener ? f.addEventListener(r, s, false) : f.attachEvent('on' + r, s);
+            f.addEventListener ? f.addEventListener(r, s, false) : f.attachEvent("on" + r, s);
             var ld = function() {
               function p(hd) {
-                hd = 'head';
-                return ['<', hd, '></', hd, '><', i, ' onl' + 'oad="var d=', g, ';d.getElementsByTagName(\'head\')[0].', j, '(d.', h, '(\'script\')).', k, '=\'', l, '//', a.l, '\'', '"', '></', i, '>'].join('')
+                hd = "head";
+                return ["<", hd, "></", hd, "><", i, ' onl' + 'oad="var d=', g, ";d.getElementsByTagName('head')[0].", j, "(d.", h, "('script')).", k, "='", l, "//", a.l, "'", '"', "></", i, ">"].join("")
               }
 
-              var i = 'body', m = d[i];
+              var i = "body", m = d[i];
               if (!m) {
                 return setTimeout(ld, 100)
               }
               a.P(1);
-              var j = 'appendChild', h = 'createElement', k = 'src', n = d[h]('div'), v = n[j](d[h](z)),
-                b = d[h]('iframe'), g = 'document', e = 'domain', o;
-              n.style.display = 'none';
+              var j = "appendChild", h = "createElement", k = "src", n = d[h]("div"), v = n[j](d[h](z)),
+                b = d[h]("iframe"), g = "document", e = "domain", o;
+              n.style.display = "none";
               m.insertBefore(n, m.firstChild).id = z;
-              b.frameBorder = '0';
-              b.id = z + '-loader';
+              b.frameBorder = "0";
+              b.id = z + "-loader";
               if (/MSIE[ ]+6/.test(navigator.userAgent)) {
-                b.src = 'javascript:false'
+                b.src = "javascript:false"
               }
-              b.allowTransparency = 'true';
+              b.allowTransparency = "true";
               v[j](b);
               try {
                 b.contentWindow[g].open()
               } catch (w) {
                 c[e] = d[e];
-                o = 'javascript:var d=' + g + '.open();d.domain=\'' + d.domain + '\';';
-                b[k] = o + 'void(0);'
+                o = "javascript:var d=" + g + ".open();d.domain='" + d.domain + "';";
+                b[k] = o + "void(0);"
               }
               try {
                 var t = b.contentWindow[g];
@@ -28761,9 +28707,9 @@
           };
           nt()
         })({
-          loader: 'static.olark.com/jsclient/loader0.js',
-          name: 'olark',
-          methods: ['configure', 'extend', 'declare', 'identify']
+          loader: "static.olark.com/jsclient/loader0.js",
+          name: "olark",
+          methods: ["configure", "extend", "declare", "identify"]
         });
         /* eslint-enable */
 
@@ -28921,43 +28867,43 @@
         window.olark.configure(action, value);
       }
 
-    }, { '@segment/analytics.js-integration': 443, 'next-tick': 646, 'use-https': 681 }],
+    }, { "@segment/analytics.js-integration": 443, "next-tick": 646, "use-https": 681 }],
     443: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 444,
-      './statics': 445,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 444,
+      "./statics": 445,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     444: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 446,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 446,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     445: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     446: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     447: [function(require, module, exports) {
 
       'use strict';
@@ -29118,40 +29064,40 @@
 
         window.outbound.track(evtName, props, page.timestamp());
       };
-    }, { '@ndhoule/foldl': 201, '@segment/analytics.js-integration': 448, 'segmentio-facade': 661, 'to-no-case': 453 }],
+    }, { "@ndhoule/foldl": 201, "@segment/analytics.js-integration": 448, "segmentio-facade": 661, "to-no-case": 453 }],
     448: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 449,
-      './statics': 450,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 449,
+      "./statics": 450,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     449: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 452,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 451
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 452,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 451
     }],
     450: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     451: [function(require, module, exports) {
 
       /**
@@ -29227,10 +29173,10 @@
     }, {}],
     452: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     453: [function(require, module, exports) {
       arguments[4][55][0].apply(exports, arguments)
-    }, { 'dup': 55 }],
+    }, { "dup": 55 }],
     454: [function(require, module, exports) {
       'use strict';
 
@@ -29422,12 +29368,12 @@
       };
 
     }, {
-      '@ndhoule/defaults': 195,
-      '@segment/analytics.js-integration': 574,
-      'do-when': 625,
-      'is': 633,
-      'json3': 638,
-      'reject': 654
+      "@ndhoule/defaults": 195,
+      "@segment/analytics.js-integration": 574,
+      "do-when": 625,
+      "is": 633,
+      "json3": 638,
+      "reject": 654
     }],
     455: [function(require, module, exports) {
       'use strict';
@@ -29533,7 +29479,7 @@
         push('track', track.event(), props);
       };
 
-    }, { '@segment/analytics.js-integration': 574, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 574, "global-queue": 628 }],
     456: [function(require, module, exports) {
       'use strict';
 
@@ -29580,43 +29526,43 @@
         return !!(window._prum && window._prum.push !== Array.prototype.push);
       };
 
-    }, { '@segment/analytics.js-integration': 457, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 457, "global-queue": 628 }],
     457: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 458,
-      './statics': 459,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 458,
+      "./statics": 459,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     458: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 460,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 460,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     459: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     460: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     461: [function(require, module, exports) {
       'use strict';
 
@@ -29726,43 +29672,43 @@
         push('trackEvent', category, action, name, value);
       };
 
-    }, { '@segment/analytics.js-integration': 462, 'component-each': 611, 'global-queue': 628, 'is': 633 }],
+    }, { "@segment/analytics.js-integration": 462, "component-each": 611, "global-queue": 628, "is": 633 }],
     462: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 463,
-      './statics': 464,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 463,
+      "./statics": 464,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     463: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 465,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 465,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     464: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     465: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     466: [function(require, module, exports) {
       'use strict';
 
@@ -29848,43 +29794,43 @@
         this.identify(new Identify({ traits: traits }));
       };
 
-    }, { '@segment/analytics.js-integration': 467, 'do-when': 625, 'global-queue': 628, 'segmentio-facade': 661 }],
+    }, { "@segment/analytics.js-integration": 467, "do-when": 625, "global-queue": 628, "segmentio-facade": 661 }],
     467: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 468,
-      './statics': 469,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 468,
+      "./statics": 469,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     468: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 470,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 470,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     469: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     470: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     471: [function(require, module, exports) {
       'use strict';
 
@@ -30174,7 +30120,7 @@
         if (str) return str.replace(/[^\w\s]|_/gi, '');
       }
 
-    }, { '@segment/analytics.js-integration': 574, 'global-queue': 628, 'is': 633, 'obj-case': 647, 'use-https': 681 }],
+    }, { "@segment/analytics.js-integration": 574, "global-queue": 628, "is": 633, "obj-case": 647, "use-https": 681 }],
     472: [function(require, module, exports) {
       'use strict';
 
@@ -30268,43 +30214,43 @@
         });
       };
 
-    }, { '@segment/analytics.js-integration': 473, 'component-each': 611, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 473, "component-each": 611, "global-queue": 628 }],
     473: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 474,
-      './statics': 475,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 474,
+      "./statics": 475,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     474: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 476,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 476,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     475: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     476: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     477: [function(require, module, exports) {
       'use strict';
 
@@ -30344,7 +30290,7 @@
               window._ramen.push([f].concat(Array.prototype.slice.call(arguments, 0)));
             };
           };
-          b = ['boot', 'ready', 'identify', 'group', 'track', 'page', 'reset', 'ask'];
+          b = ["boot", "ready", "identify", "group", "track", "page", "reset", "ask"];
           for (c = 0; c < b.length; c++) {
             window._ramen[b[c]] = a(b[c]);
           }
@@ -30482,47 +30428,47 @@
       };
 
     }, {
-      '@segment/alias': 209,
-      '@segment/analytics.js-integration': 478,
-      '@segment/convert-dates': 581,
-      'obj-case': 647
+      "@segment/alias": 209,
+      "@segment/analytics.js-integration": 478,
+      "@segment/convert-dates": 581,
+      "obj-case": 647
     }],
     478: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 479,
-      './statics': 480,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 479,
+      "./statics": 480,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     479: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 481,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 481,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     480: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     481: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     482: [function(require, module, exports) {
       'use strict';
 
@@ -30595,15 +30541,15 @@
           }
 
           var e = {};
-          return o.m = r, o.c = e, o.p = '', o(0)
+          return o.m = r, o.c = e, o.p = "", o(0)
         }([function(r, o, e) {
-          'use strict';
+          "use strict";
           var n = e(1), t = e(4);
-          _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || 'https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.2.7/rollbar.min.js', _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async;
+          _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.2.7/rollbar.min.js", _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async;
           var a = n.setupShim(window, _rollbarConfig), l = t(_rollbarConfig);
           window.rollbar = n.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l)
         }, function(r, o, e) {
-          'use strict';
+          "use strict";
 
           function n(r) {
             return function() {
@@ -30611,7 +30557,7 @@
                 return r.apply(this, arguments)
               } catch (r) {
                 try {
-                  console.error('[Rollbar]: Internal error', r)
+                  console.error("[Rollbar]: Internal error", r)
                 } catch (r) {
                 }
               }
@@ -30627,14 +30573,14 @@
           }
 
           function a(r, o) {
-            var e = o.globalAlias || 'Rollbar';
-            if ('object' == typeof r[e]) return r[e];
+            var e = o.globalAlias || "Rollbar";
+            if ("object" == typeof r[e]) return r[e];
             r._rollbarShims = {}, r._rollbarWrappedError = null;
             var t = new p(o);
             return n(function() {
               o.captureUncaught && (t._rollbarOldOnError = r.onerror, i.captureUncaughtExceptions(r, t, !0), i.wrapGlobals(r, t, !0)), o.captureUnhandledRejections && i.captureUnhandledRejections(r, t, !0);
               var n = o.autoInstrument;
-              return (void 0 === n || n === !0 || 'object' == typeof n && n.network) && r.addEventListener && (r.addEventListener('load', t.captureLoad.bind(t)), r.addEventListener('DOMContentLoaded', t.captureDomContentLoaded.bind(t))), r[e] = t, t
+              return (void 0 === n || n === !0 || "object" == typeof n && n.network) && r.addEventListener && (r.addEventListener("load", t.captureLoad.bind(t)), r.addEventListener("DOMContentLoaded", t.captureDomContentLoaded.bind(t))), r[e] = t, t
             })()
           }
 
@@ -30653,22 +30599,16 @@
             var l = function() {
               var o;
               if (void 0 === r._rollbarDidLoad) {
-                o = new Error('rollbar.js did not load');
-                for (var e, n, t, l, i = 0; e = r._rollbarShims[i++];) {
-                  for (e = e.messages || []; n = e.shift();) {
-                    for (t = n.args || [], i = 0; i < t.length; ++i) {
-                      if (l = t[i], 'function' == typeof l) {
-                        l(o);
-                        break
-                      }
-                    }
-                  }
+                o = new Error("rollbar.js did not load");
+                for (var e, n, t, l, i = 0; e = r._rollbarShims[i++];) for (e = e.messages || []; n = e.shift();) for (t = n.args || [], i = 0; i < t.length; ++i) if (l = t[i], "function" == typeof l) {
+                  l(o);
+                  break
                 }
               }
-              'function' == typeof a && a(o)
-            }, i = !1, s = o.createElement('script'), d = o.getElementsByTagName('script')[0], c = d.parentNode;
-            s.crossOrigin = '', s.src = t.rollbarJsUrl, e || (s.async = !0), s.onload = s.onreadystatechange = n(function() {
-              if (!(i || this.readyState && 'loaded' !== this.readyState && 'complete' !== this.readyState)) {
+              "function" == typeof a && a(o)
+            }, i = !1, s = o.createElement("script"), d = o.getElementsByTagName("script")[0], c = d.parentNode;
+            s.crossOrigin = "", s.src = t.rollbarJsUrl, e || (s.async = !0), s.onload = s.onreadystatechange = n(function() {
+              if (!(i || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) {
                 s.onload = s.onreadystatechange = null;
                 try {
                   c.removeChild(s)
@@ -30680,37 +30620,33 @@
           }, t.prototype.wrap = function(r, o, e) {
             try {
               var n;
-              if (n = 'function' == typeof o ? o : function() {
+              if (n = "function" == typeof o ? o : function() {
                 return o || {}
-              }, 'function' != typeof r) {
-                return r;
-              }
+              }, "function" != typeof r) return r;
               if (r._isWrap) return r;
               if (!r._rollbar_wrapped && (r._rollbar_wrapped = function() {
-                e && 'function' == typeof e && e.apply(this, arguments);
+                e && "function" == typeof e && e.apply(this, arguments);
                 try {
                   return r.apply(this, arguments)
                 } catch (e) {
                   var o = e;
-                  throw'string' == typeof o && (o = new String(o)), o._rollbarContext = n() || {}, o._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = o, o
+                  throw"string" == typeof o && (o = new String(o)), o._rollbarContext = n() || {}, o._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = o, o
                 }
-              }, r._rollbar_wrapped._isWrap = !0, r.hasOwnProperty)) {
-                for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]);
-              }
+              }, r._rollbar_wrapped._isWrap = !0, r.hasOwnProperty)) for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]);
               return r._rollbar_wrapped
             } catch (o) {
               return r
             }
           };
-          for (var u = 'log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureDomContentLoaded,captureLoad'.split(','), f = 0; f < u.length; ++f) t.prototype[u[f]] = l(u[f]);
+          for (var u = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureDomContentLoaded,captureLoad".split(","), f = 0; f < u.length; ++f) t.prototype[u[f]] = l(u[f]);
           r.exports = { setupShim: a, Rollbar: p }
         }, function(r, o) {
-          'use strict';
+          "use strict";
 
           function e(r, o, e) {
             if (r) {
               var t;
-              'function' == typeof o._rollbarOldOnError ? t = o._rollbarOldOnError : r.onerror && !r.onerror.belongsToShim && (t = r.onerror, o._rollbarOldOnError = t);
+              "function" == typeof o._rollbarOldOnError ? t = o._rollbarOldOnError : r.onerror && !r.onerror.belongsToShim && (t = r.onerror, o._rollbarOldOnError = t);
               var a = function() {
                 var e = Array.prototype.slice.call(arguments, 0);
                 n(r, o, t, e)
@@ -30725,25 +30661,25 @@
 
           function t(r, o, e) {
             if (r) {
-              'function' == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener('unhandledrejection', r._rollbarURH);
+              "function" == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener("unhandledrejection", r._rollbarURH);
               var n = function(r) {
                 var e = r.reason, n = r.promise, t = r.detail;
                 !e && t && (e = t.reason, n = t.promise), o && o.handleUnhandledRejection && o.handleUnhandledRejection(e, n)
               };
-              n.belongsToShim = e, r._rollbarURH = n, r.addEventListener('unhandledrejection', n)
+              n.belongsToShim = e, r._rollbarURH = n, r.addEventListener("unhandledrejection", n)
             }
           }
 
           function a(r, o, e) {
             if (r) {
               var n, t,
-                a = 'EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload'.split(',');
+                a = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");
               for (n = 0; n < a.length; ++n) t = a[n], r[t] && r[t].prototype && l(o, r[t].prototype, e)
             }
           }
 
           function l(r, o, e) {
-            if (o.hasOwnProperty && o.hasOwnProperty('addEventListener')) {
+            if (o.hasOwnProperty && o.hasOwnProperty("addEventListener")) {
               for (var n = o.addEventListener; n._rollbarOldAdd && n.belongsToShim;) n = n._rollbarOldAdd;
               var t = function(o, e, t) {
                 n.call(this, o, r.wrap(e), t)
@@ -30759,7 +30695,7 @@
 
           r.exports = { captureUncaughtExceptions: e, captureUnhandledRejections: t, wrapGlobals: a }
         }, function(r, o) {
-          'use strict';
+          "use strict";
 
           function e(r, o) {
             this.impl = r(o, this), this.options = o, n(e.prototype)
@@ -30771,27 +30707,23 @@
                 var o = Array.prototype.slice.call(arguments, 0);
                 if (this.impl[r]) return this.impl[r].apply(this.impl, o)
               }
-            }, e = 'log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureDomContentLoaded,captureLoad'.split(','), n = 0; n < e.length; n++) {
-              r[e[n]] = o(e[n])
-            }
+            }, e = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureDomContentLoaded,captureLoad".split(","), n = 0; n < e.length; n++) r[e[n]] = o(e[n])
           }
 
           e.prototype._swapAndProcessMessages = function(r, o) {
             this.impl = r(this.options);
-            for (var e, n, t; e = o.shift();) n = e.method, t = e.args, this[n] && 'function' == typeof this[n] && ('captureDomContentLoaded' === n || 'captureLoad' === n ? this[n].apply(this, [t[0], e.ts]) : this[n].apply(this, t));
+            for (var e, n, t; e = o.shift();) n = e.method, t = e.args, this[n] && "function" == typeof this[n] && ("captureDomContentLoaded" === n || "captureLoad" === n ? this[n].apply(this, [t[0], e.ts]) : this[n].apply(this, t));
             return this
           }, r.exports = e
         }, function(r, o) {
-          'use strict';
+          "use strict";
           r.exports = function(r) {
             return function(o) {
               if (!o && !window._rollbarInitialized) {
                 r = r || {};
-                for (var e, n, t = r.globalAlias || 'Rollbar', a = window.rollbar, l = function(r) {
+                for (var e, n, t = r.globalAlias || "Rollbar", a = window.rollbar, l = function(r) {
                   return new a(r)
-                }, i = 0; e = window._rollbarShims[i++];) {
-                  n || (n = e.handler), e.handler._swapAndProcessMessages(l, e.messages);
-                }
+                }, i = 0; e = window._rollbarShims[i++];) n || (n = e.handler), e.handler._swapAndProcessMessages(l, e.messages);
                 window[t] = n, window._rollbarInitialized = !0
               }
             }
@@ -30859,43 +30791,43 @@
         rollbar.configure({ payload: { person: person } });
       };
 
-    }, { '@ndhoule/extend': 200, '@segment/analytics.js-integration': 483 }],
+    }, { "@ndhoule/extend": 200, "@segment/analytics.js-integration": 483 }],
     483: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 484,
-      './statics': 485,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 484,
+      "./statics": 485,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     484: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 486,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 486,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     485: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     486: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     487: [function(require, module, exports) {
       'use strict';
 
@@ -30969,43 +30901,43 @@
         window._route.track(track.event());
       };
 
-    }, { '@segment/analytics.js-integration': 488 }],
+    }, { "@segment/analytics.js-integration": 488 }],
     488: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 489,
-      './statics': 490,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 489,
+      "./statics": 490,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     489: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 491,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 491,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     490: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     491: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     492: [function(require, module, exports) {
       'use strict';
 
@@ -31144,43 +31076,43 @@
         this.load();
       };
 
-    }, { '@segment/analytics.js-integration': 493, 'obj-case': 647 }],
+    }, { "@segment/analytics.js-integration": 493, "obj-case": 647 }],
     493: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 494,
-      './statics': 495,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 494,
+      "./statics": 495,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     494: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 496,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 496,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     495: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     496: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     497: [function(require, module, exports) {
       'use strict';
 
@@ -31258,43 +31190,43 @@
         });
       };
 
-    }, { '@segment/analytics.js-integration': 498, 'do-when': 625 }],
+    }, { "@segment/analytics.js-integration": 498, "do-when": 625 }],
     498: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 499,
-      './statics': 500,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 499,
+      "./statics": 500,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     499: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 501,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 501,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     500: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     501: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     502: [function(require, module, exports) {
       'use strict';
 
@@ -31998,57 +31930,57 @@
       }
 
     }, {
-      '@ndhoule/extend': 200,
-      '@ndhoule/keys': 203,
-      '@segment/ad-params': 208,
-      '@segment/analytics.js-integration': 503,
-      '@segment/localstorage-retry': 588,
-      '@segment/protocol': 598,
-      '@segment/send-json': 599,
-      '@segment/top-domain': 602,
-      '@segment/utm-params': 604,
-      'component-clone': 609,
-      'component-cookie': 610,
-      'json3': 638,
-      'uuid': 684,
-      'yields-store': 685
+      "@ndhoule/extend": 200,
+      "@ndhoule/keys": 203,
+      "@segment/ad-params": 208,
+      "@segment/analytics.js-integration": 503,
+      "@segment/localstorage-retry": 588,
+      "@segment/protocol": 598,
+      "@segment/send-json": 599,
+      "@segment/top-domain": 602,
+      "@segment/utm-params": 604,
+      "component-clone": 609,
+      "component-cookie": 610,
+      "json3": 638,
+      "uuid": 684,
+      "yields-store": 685
     }],
     503: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 504,
-      './statics': 505,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 504,
+      "./statics": 505,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     504: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 506,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 506,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     505: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     506: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     507: [function(require, module, exports) {
       'use strict';
 
@@ -32155,43 +32087,43 @@
         }, {}, obj);
       }
 
-    }, { '@ndhoule/foldl': 201, '@segment/analytics.js-integration': 508, 'is': 633 }],
+    }, { "@ndhoule/foldl": 201, "@segment/analytics.js-integration": 508, "is": 633 }],
     508: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 509,
-      './statics': 510,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 509,
+      "./statics": 510,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     509: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 511,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 511,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     510: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     511: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     512: [function(require, module, exports) {
       'use strict';
 
@@ -32280,43 +32212,43 @@
         });
       };
 
-    }, { '@ndhoule/defaults': 195, '@segment/analytics.js-integration': 513 }],
+    }, { "@ndhoule/defaults": 195, "@segment/analytics.js-integration": 513 }],
     513: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 514,
-      './statics': 515,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 514,
+      "./statics": 515,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     514: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 516,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 516,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     515: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     516: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     517: [function(require, module, exports) {
       'use strict';
 
@@ -32433,43 +32365,43 @@
         });
       };
 
-    }, { '@segment/analytics.js-integration': 518, 'is': 633, 'next-tick': 646 }],
+    }, { "@segment/analytics.js-integration": 518, "is": 633, "next-tick": 646 }],
     518: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 519,
-      './statics': 520,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 519,
+      "./statics": 520,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     519: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 521,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 521,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     520: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     521: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     522: [function(require, module, exports) {
       'use strict';
 
@@ -32518,43 +32450,43 @@
         return !!window._spinnakr;
       };
 
-    }, { '@segment/analytics.js-integration': 523, 'component-bind': 608, 'do-when': 625 }],
+    }, { "@segment/analytics.js-integration": 523, "component-bind": 608, "do-when": 625 }],
     523: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 524,
-      './statics': 525,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 524,
+      "./statics": 525,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     524: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 526,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 526,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     525: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     526: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     527: [function(require, module, exports) {
       'use strict';
 
@@ -32619,43 +32551,43 @@
         }
       };
 
-    }, { '@segment/analytics.js-integration': 528 }],
+    }, { "@segment/analytics.js-integration": 528 }],
     528: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 529,
-      './statics': 530,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 529,
+      "./statics": 530,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     529: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 531,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 531,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     530: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     531: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     532: [function(require, module, exports) {
       'use strict';
 
@@ -32786,43 +32718,43 @@
         push('reset');
       };
 
-    }, { '@ndhoule/keys': 203, '@segment/analytics.js-integration': 533, 'global-queue': 628, 'is': 633 }],
+    }, { "@ndhoule/keys": 203, "@segment/analytics.js-integration": 533, "global-queue": 628, "is": 633 }],
     533: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 534,
-      './statics': 535,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 534,
+      "./statics": 535,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     534: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 536,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 536,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     535: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     536: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     537: [function(require, module, exports) {
       'use strict';
 
@@ -32911,43 +32843,43 @@
         push('fireHit', slug(track.event()), [props.url]);
       };
 
-    }, { '@segment/analytics.js-integration': 538, 'global-queue': 628, 'slug-component': 667 }],
+    }, { "@segment/analytics.js-integration": 538, "global-queue": 628, "slug-component": 667 }],
     538: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 539,
-      './statics': 540,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 539,
+      "./statics": 540,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     539: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 541,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 541,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     540: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     541: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     542: [function(require, module, exports) {
       'use strict';
 
@@ -32998,7 +32930,7 @@
             return function() {
               window.trak.push([e].concat(Array.prototype.slice.call(arguments, 0)));
             };
-          }, i = ['initialize', 'identify', 'track', 'alias', 'channel', 'source', 'host', 'protocol', 'page_view'];
+          }, i = ["initialize", "identify", "track", "alias", "channel", "source", "host", "protocol", "page_view"];
           for (var s = 0; s < i.length; s++) window.trak.io[i[s]] = r(i[s]);
           window.trak.io.initialize.apply(window.trak.io, arguments);
         };
@@ -33127,43 +33059,43 @@
         }
       };
 
-    }, { '@segment/alias': 209, '@segment/analytics.js-integration': 543 }],
+    }, { "@segment/alias": 209, "@segment/analytics.js-integration": 543 }],
     543: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 544,
-      './statics': 545,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 544,
+      "./statics": 545,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     544: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 546,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 546,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     545: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     546: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     547: [function(require, module, exports) {
       'use strict';
 
@@ -33503,13 +33435,13 @@
       }
 
     }, {
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      '@ndhoule/foldl': 201,
-      '@segment/analytics.js-integration': 574,
-      'component-each': 611,
-      'obj-case': 647,
-      'segmentio-facade': 661
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "@ndhoule/foldl": 201,
+      "@segment/analytics.js-integration": 574,
+      "component-each": 611,
+      "obj-case": 647,
+      "segmentio-facade": 661
     }],
     548: [function(require, module, exports) {
       'use strict';
@@ -33633,43 +33565,43 @@
         };
       };
 
-    }, { '@segment/analytics.js-integration': 549, 'component-clone': 609, 'segmentio-facade': 661 }],
+    }, { "@segment/analytics.js-integration": 549, "component-clone": 609, "segmentio-facade": 661 }],
     549: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 550,
-      './statics': 551,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 550,
+      "./statics": 551,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     550: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 552,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 552,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     551: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     552: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     553: [function(require, module, exports) {
       'use strict';
 
@@ -33872,48 +33804,48 @@
       }
 
     }, {
-      '@segment/alias': 209,
-      '@segment/analytics.js-integration': 554,
-      '@segment/convert-dates': 581,
-      'global-queue': 628,
-      'to-unix-timestamp': 676
+      "@segment/alias": 209,
+      "@segment/analytics.js-integration": 554,
+      "@segment/convert-dates": 581,
+      "global-queue": 628,
+      "to-unix-timestamp": 676
     }],
     554: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 555,
-      './statics': 556,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 555,
+      "./statics": 556,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     555: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 557,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 557,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     556: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     557: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     558: [function(require, module, exports) {
       'use strict';
 
@@ -34066,43 +33998,43 @@
         }
         push('tags', payload);
       };
-    }, { '@segment/analytics.js-integration': 559, 'component-cookie': 610, 'global-queue': 628 }],
+    }, { "@segment/analytics.js-integration": 559, "component-cookie": 610, "global-queue": 628 }],
     559: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 560,
-      './statics': 561,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 560,
+      "./statics": 561,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     560: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 562,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 562,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     561: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     562: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     563: [function(require, module, exports) {
       /* eslint-disable strict */
 
@@ -34350,7 +34282,7 @@
         return null;
       }
 
-    }, { '@segment/analytics.js-integration': 574, 'component-each': 611, 'next-tick': 646 }],
+    }, { "@segment/analytics.js-integration": 574, "component-each": 611, "next-tick": 646 }],
     564: [function(require, module, exports) {
       'use strict';
 
@@ -34386,22 +34318,22 @@
         !function(e, t, n) {
           function o(e, t) {
             e[t[t.length - 1]] = function() {
-              r.__queue.push([t.join('.'), arguments])
+              r.__queue.push([t.join("."), arguments])
             }
           }
 
-          var i, s, r = e[n], g = ' ', l = 'init options track screen onReady'.split(g),
-            a = 'feedback survey notification'.split(g), c = 'options render clear abort'.split(g),
-            p = 'Open Close Submit Complete View Click'.split(g), u = 'identify login logout setAttribute'.split(g);
+          var i, s, r = e[n], g = " ", l = "init options track screen onReady".split(g),
+            a = "feedback survey notification".split(g), c = "options render clear abort".split(g),
+            p = "Open Close Submit Complete View Click".split(g), u = "identify login logout setAttribute".split(g);
           if (!r || !r.__v) {
-            for (e[n] = r = { __queue: [], __v: '6.0', user: {} }, i = 0; i < l.length; i++) o(r, [l[i]]);
+            for (e[n] = r = { __queue: [], __v: "6.0", user: {} }, i = 0; i < l.length; i++) o(r, [l[i]]);
             for (i = 0; i < a.length; i++) {
               for (r[a[i]] = {}, s = 0; s < c.length; s++) o(r[a[i]], [a[i], c[s]]);
-              for (s = 0; s < p.length; s++) o(r[a[i]], [a[i], 'on' + p[s]])
+              for (s = 0; s < p.length; s++) o(r[a[i]], [a[i], "on" + p[s]])
             }
-            for (i = 0; i < u.length; i++) o(r.user, ['user', u[i]]);
+            for (i = 0; i < u.length; i++) o(r.user, ["user", u[i]]);
           }
-        }(window, document, 'webengage');
+        }(window, document, "webengage");
 
         window.webengage.ixP = 'Segment';
         /* eslint-enable */
@@ -34533,43 +34465,43 @@
         return number < 10 ? '0' + number : number;
       }
 
-    }, { '@segment/analytics.js-integration': 565, 'obj-case': 647, 'use-https': 681 }],
+    }, { "@segment/analytics.js-integration": 565, "obj-case": 647, "use-https": 681 }],
     565: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 566,
-      './statics': 567,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 566,
+      "./statics": 567,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     566: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 568,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 568,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     567: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     568: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     569: [function(require, module, exports) {
       'use strict';
 
@@ -34661,55 +34593,55 @@
         window.yandex_metrika_callbacks.push(callback);
       }
 
-    }, { '@segment/analytics.js-integration': 570, 'component-bind': 608, 'do-when': 625, 'next-tick': 646 }],
+    }, { "@segment/analytics.js-integration": 570, "component-bind": 608, "do-when": 625, "next-tick": 646 }],
     570: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 571,
-      './statics': 572,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 571,
+      "./statics": 572,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     571: [function(require, module, exports) {
       arguments[4][3][0].apply(exports, arguments)
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 573,
-      'component-emitter': 613,
-      'dup': 3,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 672
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 573,
+      "component-emitter": 613,
+      "dup": 3,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 672
     }],
     572: [function(require, module, exports) {
       arguments[4][4][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 613, 'domify': 626, 'dup': 4 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 613, "domify": 626, "dup": 4 }],
     573: [function(require, module, exports) {
       arguments[4][5][0].apply(exports, arguments)
-    }, { 'dup': 5 }],
+    }, { "dup": 5 }],
     574: [function(require, module, exports) {
       arguments[4][2][0].apply(exports, arguments)
     }, {
-      './protos': 575,
-      './statics': 576,
-      '@ndhoule/clone': 194,
-      '@ndhoule/defaults': 195,
-      '@ndhoule/extend': 200,
-      'component-bind': 608,
-      'debug': 623,
-      'dup': 2,
-      'slug-component': 667
+      "./protos": 575,
+      "./statics": 576,
+      "@ndhoule/clone": 194,
+      "@ndhoule/defaults": 195,
+      "@ndhoule/extend": 200,
+      "component-bind": 608,
+      "debug": 623,
+      "dup": 2,
+      "slug-component": 667
     }],
     575: [function(require, module, exports) {
       'use strict';
@@ -35199,22 +35131,22 @@
       }
 
     }, {
-      '@ndhoule/after': 192,
-      '@ndhoule/each': 197,
-      '@ndhoule/every': 199,
-      '@ndhoule/foldl': 201,
-      '@segment/fmt': 582,
-      '@segment/load-script': 586,
-      'analytics-events': 605,
-      'component-emitter': 577,
-      'is': 633,
-      'load-iframe': 640,
-      'next-tick': 646,
-      'to-no-case': 578
+      "@ndhoule/after": 192,
+      "@ndhoule/each": 197,
+      "@ndhoule/every": 199,
+      "@ndhoule/foldl": 201,
+      "@segment/fmt": 582,
+      "@segment/load-script": 586,
+      "analytics-events": 605,
+      "component-emitter": 577,
+      "is": 633,
+      "load-iframe": 640,
+      "next-tick": 646,
+      "to-no-case": 578
     }],
     576: [function(require, module, exports) {
       arguments[4][20][0].apply(exports, arguments)
-    }, { '@ndhoule/each': 197, '@ndhoule/includes': 202, 'component-emitter': 577, 'domify': 626, 'dup': 20 }],
+    }, { "@ndhoule/each": 197, "@ndhoule/includes": 202, "component-emitter": 577, "domify": 626, "dup": 20 }],
     577: [function(require, module, exports) {
 
       /**
@@ -35383,7 +35315,7 @@
     }, {}],
     578: [function(require, module, exports) {
       arguments[4][451][0].apply(exports, arguments)
-    }, { 'dup': 451 }],
+    }, { "dup": 451 }],
     579: [function(require, module, exports) {
       var utf8Encode = require('utf8-encode');
       var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -35391,7 +35323,7 @@
       module.exports = encode;
 
       function encode(input) {
-        var output = '';
+        var output = "";
         var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
         var i = 0;
 
@@ -35422,7 +35354,7 @@
 
         return output;
       }
-    }, { 'utf8-encode': 682 }],
+    }, { "utf8-encode": 682 }],
     580: [function(require, module, exports) {
       'use strict';
 
@@ -35485,7 +35417,7 @@
 
       module.exports = convertDates;
 
-    }, { '@ndhoule/clone': 194, '@ndhoule/each': 197, 'component-type': 619 }],
+    }, { "@ndhoule/clone": 194, "@ndhoule/each": 197, "component-type": 619 }],
     582: [function(require, module, exports) {
       (function(global) {
         'use strict';
@@ -35520,7 +35452,7 @@
 
         module.exports = fmt;
 
-      }).call(this, typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {})
+      }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
     }, {}],
     583: [function(require, module, exports) {
       'use strict';
@@ -35628,7 +35560,7 @@
         return arr;
       }
 
-    }, { '@segment/isodate': 585, 'component-each': 611, 'component-type': 619 }],
+    }, { "@segment/isodate": 585, "component-each": 611, "component-type": 619 }],
     585: [function(require, module, exports) {
       'use strict';
 
@@ -35780,7 +35712,7 @@
 
       module.exports = loadScript;
 
-    }, { 'component-type': 619, 'next-tick': 646, 'script-onload': 655 }],
+    }, { "component-type": 619, "next-tick": 646, "script-onload": 655 }],
     587: [function(require, module, exports) {
       'use strict';
 
@@ -35846,7 +35778,7 @@
 // Expose the in-memory store explicitly for testing
       module.exports.inMemoryEngine = inMemoryStore;
 
-    }, { '@ndhoule/keys': 203, 'uuid': 592 }],
+    }, { "@ndhoule/keys": 203, "uuid": 592 }],
     588: [function(require, module, exports) {
       'use strict';
 
@@ -36198,12 +36130,12 @@
       module.exports = Queue;
 
     }, {
-      './schedule': 589,
-      './store': 590,
-      '@ndhoule/each': 197,
-      'component-emitter': 613,
-      'debug': 591,
-      'uuid': 592
+      "./schedule": 589,
+      "./store": 590,
+      "@ndhoule/each": 197,
+      "component-emitter": 613,
+      "debug": 591,
+      "uuid": 592
     }],
     589: [function(require, module, exports) {
       'use strict';
@@ -36267,7 +36199,7 @@
 
       module.exports = Schedule;
 
-    }, { '@ndhoule/each': 197 }],
+    }, { "@ndhoule/each": 197 }],
     590: [function(require, module, exports) {
       'use strict';
 
@@ -36395,10 +36327,10 @@
         return quotaExceeded;
       }
 
-    }, { './engine': 587, '@ndhoule/each': 197, '@ndhoule/keys': 203, 'json3': 638 }],
+    }, { "./engine": 587, "@ndhoule/each": 197, "@ndhoule/keys": 203, "json3": 638 }],
     591: [function(require, module, exports) {
       arguments[4][222][0].apply(exports, arguments)
-    }, { 'dup': 222 }],
+    }, { "dup": 222 }],
     592: [function(require, module, exports) {
       var v1 = require('./v1');
       var v4 = require('./v4');
@@ -36409,7 +36341,7 @@
 
       module.exports = uuid;
 
-    }, { './v1': 595, './v4': 596 }],
+    }, { "./v1": 595, "./v4": 596 }],
     593: [function(require, module, exports) {
       /**
        * Convert array of 16 byte values to UUID string format of the form:
@@ -36585,7 +36517,7 @@
 
       module.exports = v1;
 
-    }, { './lib/bytesToUuid': 593, './lib/rng': 594 }],
+    }, { "./lib/bytesToUuid": 593, "./lib/rng": 594 }],
     596: [function(require, module, exports) {
       var rng = require('./lib/rng');
       var bytesToUuid = require('./lib/bytesToUuid');
@@ -36617,7 +36549,7 @@
 
       module.exports = v4;
 
-    }, { './lib/bytesToUuid': 593, './lib/rng': 594 }],
+    }, { "./lib/bytesToUuid": 593, "./lib/rng": 594 }],
     597: [function(require, module, exports) {
       'use strict';
 
@@ -36850,10 +36782,10 @@
         return encodeURIComponent(str);
       }
 
-    }, { '@segment/base64-encode': 579, 'has-cors': 629, 'json3': 638, 'jsonp': 639 }],
+    }, { "@segment/base64-encode": 579, "has-cors": 629, "json3": 638, "jsonp": 639 }],
     600: [function(require, module, exports) {
       (function(global) {
-        'use strict'
+        "use strict"
 
         var JSON = require('json3');
 
@@ -36994,7 +36926,7 @@
             // In IE7, keys cannot start with a digit or contain certain chars.
             // See https://github.com/marcuswestin/store.js/issues/40
             // See https://github.com/marcuswestin/store.js/issues/83
-            var forbiddenCharsRegex = new RegExp('[!"#$%&\'()*+,/\\\\:;<=>?@[\\]^`{|}~]', 'g')
+            var forbiddenCharsRegex = new RegExp("[!\"#$%&'()*+,/\\\\:;<=>?@[\\]^`{|}~]", "g")
             var ieKeyFix = function(key) {
               return key.replace(/^d/, '___$&').replace(forbiddenCharsRegex, '___')
             }
@@ -37048,8 +36980,8 @@
           return store
         }())
 
-      }).call(this, typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {})
-    }, { 'json3': 638 }],
+      }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+    }, { "json3": 638 }],
     601: [function(require, module, exports) {
       'use strict';
 
@@ -37190,7 +37122,7 @@
 
       exports = module.exports = domain;
 
-    }, { 'component-cookie': 610, 'component-url': 620 }],
+    }, { "component-cookie": 610, "component-url": 620 }],
     603: [function(require, module, exports) {
       'use strict';
 
@@ -37392,7 +37324,7 @@
       module.exports = utm;
       module.exports.strict = strict;
 
-    }, { '@ndhoule/foldl': 201, 'component-querystring': 617 }],
+    }, { "@ndhoule/foldl": 201, "component-querystring": 617 }],
     605: [function(require, module, exports) {
       'use strict';
 
@@ -37685,7 +37617,7 @@
         return ret;
       }, {}, eventMap);
 
-    }, { '@ndhoule/foldl': 201, '@ndhoule/map': 204 }],
+    }, { "@ndhoule/foldl": 201, "@ndhoule/map": 204 }],
     606: [function(require, module, exports) {
       'use strict';
 
@@ -37704,7 +37636,7 @@
 
       module.exports = bindAll;
 
-    }, { 'component-bind': 608 }],
+    }, { "component-bind": 608 }],
     607: [function(require, module, exports) {
       var charenc = {
         // UTF-8 encoding
@@ -37724,17 +37656,15 @@
         bin: {
           // Convert a string to a byte array
           stringToBytes: function(str) {
-            for (var bytes = [], i = 0; i < str.length; i++) {
+            for (var bytes = [], i = 0; i < str.length; i++)
               bytes.push(str.charCodeAt(i) & 0xFF);
-            }
             return bytes;
           },
 
           // Convert a byte array to a string
           bytesToString: function(bytes) {
-            for (var str = [], i = 0; i < bytes.length; i++) {
+            for (var str = [], i = 0; i < bytes.length; i++)
               str.push(String.fromCharCode(bytes[i]));
-            }
             return str.join('');
           }
         }
@@ -37828,7 +37758,7 @@
         }
       }
 
-    }, { 'component-type': 619, 'type': 619 }],
+    }, { "component-type": 619, "type": 619 }],
     610: [function(require, module, exports) {
 
       /**
@@ -37962,7 +37892,7 @@
         }
       }
 
-    }, { 'debug': 623 }],
+    }, { "debug": 623 }],
     611: [function(require, module, exports) {
 
       /**
@@ -38054,7 +37984,7 @@
         }
       }
 
-    }, { 'component-type': 612, 'to-function': 671, 'type': 612 }],
+    }, { "component-type": 612, "to-function": 671, "type": 612 }],
     612: [function(require, module, exports) {
 
       /**
@@ -38515,7 +38445,7 @@
         return pairs.join('&');
       };
 
-    }, { 'trim': 677, 'type': 618 }],
+    }, { "trim": 677, "type": 618 }],
     618: [function(require, module, exports) {
       /**
        * toString ref.
@@ -38721,33 +38651,29 @@
               }
 
               // Else, assume array and swap all items
-              for (var i = 0; i < n.length; i++) {
+              for (var i = 0; i < n.length; i++)
                 n[i] = crypt.endian(n[i]);
-              }
               return n;
             },
 
             // Generate an array of any length of random bytes
             randomBytes: function(n) {
-              for (var bytes = []; n > 0; n--) {
+              for (var bytes = []; n > 0; n--)
                 bytes.push(Math.floor(Math.random() * 256));
-              }
               return bytes;
             },
 
             // Convert a byte array to big-endian 32-bit words
             bytesToWords: function(bytes) {
-              for (var words = [], i = 0, b = 0; i < bytes.length; i++, b += 8) {
+              for (var words = [], i = 0, b = 0; i < bytes.length; i++, b += 8)
                 words[b >>> 5] |= bytes[i] << (24 - b % 32);
-              }
               return words;
             },
 
             // Convert big-endian 32-bit words to a byte array
             wordsToBytes: function(words) {
-              for (var bytes = [], b = 0; b < words.length * 32; b += 8) {
+              for (var bytes = [], b = 0; b < words.length * 32; b += 8)
                 bytes.push((words[b >>> 5] >>> (24 - b % 32)) & 0xFF);
-              }
               return bytes;
             },
 
@@ -38762,9 +38688,8 @@
 
             // Convert a hex string to a byte array
             hexToBytes: function(hex) {
-              for (var bytes = [], c = 0; c < hex.length; c += 2) {
+              for (var bytes = [], c = 0; c < hex.length; c += 2)
                 bytes.push(parseInt(hex.substr(c, 2), 16));
-              }
               return bytes;
             },
 
@@ -38772,13 +38697,11 @@
             bytesToBase64: function(bytes) {
               for (var base64 = [], i = 0; i < bytes.length; i += 3) {
                 var triplet = (bytes[i] << 16) | (bytes[i + 1] << 8) | bytes[i + 2];
-                for (var j = 0; j < 4; j++) {
-                  if (i * 8 + j * 6 <= bytes.length * 8) {
+                for (var j = 0; j < 4; j++)
+                  if (i * 8 + j * 6 <= bytes.length * 8)
                     base64.push(base64map.charAt((triplet >>> 6 * (3 - j)) & 0x3F));
-                  } else {
+                  else
                     base64.push('=');
-                  }
-                }
               }
               return base64.join('');
             },
@@ -39223,7 +39146,7 @@
         }
 
       }).call(this, require('_process'))
-    }, { './debug': 624, '_process': 653 }],
+    }, { "./debug": 624, "_process": 653 }],
     624: [function(require, module, exports) {
 
       /**
@@ -39428,7 +39351,7 @@
         return val;
       }
 
-    }, { 'ms': 642 }],
+    }, { "ms": 642 }],
     625: [function(require, module, exports) {
       /**
        * Module dependencies.
@@ -39463,7 +39386,7 @@
 
       module.exports = when;
 
-    }, { 'next-tick': 646 }],
+    }, { "next-tick": 646 }],
     626: [function(require, module, exports) {
 
       /**
@@ -39706,7 +39629,7 @@
         };
       }
 
-    }, { 'debug': 623 }],
+    }, { "debug": 623 }],
     629: [function(require, module, exports) {
 
       /**
@@ -40611,7 +40534,7 @@
         return val != null && typeof val === 'object' && isArray(val) === false;
       };
 
-    }, { 'isarray': 634 }],
+    }, { "isarray": 634 }],
     636: [function(require, module, exports) {
 
       module.exports = isDate;
@@ -40720,8 +40643,8 @@
           };
 
           var nodeWrap = function(method, is224) {
-            var crypto = eval('require(\'crypto\')');
-            var Buffer = eval('require(\'buffer\').Buffer');
+            var crypto = eval("require('crypto')");
+            var Buffer = eval("require('buffer').Buffer");
             var algorithm = is224 ? 'sha224' : 'sha256';
             var nodeMethod = function(message) {
               if (typeof message === 'string') {
@@ -41158,20 +41081,20 @@
           }
         })();
 
-      }).call(this, require('_process'), typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {})
-    }, { '_process': 653 }],
+      }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+    }, { "_process": 653 }],
     638: [function(require, module, exports) {
       (function(global) {
         /*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
         ;(function() {
           // Detect the `define` function exposed by asynchronous module loaders. The
           // strict `define` check is necessary for compatibility with `r.js`.
-          var isLoader = typeof define === 'function' && define.amd;
+          var isLoader = typeof define === "function" && define.amd;
 
           // A set of types used to distinguish objects from primitives.
           var objectTypes = {
-            'function': true,
-            'object': true
+            "function": true,
+            "object": true
           };
 
           // Detect the `exports` object exposed by CommonJS implementations.
@@ -41182,30 +41105,30 @@
           // and the `window` object in browsers. Rhino exports a `global` function
           // instead.
           var root = objectTypes[typeof window] && window || this,
-            freeGlobal = freeExports && objectTypes[typeof module] && module && !module.nodeType && typeof global == 'object' && global;
+            freeGlobal = freeExports && objectTypes[typeof module] && module && !module.nodeType && typeof global == "object" && global;
 
-          if (freeGlobal && (freeGlobal['global'] === freeGlobal || freeGlobal['window'] === freeGlobal || freeGlobal['self'] === freeGlobal)) {
+          if (freeGlobal && (freeGlobal["global"] === freeGlobal || freeGlobal["window"] === freeGlobal || freeGlobal["self"] === freeGlobal)) {
             root = freeGlobal;
           }
 
           // Public: Initializes JSON 3 using the given `context` object, attaching the
           // `stringify` and `parse` functions to the specified `exports` object.
           function runInContext(context, exports) {
-            context || (context = root['Object']());
-            exports || (exports = root['Object']());
+            context || (context = root["Object"]());
+            exports || (exports = root["Object"]());
 
             // Native constructor aliases.
-            var Number = context['Number'] || root['Number'],
-              String = context['String'] || root['String'],
-              Object = context['Object'] || root['Object'],
-              Date = context['Date'] || root['Date'],
-              SyntaxError = context['SyntaxError'] || root['SyntaxError'],
-              TypeError = context['TypeError'] || root['TypeError'],
-              Math = context['Math'] || root['Math'],
-              nativeJSON = context['JSON'] || root['JSON'];
+            var Number = context["Number"] || root["Number"],
+              String = context["String"] || root["String"],
+              Object = context["Object"] || root["Object"],
+              Date = context["Date"] || root["Date"],
+              SyntaxError = context["SyntaxError"] || root["SyntaxError"],
+              TypeError = context["TypeError"] || root["TypeError"],
+              Math = context["Math"] || root["Math"],
+              nativeJSON = context["JSON"] || root["JSON"];
 
             // Delegate to the native `stringify` and `parse` implementations.
-            if (typeof nativeJSON == 'object' && nativeJSON) {
+            if (typeof nativeJSON == "object" && nativeJSON) {
               exports.stringify = nativeJSON.stringify;
               exports.parse = nativeJSON.parse;
             }
@@ -41236,19 +41159,19 @@
                 return has[name];
               }
               var isSupported;
-              if (name == 'bug-string-char-index') {
+              if (name == "bug-string-char-index") {
                 // IE <= 7 doesn't support accessing string characters using square
                 // bracket notation. IE 8 only supports this for primitives.
-                isSupported = 'a'[0] != 'a';
-              } else if (name == 'json') {
+                isSupported = "a"[0] != "a";
+              } else if (name == "json") {
                 // Indicates whether both `JSON.stringify` and `JSON.parse` are
                 // supported.
-                isSupported = has('json-stringify') && has('json-parse');
+                isSupported = has("json-stringify") && has("json-parse");
               } else {
                 var value, serialized = '{"a":[1,true,false,null,"\\u0000\\b\\n\\f\\r\\t"]}';
                 // Test `JSON.stringify`.
-                if (name == 'json-stringify') {
-                  var stringify = exports.stringify, stringifySupported = typeof stringify == 'function' && isExtended;
+                if (name == "json-stringify") {
+                  var stringify = exports.stringify, stringifySupported = typeof stringify == "function" && isExtended;
                   if (stringifySupported) {
                     // A test function object with a custom `toJSON` method.
                     (value = function() {
@@ -41258,10 +41181,10 @@
                       stringifySupported =
                         // Firefox 3.1b1 and b2 serialize string, number, and boolean
                         // primitives as object literals.
-                        stringify(0) === '0' &&
+                        stringify(0) === "0" &&
                         // FF 3.1b1, b2, and JSON 2 serialize wrapped primitives as object
                         // literals.
-                        stringify(new Number()) === '0' &&
+                        stringify(new Number()) === "0" &&
                         stringify(new String()) == '""' &&
                         // FF 3.1b1, 2 throw an error if the value is `null`, `undefined`, or
                         // does not define a canonical JSON representation (this applies to
@@ -41279,24 +41202,24 @@
                         // objects with custom `toJSON` methods as well, unless they are nested
                         // inside object or array literals. YUI 3.0.0b1 ignores custom `toJSON`
                         // methods entirely.
-                        stringify(value) === '1' &&
-                        stringify([value]) == '[1]' &&
+                        stringify(value) === "1" &&
+                        stringify([value]) == "[1]" &&
                         // Prototype <= 1.6.1 serializes `[undefined]` as `"[]"` instead of
                         // `"[null]"`.
-                        stringify([undef]) == '[null]' &&
+                        stringify([undef]) == "[null]" &&
                         // YUI 3.0.0b1 fails to serialize `null` literals.
-                        stringify(null) == 'null' &&
+                        stringify(null) == "null" &&
                         // FF 3.1b1, 2 halts serialization if an array contains a function:
                         // `[1, true, getClass, 1]` serializes as "[1,true,],". FF 3.1b3
                         // elides non-JSON values from objects and arrays, unless they
                         // define custom `toJSON` methods.
-                        stringify([undef, getClass, null]) == '[null,null,null]' &&
+                        stringify([undef, getClass, null]) == "[null,null,null]" &&
                         // Simple serialization test. FF 3.1b1 uses Unicode escape sequences
                         // where character escape codes are expected (e.g., `\b` => `\u0008`).
-                        stringify({ 'a': [value, true, false, null, '\x00\b\n\f\r\t'] }) == serialized &&
+                        stringify({ "a": [value, true, false, null, "\x00\b\n\f\r\t"] }) == serialized &&
                         // FF 3.1b1 and b2 ignore the `filter` and `width` arguments.
-                        stringify(null, value) === '1' &&
-                        stringify([1, 2], null, 1) == '[\n 1,\n 2\n]' &&
+                        stringify(null, value) === "1" &&
+                        stringify([1, 2], null, 1) == "[\n 1,\n 2\n]" &&
                         // JSON 2, Prototype <= 1.7, and older WebKit builds incorrectly
                         // serialize extended years.
                         stringify(new Date(-8.64e15)) == '"-271821-04-20T00:00:00.000Z"' &&
@@ -41315,17 +41238,17 @@
                   isSupported = stringifySupported;
                 }
                 // Test `JSON.parse`.
-                if (name == 'json-parse') {
+                if (name == "json-parse") {
                   var parse = exports.parse;
-                  if (typeof parse == 'function') {
+                  if (typeof parse == "function") {
                     try {
                       // FF 3.1b1, b2 will throw an exception if a bare literal is provided.
                       // Conforming implementations should also coerce the initial argument to
                       // a string prior to parsing.
-                      if (parse('0') === 0 && !parse(false)) {
+                      if (parse("0") === 0 && !parse(false)) {
                         // Simple parsing test.
                         value = parse(serialized);
-                        var parseSupported = value['a'].length == 5 && value['a'][0] === 1;
+                        var parseSupported = value["a"].length == 5 && value["a"][0] === 1;
                         if (parseSupported) {
                           try {
                             // Safari <= 5.1.2 and FF 3.1b1 allow unescaped tabs in strings.
@@ -41337,7 +41260,7 @@
                               // FF 4.0 and 4.0.1 allow leading `+` signs and leading
                               // decimal points. FF 4.0, 4.0.1, and IE 9-10 also allow
                               // certain octal literals.
-                              parseSupported = parse('01') !== 1;
+                              parseSupported = parse("01") !== 1;
                             } catch (exception) {
                             }
                           }
@@ -41346,7 +41269,7 @@
                               // FF 4.0, 4.0.1, and Rhino 1.7R3-R4 allow trailing decimal
                               // points. These environments, along with FF 3.1b1 and 2,
                               // also allow trailing commas in JSON objects and arrays.
-                              parseSupported = parse('1.') !== 1;
+                              parseSupported = parse("1.") !== 1;
                             } catch (exception) {
                             }
                           }
@@ -41362,17 +41285,17 @@
               return has[name] = !!isSupported;
             }
 
-            if (!has('json')) {
+            if (!has("json")) {
               // Common `[[Class]]` name aliases.
-              var functionClass = '[object Function]',
-                dateClass = '[object Date]',
-                numberClass = '[object Number]',
-                stringClass = '[object String]',
-                arrayClass = '[object Array]',
-                booleanClass = '[object Boolean]';
+              var functionClass = "[object Function]",
+                dateClass = "[object Date]",
+                numberClass = "[object Number]",
+                stringClass = "[object String]",
+                arrayClass = "[object Array]",
+                booleanClass = "[object Boolean]";
 
               // Detect incomplete support for accessing string characters by index.
-              var charIndexBuggy = has('bug-string-char-index');
+              var charIndexBuggy = has("bug-string-char-index");
 
               // Define additional utility methods if the `Date` methods are buggy.
               if (!isExtended) {
@@ -41395,7 +41318,7 @@
                   if ((members.__proto__ = null, members.__proto__ = {
                     // The *proto* property cannot be set multiple times in recent
                     // versions of Firefox and SeaMonkey.
-                    'toString': 1
+                    "toString": 1
                   }, members).toString != getClass) {
                     // Safari <= 2.0.3 doesn't implement `Object#hasOwnProperty`, but
                     // supports the mutable *proto* property.
@@ -41448,16 +41371,16 @@
                 // Normalize the iteration algorithm.
                 if (!size) {
                   // A list of non-enumerable properties inherited from `Object.prototype`.
-                  members = ['valueOf', 'toString', 'toLocaleString', 'propertyIsEnumerable', 'isPrototypeOf', 'hasOwnProperty', 'constructor'];
+                  members = ["valueOf", "toString", "toLocaleString", "propertyIsEnumerable", "isPrototypeOf", "hasOwnProperty", "constructor"];
                   // IE <= 8, Mozilla 1.0, and Netscape 6.2 ignore shadowed non-enumerable
                   // properties.
                   forEach = function(object, callback) {
                     var isFunction = getClass.call(object) == functionClass, property, length;
-                    var hasProperty = !isFunction && typeof object.constructor != 'function' && objectTypes[typeof object.hasOwnProperty] && object.hasOwnProperty || isProperty;
+                    var hasProperty = !isFunction && typeof object.constructor != "function" && objectTypes[typeof object.hasOwnProperty] && object.hasOwnProperty || isProperty;
                     for (property in object) {
                       // Gecko <= 1.0 enumerates the `prototype` property of functions under
                       // certain conditions; IE does not.
-                      if (!(isFunction && property == 'prototype') && hasProperty.call(object, property)) {
+                      if (!(isFunction && property == "prototype") && hasProperty.call(object, property)) {
                         callback(property);
                       }
                     }
@@ -41473,7 +41396,7 @@
                       // Store each property name to prevent double enumeration. The
                       // `prototype` property of functions is not enumerated due to cross-
                       // environment inconsistencies.
-                      if (!(isFunction && property == 'prototype') && !isProperty.call(members, property) && (members[property] = 1) && isProperty.call(object, property)) {
+                      if (!(isFunction && property == "prototype") && !isProperty.call(members, property) && (members[property] = 1) && isProperty.call(object, property)) {
                         callback(property);
                       }
                     }
@@ -41483,13 +41406,13 @@
                   forEach = function(object, callback) {
                     var isFunction = getClass.call(object) == functionClass, property, isConstructor;
                     for (property in object) {
-                      if (!(isFunction && property == 'prototype') && isProperty.call(object, property) && !(isConstructor = property === 'constructor')) {
+                      if (!(isFunction && property == "prototype") && isProperty.call(object, property) && !(isConstructor = property === "constructor")) {
                         callback(property);
                       }
                     }
                     // Manually invoke the callback for the `constructor` property due to
                     // cross-environment inconsistencies.
-                    if (isConstructor || isProperty.call(object, (property = 'constructor'))) {
+                    if (isConstructor || isProperty.call(object, (property = "constructor"))) {
                       callback(property);
                     }
                   };
@@ -41503,21 +41426,21 @@
               // indicates which properties should be serialized. The optional `width`
               // argument may be either a string or number that specifies the indentation
               // level of the output.
-              if (!has('json-stringify')) {
+              if (!has("json-stringify")) {
                 // Internal: A map of control characters and their escaped equivalents.
                 var Escapes = {
-                  92: '\\\\',
+                  92: "\\\\",
                   34: '\\"',
-                  8: '\\b',
-                  12: '\\f',
-                  10: '\\n',
-                  13: '\\r',
-                  9: '\\t'
+                  8: "\\b",
+                  12: "\\f",
+                  10: "\\n",
+                  13: "\\r",
+                  9: "\\t"
                 };
 
                 // Internal: Converts `value` into a zero-padded string such that its
                 // length is at least equal to `width`. The `width` must be <= 6.
-                var leadingZeroes = '000000';
+                var leadingZeroes = "000000";
                 var toPaddedString = function(width, value) {
                   // The `|| 0` expression is necessary to work around a bug in
                   // Opera <= 7.54u2 where `0 == -0`, but `String(-0) !== "0"`.
@@ -41528,10 +41451,10 @@
                 // characters (characters with code unit values between 0 and 31) with
                 // their escaped equivalents. This is an implementation of the
                 // `Quote(value)` operation defined in ES 5.1 section 15.12.3.
-                var unicodePrefix = '\\u00';
+                var unicodePrefix = "\\u00";
                 var quote = function(value) {
                   var result = '"', index = 0, length = value.length, useCharIndex = !charIndexBuggy || length > 10;
-                  var symbols = useCharIndex && (charIndexBuggy ? value.split('') : value);
+                  var symbols = useCharIndex && (charIndexBuggy ? value.split("") : value);
                   for (; index < length; index++) {
                     var charCode = value.charCodeAt(index);
                     // If the character is a control character, append its Unicode or
@@ -41567,9 +41490,9 @@
                     value = object[property];
                   } catch (exception) {
                   }
-                  if (typeof value == 'object' && value) {
+                  if (typeof value == "object" && value) {
                     className = getClass.call(value);
-                    if (className == dateClass && !isProperty.call(value, 'toJSON')) {
+                    if (className == dateClass && !isProperty.call(value, "toJSON")) {
                       if (value > -1 / 0 && value < 1 / 0) {
                         // Dates are serialized according to the `Date#toJSON` method
                         // specified in ES 5.1 section 15.9.5.44. See section 15.9.1.15
@@ -41603,17 +41526,17 @@
                           milliseconds = value.getUTCMilliseconds();
                         }
                         // Serialize extended years correctly.
-                        value = (year <= 0 || year >= 1e4 ? (year < 0 ? '-' : '+') + toPaddedString(6, year < 0 ? -year : year) : toPaddedString(4, year)) +
-                          '-' + toPaddedString(2, month + 1) + '-' + toPaddedString(2, date) +
+                        value = (year <= 0 || year >= 1e4 ? (year < 0 ? "-" : "+") + toPaddedString(6, year < 0 ? -year : year) : toPaddedString(4, year)) +
+                          "-" + toPaddedString(2, month + 1) + "-" + toPaddedString(2, date) +
                           // Months, dates, hours, minutes, and seconds should have two
                           // digits; milliseconds should have three.
-                          'T' + toPaddedString(2, hours) + ':' + toPaddedString(2, minutes) + ':' + toPaddedString(2, seconds) +
+                          "T" + toPaddedString(2, hours) + ":" + toPaddedString(2, minutes) + ":" + toPaddedString(2, seconds) +
                           // Milliseconds are optional in ES 5.0, but required in 5.1.
-                          '.' + toPaddedString(3, milliseconds) + 'Z';
+                          "." + toPaddedString(3, milliseconds) + "Z";
                       } else {
                         value = null;
                       }
-                    } else if (typeof value.toJSON == 'function' && ((className != numberClass && className != stringClass && className != arrayClass) || isProperty.call(value, 'toJSON'))) {
+                    } else if (typeof value.toJSON == "function" && ((className != numberClass && className != stringClass && className != arrayClass) || isProperty.call(value, "toJSON"))) {
                       // Prototype <= 1.6.1 adds non-standard `toJSON` methods to the
                       // `Number`, `String`, `Date`, and `Array` prototypes. JSON 3
                       // ignores all `toJSON` methods on these objects unless they are
@@ -41627,22 +41550,22 @@
                     value = callback.call(object, property, value);
                   }
                   if (value === null) {
-                    return 'null';
+                    return "null";
                   }
                   className = getClass.call(value);
                   if (className == booleanClass) {
                     // Booleans are represented literally.
-                    return '' + value;
+                    return "" + value;
                   } else if (className == numberClass) {
                     // JSON numbers must be finite. `Infinity` and `NaN` are serialized as
                     // `"null"`.
-                    return value > -1 / 0 && value < 1 / 0 ? '' + value : 'null';
+                    return value > -1 / 0 && value < 1 / 0 ? "" + value : "null";
                   } else if (className == stringClass) {
                     // Strings are double-quoted and escaped.
-                    return quote('' + value);
+                    return quote("" + value);
                   }
                   // Recursively serialize objects and arrays.
-                  if (typeof value == 'object') {
+                  if (typeof value == "object") {
                     // Check for cyclic structures. This is a linear search; performance
                     // is inversely proportional to the number of unique nested objects.
                     for (length = stack.length; length--;) {
@@ -41661,9 +41584,9 @@
                       // Recursively serialize array elements.
                       for (index = 0, length = value.length; index < length; index++) {
                         element = serialize(index, value, callback, properties, whitespace, indentation, stack);
-                        results.push(element === undef ? 'null' : element);
+                        results.push(element === undef ? "null" : element);
                       }
-                      result = results.length ? (whitespace ? '[\n' + indentation + results.join(',\n' + indentation) + '\n' + prefix + ']' : ('[' + results.join(',') + ']')) : '[]';
+                      result = results.length ? (whitespace ? "[\n" + indentation + results.join(",\n" + indentation) + "\n" + prefix + "]" : ("[" + results.join(",") + "]")) : "[]";
                     } else {
                       // Recursively serialize object members. Members are selected from
                       // either a user-specified list of property names, or the object
@@ -41677,10 +41600,10 @@
                           // The "`space` character" refers to the literal space
                           // character, not the `space` {width} argument provided to
                           // `JSON.stringify`.
-                          results.push(quote(property) + ':' + (whitespace ? ' ' : '') + element);
+                          results.push(quote(property) + ":" + (whitespace ? " " : "") + element);
                         }
                       });
-                      result = results.length ? (whitespace ? '{\n' + indentation + results.join(',\n' + indentation) + '\n' + prefix + '}' : ('{' + results.join(',') + '}')) : '{}';
+                      result = results.length ? (whitespace ? "{\n" + indentation + results.join(",\n" + indentation) + "\n" + prefix + "}" : ("{" + results.join(",") + "}")) : "{}";
                     }
                     // Remove the object from the traversed object stack.
                     stack.pop();
@@ -41705,7 +41628,7 @@
                       // Convert the `width` to an integer and create a string containing
                       // `width` number of space characters.
                       if ((width -= width % 1) > 0) {
-                        for (whitespace = '', width > 10 && (width = 10); whitespace.length < width; whitespace += ' ') ;
+                        for (whitespace = "", width > 10 && (width = 10); whitespace.length < width; whitespace += " ") ;
                       }
                     } else if (className == stringClass) {
                       whitespace = width.length <= 10 ? width : width.slice(0, 10);
@@ -41714,25 +41637,25 @@
                   // Opera <= 7.54u2 discards the values associated with empty string keys
                   // (`""`) only if they are used directly within an object member list
                   // (e.g., `!("" in { "": 1})`).
-                  return serialize('', (value = {}, value[''] = source, value), callback, properties, whitespace, '', []);
+                  return serialize("", (value = {}, value[""] = source, value), callback, properties, whitespace, "", []);
                 };
               }
 
               // Public: Parses a JSON source string.
-              if (!has('json-parse')) {
+              if (!has("json-parse")) {
                 var fromCharCode = String.fromCharCode;
 
                 // Internal: A map of escaped control characters and their unescaped
                 // equivalents.
                 var Unescapes = {
-                  92: '\\',
+                  92: "\\",
                   34: '"',
-                  47: '/',
-                  98: '\b',
-                  116: '\t',
-                  110: '\n',
-                  102: '\f',
-                  114: '\r'
+                  47: "/",
+                  98: "\b",
+                  116: "\t",
+                  110: "\n",
+                  102: "\f",
+                  114: "\r"
                 };
 
                 // Internal: Stores the parser state.
@@ -41776,7 +41699,7 @@
                         // begin parsing the string. String tokens are prefixed with the
                         // sentinel `@` character to distinguish them from punctuators and
                         // end-of-string tokens.
-                        for (value = '@', Index++; Index < length;) {
+                        for (value = "@", Index++; Index < length;) {
                           charCode = source.charCodeAt(Index);
                           if (charCode < 32) {
                             // Unescaped ASCII control characters (those with a code unit
@@ -41815,7 +41738,7 @@
                                   }
                                 }
                                 // Revive the escaped character.
-                                value += fromCharCode('0x' + source.slice(begin, Index));
+                                value += fromCharCode("0x" + source.slice(begin, Index));
                                 break;
                               default:
                                 // Invalid escape sequence.
@@ -41900,13 +41823,13 @@
                           abort();
                         }
                         // `true`, `false`, and `null` literals.
-                        if (source.slice(Index, Index + 4) == 'true') {
+                        if (source.slice(Index, Index + 4) == "true") {
                           Index += 4;
                           return true;
-                        } else if (source.slice(Index, Index + 5) == 'false') {
+                        } else if (source.slice(Index, Index + 5) == "false") {
                           Index += 5;
                           return false;
-                        } else if (source.slice(Index, Index + 4) == 'null') {
+                        } else if (source.slice(Index, Index + 4) == "null") {
                           Index += 4;
                           return null;
                         }
@@ -41916,38 +41839,38 @@
                   }
                   // Return the sentinel `$` character if the parser has reached the end
                   // of the source string.
-                  return '$';
+                  return "$";
                 };
 
                 // Internal: Parses a JSON `value` token.
                 var get = function(value) {
                   var results, hasMembers;
-                  if (value == '$') {
+                  if (value == "$") {
                     // Unexpected end of input.
                     abort();
                   }
-                  if (typeof value == 'string') {
-                    if ((charIndexBuggy ? value.charAt(0) : value[0]) == '@') {
+                  if (typeof value == "string") {
+                    if ((charIndexBuggy ? value.charAt(0) : value[0]) == "@") {
                       // Remove the sentinel `@` character.
                       return value.slice(1);
                     }
                     // Parse object and array literals.
-                    if (value == '[') {
+                    if (value == "[") {
                       // Parses a JSON array, returning a new JavaScript array.
                       results = [];
                       for (; ; hasMembers || (hasMembers = true)) {
                         value = lex();
                         // A closing square bracket marks the end of the array literal.
-                        if (value == ']') {
+                        if (value == "]") {
                           break;
                         }
                         // If the array literal contains elements, the current token
                         // should be a comma separating the previous element from the
                         // next.
                         if (hasMembers) {
-                          if (value == ',') {
+                          if (value == ",") {
                             value = lex();
-                            if (value == ']') {
+                            if (value == "]") {
                               // Unexpected trailing `,` in array literal.
                               abort();
                             }
@@ -41957,27 +41880,27 @@
                           }
                         }
                         // Elisions and leading commas are not permitted.
-                        if (value == ',') {
+                        if (value == ",") {
                           abort();
                         }
                         results.push(get(value));
                       }
                       return results;
-                    } else if (value == '{') {
+                    } else if (value == "{") {
                       // Parses a JSON object, returning a new JavaScript object.
                       results = {};
                       for (; ; hasMembers || (hasMembers = true)) {
                         value = lex();
                         // A closing curly brace marks the end of the object literal.
-                        if (value == '}') {
+                        if (value == "}") {
                           break;
                         }
                         // If the object literal contains members, the current token
                         // should be a comma separator.
                         if (hasMembers) {
-                          if (value == ',') {
+                          if (value == ",") {
                             value = lex();
-                            if (value == '}') {
+                            if (value == "}") {
                               // Unexpected trailing `,` in object literal.
                               abort();
                             }
@@ -41989,7 +41912,7 @@
                         // Leading commas are not permitted, object property names must be
                         // double-quoted strings, and a `:` must separate each property
                         // name and value.
-                        if (value == ',' || typeof value != 'string' || (charIndexBuggy ? value.charAt(0) : value[0]) != '@' || lex() != ':') {
+                        if (value == "," || typeof value != "string" || (charIndexBuggy ? value.charAt(0) : value[0]) != "@" || lex() != ":") {
                           abort();
                         }
                         results[value.slice(1)] = get(lex());
@@ -42017,7 +41940,7 @@
                 // `Walk(holder, name)` operation defined in ES 5.1 section 15.12.2.
                 var walk = function(source, property, callback) {
                   var value = source[property], length;
-                  if (typeof value == 'object' && value) {
+                  if (typeof value == "object" && value) {
                     // `forEach` can't be used to traverse an array in Opera <= 8.54
                     // because its `Object#hasOwnProperty` implementation returns `false`
                     // for array indices (e.g., `![1, 2, 3].hasOwnProperty("0")`).
@@ -42038,20 +41961,20 @@
                 exports.parse = function(source, callback) {
                   var result, value;
                   Index = 0;
-                  Source = '' + source;
+                  Source = "" + source;
                   result = get(lex());
                   // If a JSON string contains multiple tokens, it is invalid.
-                  if (lex() != '$') {
+                  if (lex() != "$") {
                     abort();
                   }
                   // Reset the parser state.
                   Index = Source = null;
-                  return callback && getClass.call(callback) == functionClass ? walk((value = {}, value[''] = result, value), '', callback) : result;
+                  return callback && getClass.call(callback) == functionClass ? walk((value = {}, value[""] = result, value), "", callback) : result;
                 };
               }
             }
 
-            exports['runInContext'] = runInContext;
+            exports["runInContext"] = runInContext;
             return exports;
           }
 
@@ -42061,17 +41984,17 @@
           } else {
             // Export for web browsers and JavaScript engines.
             var nativeJSON = root.JSON,
-              previousJSON = root['JSON3'],
+              previousJSON = root["JSON3"],
               isRestored = false;
 
-            var JSON3 = runInContext(root, (root['JSON3'] = {
+            var JSON3 = runInContext(root, (root["JSON3"] = {
               // Public: Restores the original value of the global `JSON` object and
               // returns a reference to the `JSON3` object.
-              'noConflict': function() {
+              "noConflict": function() {
                 if (!isRestored) {
                   isRestored = true;
                   root.JSON = nativeJSON;
-                  root['JSON3'] = previousJSON;
+                  root["JSON3"] = previousJSON;
                   nativeJSON = previousJSON = null;
                 }
                 return JSON3;
@@ -42079,8 +42002,8 @@
             }));
 
             root.JSON = {
-              'parse': JSON3.parse,
-              'stringify': JSON3.stringify
+              "parse": JSON3.parse,
+              "stringify": JSON3.stringify
             };
           }
 
@@ -42092,7 +42015,7 @@
           }
         }).call(this);
 
-      }).call(this, typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {})
+      }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
     }, {}],
     639: [function(require, module, exports) {
       /**
@@ -42194,7 +42117,7 @@
         return cancel;
       }
 
-    }, { 'debug': 623 }],
+    }, { "debug": 623 }],
     640: [function(require, module, exports) {
       /**
        * Module dependencies.
@@ -42228,9 +42151,8 @@
         }
 
         // Allow them to pass in different URLs depending on the protocol.
-        if (https && options.https) {
-          options.src = options.https;
-        } else if (!https && options.http) options.src = options.http;
+        if (https && options.https) options.src = options.https;
+        else if (!https && options.http) options.src = options.http;
 
         // Make the `<iframe>` element and insert it before the first iframe on the
         // page, which is guaranteed to exist since this Javaiframe is running.
@@ -42258,7 +42180,7 @@
         return iframe;
       };
 
-    }, { 'is': 633, 'next-tick': 646, 'script-onload': 655 }],
+    }, { "is": 633, "next-tick": 646, "script-onload": 655 }],
     641: [function(require, module, exports) {
       (function() {
         var crypt = require('crypt'),
@@ -42269,17 +42191,15 @@
           // The core
           md5 = function(message, options) {
             // Convert to byte array
-            if (message.constructor == String) {
-              if (options && options.encoding === 'binary') {
+            if (message.constructor == String)
+              if (options && options.encoding === 'binary')
                 message = bin.stringToBytes(message);
-              } else {
+              else
                 message = utf8.stringToBytes(message);
-              }
-            } else if (isBuffer(message)) {
+            else if (isBuffer(message))
               message = Array.prototype.slice.call(message, 0);
-            } else if (!Array.isArray(message)) {
+            else if (!Array.isArray(message))
               message = message.toString();
-            }
             // else, assume byte array already
 
             var m = crypt.bytesToWords(message),
@@ -42412,9 +42332,8 @@
         md5._digestsize = 16;
 
         module.exports = function(message, options) {
-          if (message === undefined || message === null) {
+          if (message === undefined || message === null)
             throw new Error('Illegal argument ' + message);
-          }
 
           var digestbytes = crypt.wordsToBytes(md5(message, options));
           return options && options.asBytes ? digestbytes :
@@ -42424,7 +42343,7 @@
 
       })();
 
-    }, { 'charenc': 607, 'crypt': 621, 'is-buffer': 631 }],
+    }, { "charenc": 607, "crypt": 621, "is-buffer": 631 }],
     642: [function(require, module, exports) {
       /**
        * Helpers.
@@ -42625,7 +42544,7 @@
         return num;
       }
 
-    }, { './milliseconds': 644, './seconds': 645, '@segment/isodate': 585, 'is': 633 }],
+    }, { "./milliseconds": 644, "./seconds": 645, "@segment/isodate": 585, "is": 633 }],
     644: [function(require, module, exports) {
       'use strict';
 
@@ -42699,7 +42618,7 @@
         var callable, byObserver;
 
         callable = function(fn) {
-          if (typeof fn !== 'function') throw new TypeError(fn + ' is not a function');
+          if (typeof fn !== 'function') throw new TypeError(fn + " is not a function");
           return fn;
         };
 
@@ -42721,11 +42640,8 @@
           return function(fn) {
             callable(fn);
             if (queue) {
-              if (typeof queue === 'function') {
-                queue = [queue, fn];
-              } else {
-                queue.push(fn);
-              }
+              if (typeof queue === 'function') queue = [queue, fn];
+              else queue.push(fn);
               return;
             }
             queue = fn;
@@ -42769,7 +42685,7 @@
         }());
 
       }).call(this, require('_process'))
-    }, { '_process': 653 }],
+    }, { "_process": 653 }],
     647: [function(require, module, exports) {
 
       var identity = function(_) {
@@ -43151,7 +43067,7 @@
       function call(callback) {
         callback(document.body);
       }
-    }, { 'each': 611 }],
+    }, { "each": 611 }],
     652: [function(require, module, exports) {
 
       /**
@@ -43481,7 +43397,7 @@
         return null == value;
       }
 
-    }, { 'type-component': 678 }],
+    }, { "type-component": 678 }],
     655: [function(require, module, exports) {
 
 // https://github.com/thirdpartyjs/thirdpartyjs-code/blob/master/examples/templates/02/loading-files/index.html
@@ -43579,7 +43495,7 @@
         }
       };
 
-    }, { 'obj-case': 647 }],
+    }, { "obj-case": 647 }],
     657: [function(require, module, exports) {
       'use strict';
 
@@ -43651,7 +43567,7 @@
 
       module.exports = Alias;
 
-    }, { './facade': 658, './utils': 666 }],
+    }, { "./facade": 658, "./utils": 666 }],
     658: [function(require, module, exports) {
       'use strict';
 
@@ -43674,11 +43590,8 @@
         if (!('clone' in opts)) opts.clone = true;
         if (opts.clone) obj = clone(obj);
         if (!('traverse' in opts)) opts.traverse = true;
-        if (!('timestamp' in obj)) {
-          obj.timestamp = new Date();
-        } else {
-          obj.timestamp = newDate(obj.timestamp);
-        }
+        if (!('timestamp' in obj)) obj.timestamp = new Date();
+        else obj.timestamp = newDate(obj.timestamp);
         if (opts.traverse) traverse(obj);
         this.opts = opts;
         this.obj = obj;
@@ -43970,12 +43883,12 @@
       module.exports = Facade;
 
     }, {
-      './address': 656,
-      './is-enabled': 662,
-      './utils': 666,
-      '@segment/isodate-traverse': 584,
-      'new-date': 643,
-      'obj-case': 647
+      "./address": 656,
+      "./is-enabled": 662,
+      "./utils": 666,
+      "@segment/isodate-traverse": 584,
+      "new-date": 643,
+      "obj-case": 647
     }],
     659: [function(require, module, exports) {
       'use strict';
@@ -44098,7 +44011,7 @@
 
       module.exports = Group;
 
-    }, { './facade': 658, './utils': 666, 'is-email': 632, 'new-date': 643 }],
+    }, { "./facade": 658, "./utils": 666, "is-email": 632, "new-date": 643 }],
     660: [function(require, module, exports) {
       'use strict';
 
@@ -44344,7 +44257,7 @@
 
       module.exports = Identify;
 
-    }, { './facade': 658, './utils': 666, 'is-email': 632, 'new-date': 643, 'obj-case': 647, 'trim': 677 }],
+    }, { "./facade": 658, "./utils": 666, "is-email": 632, "new-date": 643, "obj-case": 647, "trim": 677 }],
     661: [function(require, module, exports) {
       'use strict';
 
@@ -44368,13 +44281,13 @@
       module.exports = Facade;
 
     }, {
-      './alias': 657,
-      './facade': 658,
-      './group': 659,
-      './identify': 660,
-      './page': 663,
-      './screen': 664,
-      './track': 665
+      "./alias": 657,
+      "./facade": 658,
+      "./group": 659,
+      "./identify": 660,
+      "./page": 663,
+      "./screen": 664,
+      "./track": 665
     }],
     662: [function(require, module, exports) {
       'use strict';
@@ -44549,7 +44462,7 @@
 
       module.exports = Page;
 
-    }, { './facade': 658, './track': 665, './utils': 666, 'is-email': 632 }],
+    }, { "./facade": 658, "./track": 665, "./utils": 666, "is-email": 632 }],
     664: [function(require, module, exports) {
       'use strict';
 
@@ -44622,7 +44535,7 @@
 
       module.exports = Screen;
 
-    }, { './page': 663, './track': 665, './utils': 666 }],
+    }, { "./page": 663, "./track": 665, "./utils": 666 }],
     665: [function(require, module, exports) {
       'use strict';
 
@@ -44950,10 +44863,10 @@
 
       module.exports = Track;
 
-    }, { './facade': 658, './identify': 660, './utils': 666, 'is-email': 632, 'obj-case': 647 }],
+    }, { "./facade": 658, "./identify": 660, "./utils": 666, "is-email": 632, "obj-case": 647 }],
     666: [function(require, module, exports) {
       arguments[4][54][0].apply(exports, arguments)
-    }, { '@ndhoule/clone': 194, 'dup': 54, 'inherits': 630, 'type-component': 678 }],
+    }, { "@ndhoule/clone": 194, "dup": 54, "inherits": 630, "type-component": 678 }],
     667: [function(require, module, exports) {
 
       /**
@@ -45742,7 +45655,7 @@
         })
       }
 
-    }, { 'to-space-case': 674 }],
+    }, { "to-space-case": 674 }],
     671: [function(require, module, exports) {
 
       /**
@@ -45870,7 +45783,7 @@
         for (i = 0; i < props.length; i++) {
           prop = props[i];
           val = '_.' + prop;
-          val = '(\'function\' == typeof ' + val + ' ? ' + val + '() : ' + val + ')';
+          val = "('function' == typeof " + val + " ? " + val + "() : " + val + ")";
 
           // mimic negative lookbehind to avoid problems with nested properties
           str = stripNested(prop, str, val);
@@ -45897,10 +45810,10 @@
         });
       }
 
-    }, { 'component-props': 616, 'props': 616 }],
+    }, { "component-props": 616, "props": 616 }],
     672: [function(require, module, exports) {
       arguments[4][451][0].apply(exports, arguments)
-    }, { 'dup': 451 }],
+    }, { "dup": 451 }],
     673: [function(require, module, exports) {
 
       var toSpace = require('to-space-case')
@@ -45922,7 +45835,7 @@
         return toSpace(string).replace(/\s/g, '_')
       }
 
-    }, { 'to-space-case': 674 }],
+    }, { "to-space-case": 674 }],
     674: [function(require, module, exports) {
 
       var clean = require('to-no-case')
@@ -45946,10 +45859,10 @@
         }).trim()
       }
 
-    }, { 'to-no-case': 675 }],
+    }, { "to-no-case": 675 }],
     675: [function(require, module, exports) {
       arguments[4][55][0].apply(exports, arguments)
-    }, { 'dup': 55 }],
+    }, { "dup": 55 }],
     676: [function(require, module, exports) {
       'use strict';
 
@@ -46121,8 +46034,8 @@
       module.exports = encode;
 
       function encode(string) {
-        string = string.replace(/\r\n/g, '\n');
-        var utftext = '';
+        string = string.replace(/\r\n/g, "\n");
+        var utftext = "";
 
         for (var n = 0; n < string.length; n++) {
 
@@ -46179,7 +46092,7 @@
         module.exports = rng;
 
 
-      }).call(this, typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {})
+      }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
     }, {}],
     684: [function(require, module, exports) {
 //     uuid.js
@@ -46366,7 +46279,7 @@
 
       module.exports = uuid;
 
-    }, { './rng': 683 }],
+    }, { "./rng": 683 }],
     685: [function(require, module, exports) {
 
       /**
@@ -46462,7 +46375,7 @@
         return ret;
       }
 
-    }, { 'each': 611, 'unserialize': 686 }],
+    }, { "each": 611, "unserialize": 686 }],
     686: [function(require, module, exports) {
 
       /**
@@ -46483,174 +46396,175 @@
     }, {}],
     687: [function(require, module, exports) {
       module.exports = {
-        'name': '@segment/analytics.js',
-        'author': 'Segment <friends@segment.com>',
-        'version': '2.11.0',
-        'description': 'The hassle-free way to integrate analytics into any web application.',
-        'keywords': [
-          'analytics',
-          'analytics.js',
-          'segment',
-          'segment.io'
+        "name": "@segment/analytics.js",
+        "author": "Segment <friends@segment.com>",
+        "version": "2.11.0",
+        "description": "The hassle-free way to integrate analytics into any web application.",
+        "keywords": [
+          "analytics",
+          "analytics.js",
+          "segment",
+          "segment.io"
         ],
-        'main': 'analytics.js',
-        'scripts': {
-          'build': 'make build',
-          'clean': 'make clean',
-          'test': 'make test'
+        "main": "analytics.js",
+        "scripts": {
+          "build": "make build",
+          "clean": "make clean",
+          "test": "make test"
         },
-        'repository': {
-          'type': 'git',
-          'url': 'https://github.com/segmentio/analytics.js.git'
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/segmentio/analytics.js.git"
         },
-        'license': 'SEE LICENSE IN LICENSE',
-        'bugs': {
-          'url': 'https://github.com/segmentio/analytics.js/issues'
+        "license": "SEE LICENSE IN LICENSE",
+        "bugs": {
+          "url": "https://github.com/segmentio/analytics.js/issues"
         },
-        'homepage': 'https://github.com/segmentio/analytics.js#readme',
-        'dependencies': {
-          '@segment/analytics.js-core': '^3.0.0',
-          '@segment/analytics.js-integration': '^3.1.0',
-          '@segment/analytics.js-integration-adlearn-open-platform': '~/analytics.js/analytics.js-integrations/integrations/adlearn-open-platform',
-          '@segment/analytics.js-integration-adobe-analytics': '~/analytics.js/analytics.js-integrations/integrations/adobe-analytics',
-          '@segment/analytics.js-integration-adobe-target': '~/analytics.js/analytics.js-integrations/integrations/adobe-target',
-          '@segment/analytics.js-integration-adometry': '~/analytics.js/analytics.js-integrations/integrations/adometry',
-          '@segment/analytics.js-integration-adroll': 'git+https://github.com/segment-integrations/analytics.js-integration-adroll.git',
-          '@segment/analytics.js-integration-adwords': 'git+https://github.com/segment-integrations/analytics.js-integration-adwords.git',
-          '@segment/analytics.js-integration-alexa': 'git+https://github.com/segment-integrations/analytics.js-integration-alexa.git',
-          '@segment/analytics.js-integration-amplitude': '~/analytics.js/analytics.js-integrations/integrations/amplitude',
-          '@segment/analytics.js-integration-appboy': '~/analytics.js/analytics.js-integrations/integrations/appboy',
-          '@segment/analytics.js-integration-appnexus': '~/analytics.js/analytics.js-integrations/integrations/appnexus',
-          '@segment/analytics.js-integration-appcues': 'git+https://github.com/segment-integrations/analytics.js-integration-appcues.git',
-          '@segment/analytics.js-integration-atatus': 'git+https://github.com/segment-integrations/analytics.js-integration-atatus.git',
-          '@segment/analytics.js-integration-autosend': 'git+https://github.com/segment-integrations/analytics.js-integration-autosend.git',
-          '@segment/analytics.js-integration-awesm': 'git+https://github.com/segment-integrations/analytics.js-integration-awesm.git',
-          '@segment/analytics.js-integration-bing-ads': 'git+https://github.com/segment-integrations/analytics.js-integration-bing-ads.git',
-          '@segment/analytics.js-integration-blueshift': 'git+https://github.com/segment-integrations/analytics.js-integration-blueshift.git',
-          '@segment/analytics.js-integration-boomtrain': 'git+https://github.com/segment-integrations/analytics.js-integration-boomtrain.git',
-          '@segment/analytics.js-integration-bronto': 'git+https://github.com/segment-integrations/analytics.js-integration-bronto.git',
-          '@segment/analytics.js-integration-bugherd': 'git+https://github.com/segment-integrations/analytics.js-integration-bugherd.git',
-          '@segment/analytics.js-integration-bugsnag': 'git+https://github.com/segment-integrations/analytics.js-integration-bugsnag.git',
-          '@segment/analytics.js-integration-chameleon': 'git+https://github.com/segment-integrations/analytics.js-integration-chameleon.git',
-          '@segment/analytics.js-integration-chartbeat': 'git+https://github.com/segment-integrations/analytics.js-integration-chartbeat.git',
-          '@segment/analytics.js-integration-clevertap': '~/analytics.js/analytics.js-integrations/integrations/clevertap',
-          '@segment/analytics.js-integration-clicky': 'git+https://github.com/segment-integrations/analytics.js-integration-clicky.git',
-          '@segment/analytics.js-integration-comscore': 'git+https://github.com/segment-integrations/analytics.js-integration-comscore.git',
-          '@segment/analytics.js-integration-convertro': '~/analytics.js/analytics.js-integrations/integrations/convertro',
-          '@segment/analytics.js-integration-crazy-egg': 'git+https://github.com/segment-integrations/analytics.js-integration-crazy-egg.git',
-          '@segment/analytics.js-integration-criteo': '~/analytics.js/analytics.js-integrations/integrations/criteo',
-          '@segment/analytics.js-integration-curebit': 'git+https://github.com/segment-integrations/analytics.js-integration-curebit.git',
-          '@segment/analytics.js-integration-customerio': 'git+https://github.com/segment-integrations/analytics.js-integration-customerio.git',
-          '@segment/analytics.js-integration-drift': 'git+https://github.com/segment-integrations/analytics.js-integration-drift.git',
-          '@segment/analytics.js-integration-drip': 'git+https://github.com/segment-integrations/analytics.js-integration-drip.git',
-          '@segment/analytics.js-integration-doubleclick-floodlight': '~/analytics.js/analytics.js-integrations/integrations/doubleclick-floodlight',
-          '@segment/analytics.js-integration-elevio': 'git+https://github.com/segment-integrations/analytics.js-integration-elevio.git',
-          '@segment/analytics.js-integration-eloqua': '~/analytics.js/analytics.js-integrations/integrations/eloqua',
-          '@segment/analytics.js-integration-email-aptitude': '~/analytics.js/analytics.js-integrations/integrations/email-aptitude',
-          '@segment/analytics.js-integration-errorception': 'git+https://github.com/segment-integrations/analytics.js-integration-errorception.git',
-          '@segment/analytics.js-integration-evergage': 'git+https://github.com/segment-integrations/analytics.js-integration-evergage.git',
-          '@segment/analytics.js-integration-extole': 'git+https://github.com/segment-integrations/analytics.js-integration-extole.git',
-          '@segment/analytics.js-integration-facebook-conversion-tracking': 'git+https://github.com/segment-integrations/analytics.js-integration-facebook-conversion-tracking.git',
-          '@segment/analytics.js-integration-facebook-custom-audiences': 'git+https://github.com/segment-integrations/analytics.js-integration-facebook-custom-audiences.git',
-          '@segment/analytics.js-integration-facebook-pixel': '~/analytics.js/analytics.js-integrations/integrations/facebook-pixel',
-          '@segment/analytics.js-integration-foxmetrics': 'git+https://github.com/segment-integrations/analytics.js-integration-foxmetrics.git',
-          '@segment/analytics.js-integration-friendbuy': '~/analytics.js/analytics.js-integrations/integrations/friendbuy',
-          '@segment/analytics.js-integration-frontleaf': 'git+https://github.com/segment-integrations/analytics.js-integration-frontleaf.git',
-          '@segment/analytics.js-integration-fullstory': '~/analytics.js/analytics.js-integrations/integrations/fullstory',
-          '@segment/analytics.js-integration-gauges': 'git+https://github.com/segment-integrations/analytics.js-integration-gauges.git',
-          '@segment/analytics.js-integration-get-satisfaction': 'git+https://github.com/segment-integrations/analytics.js-integration-get-satisfaction.git',
-          '@segment/analytics.js-integration-google-analytics': 'git+https://github.com/segment-integrations/analytics.js-integration-google-analytics.git',
-          '@segment/analytics.js-integration-google-tag-manager': 'git+https://github.com/segment-integrations/analytics.js-integration-google-tag-manager.git',
-          '@segment/analytics.js-integration-gosquared': 'git+https://github.com/segment-integrations/analytics.js-integration-gosquared.git',
-          '@segment/analytics.js-integration-heap': 'git+https://github.com/segment-integrations/analytics.js-integration-heap.git',
-          '@segment/analytics.js-integration-hellobar': 'git+https://github.com/segment-integrations/analytics.js-integration-hellobar.git',
-          '@segment/analytics.js-integration-hindsight': '~/analytics.js/analytics.js-integrations/integrations/hindsight',
-          '@segment/analytics.js-integration-hittail': 'git+https://github.com/segment-integrations/analytics.js-integration-hittail.git',
-          '@segment/analytics.js-integration-hotjar': '~/analytics.js/analytics.js-integrations/integrations/hotjar',
-          '@segment/analytics.js-integration-hubspot': '~/analytics.js/analytics.js-integrations/integrations/hubspot',
-          '@segment/analytics.js-integration-improvely': 'git+https://github.com/segment-integrations/analytics.js-integration-improvely.git',
-          '@segment/analytics.js-integration-inspectlet': 'git+https://github.com/segment-integrations/analytics.js-integration-inspectlet.git',
-          '@segment/analytics.js-integration-intercom': 'git+https://github.com/segment-integrations/analytics.js-integration-intercom.git',
-          '@segment/analytics.js-integration-keen-io': 'git+https://github.com/segment-integrations/analytics.js-integration-keen-io.git',
-          '@segment/analytics.js-integration-kenshoo': 'git+https://github.com/segment-integrations/analytics.js-integration-kenshoo.git',
-          '@segment/analytics.js-integration-kenshoo-infinity': '~/analytics.js/analytics.js-integrations/integrations/kenshoo-infinity',
-          '@segment/analytics.js-integration-kissmetrics': 'git+https://github.com/segment-integrations/analytics.js-integration-kissmetrics.git',
-          '@segment/analytics.js-integration-klaviyo': 'git+https://github.com/segment-integrations/analytics.js-integration-klaviyo.git',
-          '@segment/analytics.js-integration-linkedin-insight-tag': '~/analytics.js/analytics.js-integrations/integrations/linkedin-insight-tag',
-          '@segment/analytics.js-integration-livechat': 'git+https://github.com/segment-integrations/analytics.js-integration-livechat.git',
-          '@segment/analytics.js-integration-localytics': '~/analytics.js/analytics.js-integrations/integrations/localytics',
-          '@segment/analytics.js-integration-lucky-orange': 'git+https://github.com/segment-integrations/analytics.js-integration-lucky-orange.git',
-          '@segment/analytics.js-integration-lytics': 'git+https://github.com/segment-integrations/analytics.js-integration-lytics.git',
-          '@segment/analytics.js-integration-madkudu': 'git+https://github.com/segment-integrations/analytics.js-integration-madkudu.git',
-          '@segment/analytics.js-integration-marketo': '~/analytics.js/analytics.js-integrations/integrations/marketo',
-          '@segment/analytics.js-integration-marketo-v2': '~/analytics.js/analytics.js-integrations/integrations/marketo-v2',
-          '@segment/analytics.js-integration-mediamath': '~/analytics.js/analytics.js-integrations/integrations/mediamath',
-          '@segment/analytics.js-integration-mixpanel': 'git+https://github.com/segment-integrations/analytics.js-integration-mixpanel.git',
-          '@segment/analytics.js-integration-moengage': '~/analytics.js/analytics.js-integrations/integrations/moengage',
-          '@segment/analytics.js-integration-mojn': 'git+https://github.com/segment-integrations/analytics.js-integration-mojn.git',
-          '@segment/analytics.js-integration-mouseflow': 'git+https://github.com/segment-integrations/analytics.js-integration-mouseflow.git',
-          '@segment/analytics.js-integration-mousestats': 'git+https://github.com/segment-integrations/analytics.js-integration-mousestats.git',
-          '@segment/analytics.js-integration-navilytics': 'git+https://github.com/segment-integrations/analytics.js-integration-navilytics.git',
-          '@segment/analytics.js-integration-nielsen-dcr': '~/analytics.js/analytics.js-integrations/integrations/nielsen-dcr',
-          '@segment/analytics.js-integration-nudgespot': 'git+https://github.com/segment-integrations/analytics.js-integration-nudgespot.git',
-          '@segment/analytics.js-integration-olark': 'git+https://github.com/segment-integrations/analytics.js-integration-olark.git',
-          '@segment/analytics.js-integration-omniture': '~/analytics.js/analytics.js-integrations/integrations/omniture',
-          '@segment/analytics.js-integration-onespot': '~/analytics.js/analytics.js-integrations/integrations/onespot',
-          '@segment/analytics.js-integration-optimizely': '~/analytics.js/analytics.js-integrations/integrations/optimizely',
-          '@segment/analytics.js-integration-outbound': 'git+https://github.com/segment-integrations/analytics.js-integration-outbound.git',
-          '@segment/analytics.js-integration-pardot': '~/analytics.js/analytics.js-integrations/integrations/pardot',
-          '@segment/analytics.js-integration-parsely': 'git+https://github.com/segment-integrations/analytics.js-integration-parsely.git',
-          '@segment/analytics.js-integration-perfect-audience': 'git+https://github.com/segment-integrations/analytics.js-integration-perfect-audience.git',
-          '@segment/analytics.js-integration-pingdom': 'git+https://github.com/segment-integrations/analytics.js-integration-pingdom.git',
-          '@segment/analytics.js-integration-pinterest-tag': '~/analytics.js/analytics.js-integrations/integrations/pinterest-tag',
-          '@segment/analytics.js-integration-piwik': 'git+https://github.com/segment-integrations/analytics.js-integration-piwik.git',
-          '@segment/analytics.js-integration-qualaroo': 'git+https://github.com/segment-integrations/analytics.js-integration-qualaroo.git',
-          '@segment/analytics.js-integration-quantcast': 'git+https://github.com/segment-integrations/analytics.js-integration-quantcast.git',
-          '@segment/analytics.js-integration-quanticmind': 'git+https://github.com/segment-integrations/analytics.js-integration-quanticmind.git',
-          '@segment/analytics.js-integration-quora-conversion-pixel': '~/analytics.js/analytics.js-integrations/integrations/quora-conversion-pixel',
-          '@segment/analytics.js-integration-ramen': 'git+https://github.com/segment-integrations/analytics.js-integration-ramen.git',
-          '@segment/analytics.js-integration-rollbar': 'git+https://github.com/segment-integrations/analytics.js-integration-rollbar.git',
-          '@segment/analytics.js-integration-route': 'git+https://github.com/segment-integrations/analytics.js-integration-route.git',
-          '@segment/analytics.js-integration-rockerbox': '~/analytics.js/analytics.js-integrations/integrations/rockerbox',
-          '@segment/analytics.js-integration-rocket-fuel': '~/analytics.js/analytics.js-integrations/integrations/rocket-fuel',
-          '@segment/analytics.js-integration-saasquatch': 'git+https://github.com/segment-integrations/analytics.js-integration-saasquatch.git',
-          '@segment/analytics.js-integration-salesforce-dmp': '~/analytics.js/analytics.js-integrations/integrations/salesforce-dmp',
-          '@segment/analytics.js-integration-salesforce-live-agent': '~/analytics.js/analytics.js-integrations/integrations/salesforce-live-agent',
-          '@segment/analytics.js-integration-satismeter': 'git+https://github.com/segment-integrations/analytics.js-integration-satismeter.git',
-          '@segment/analytics.js-integration-segmentio': 'git+https://github.com/segment-integrations/analytics.js-integration-segmentio.git',
-          '@segment/analytics.js-integration-sentry': 'git+https://github.com/segment-integrations/analytics.js-integration-sentry.git',
-          '@segment/analytics.js-integration-shareasale': '~/analytics.js/analytics.js-integrations/integrations/shareasale',
-          '@segment/analytics.js-integration-simplereach': 'git+https://github.com/segment-integrations/analytics.js-integration-simplereach.git',
-          '@segment/analytics.js-integration-simplifi': '~/analytics.js/analytics.js-integrations/integrations/simplifi',
-          '@segment/analytics.js-integration-snapengage': 'git+https://github.com/segment-integrations/analytics.js-integration-snapengage.git',
-          '@segment/analytics.js-integration-spinnakr': 'git+https://github.com/segment-integrations/analytics.js-integration-spinnakr.git',
-          '@segment/analytics.js-integration-steelhouse': '~/analytics.js/analytics.js-integrations/integrations/steelhouse',
-          '@segment/analytics.js-integration-stripe-radar': '~/analytics.js/analytics.js-integrations/integrations/stripe-radar',
-          '@segment/analytics.js-integration-supporthero': 'git+https://github.com/segment-integrations/analytics.js-integration-supporthero.git',
-          '@segment/analytics.js-integration-tag-injector': '~/analytics.js/analytics.js-integrations/integrations/tag-injector',
-          '@segment/analytics.js-integration-taplytics': 'git+https://github.com/segment-integrations/analytics.js-integration-taplytics.git',
-          '@segment/analytics.js-integration-tapstream': 'git+https://github.com/segment-integrations/analytics.js-integration-tapstream.git',
-          '@segment/analytics.js-integration-totango': '~/analytics.js/analytics.js-integrations/integrations/totango',
-          '@segment/analytics.js-integration-trackjs': '~/analytics.js/analytics.js-integrations/integrations/trackjs',
-          '@segment/analytics.js-integration-trakio': 'git+https://github.com/segment-integrations/analytics.js-integration-trakio.git',
-          '@segment/analytics.js-integration-tvsquared': '~/analytics.js/analytics.js-integrations/integrations/tvsquared',
-          '@segment/analytics.js-integration-twitter-ads': 'git+https://github.com/segment-integrations/analytics.js-integration-twitter-ads.git',
-          '@segment/analytics.js-integration-userlike': 'git+https://github.com/segment-integrations/analytics.js-integration-userlike.git',
-          '@segment/analytics.js-integration-uservoice': 'git+https://github.com/segment-integrations/analytics.js-integration-uservoice.git',
-          '@segment/analytics.js-integration-vero': 'git+https://github.com/segment-integrations/analytics.js-integration-vero.git',
-          '@segment/analytics.js-integration-visual-website-optimizer': 'git+https://github.com/segment-integrations/analytics.js-integration-visual-website-optimizer.git',
-          '@segment/analytics.js-integration-webengage': 'git+https://github.com/segment-integrations/analytics.js-integration-webengage.git',
-          '@segment/analytics.js-integration-woopra': '~/analytics.js/analytics.js-integrations/integrations/woopra',
-          '@segment/analytics.js-integration-wootric': '~/analytics.js/analytics.js-integrations/integrations/wootric',
-          '@segment/analytics.js-integration-yandex-metrica': 'git+https://github.com/segment-integrations/analytics.js-integration-yandex-metrica.git',
-          '@segment/analytics.js-integration-zopim': '~/analytics.js/analytics.js-integrations/integrations/zopim'
+        "homepage": "https://github.com/segmentio/analytics.js#readme",
+        "dependencies": {
+          "@segment/analytics.js-core": "^3.0.0",
+          "@segment/analytics.js-integration": "^3.1.0",
+          "@segment/analytics.js-integration-adlearn-open-platform": "../analytics.js/analytics.js-integrations/integrations/adlearn-open-platform",
+          "@segment/analytics.js-integration-adobe-analytics": "../analytics.js/analytics.js-integrations/integrations/adobe-analytics",
+          "@segment/analytics.js-integration-adobe-target": "../analytics.js/analytics.js-integrations/integrations/adobe-target",
+          "@segment/analytics.js-integration-adometry": "../analytics.js/analytics.js-integrations/integrations/adometry",
+          "@segment/analytics.js-integration-adroll": "git+https://github.com/segment-integrations/analytics.js-integration-adroll.git",
+          "@segment/analytics.js-integration-adwords": "git+https://github.com/segment-integrations/analytics.js-integration-adwords.git",
+          "@segment/analytics.js-integration-alexa": "git+https://github.com/segment-integrations/analytics.js-integration-alexa.git",
+          "@segment/analytics.js-integration-amplitude": "../analytics.js/analytics.js-integrations/integrations/amplitude",
+          "@segment/analytics.js-integration-appboy": "../analytics.js/analytics.js-integrations/integrations/appboy",
+          "@segment/analytics.js-integration-appcues": "git+https://github.com/segment-integrations/analytics.js-integration-appcues.git",
+          "@segment/analytics.js-integration-appnexus": "../analytics.js/analytics.js-integrations/integrations/appnexus",
+          "@segment/analytics.js-integration-atatus": "git+https://github.com/segment-integrations/analytics.js-integration-atatus.git",
+          "@segment/analytics.js-integration-autosend": "git+https://github.com/segment-integrations/analytics.js-integration-autosend.git",
+          "@segment/analytics.js-integration-awesm": "git+https://github.com/segment-integrations/analytics.js-integration-awesm.git",
+          "@segment/analytics.js-integration-bing-ads": "git+https://github.com/segment-integrations/analytics.js-integration-bing-ads.git",
+          "@segment/analytics.js-integration-blueshift": "git+https://github.com/segment-integrations/analytics.js-integration-blueshift.git",
+          "@segment/analytics.js-integration-boomtrain": "git+https://github.com/segment-integrations/analytics.js-integration-boomtrain.git",
+          "@segment/analytics.js-integration-bronto": "git+https://github.com/segment-integrations/analytics.js-integration-bronto.git",
+          "@segment/analytics.js-integration-bugherd": "git+https://github.com/segment-integrations/analytics.js-integration-bugherd.git",
+          "@segment/analytics.js-integration-bugsnag": "git+https://github.com/segment-integrations/analytics.js-integration-bugsnag.git",
+          "@segment/analytics.js-integration-chameleon": "git+https://github.com/segment-integrations/analytics.js-integration-chameleon.git",
+          "@segment/analytics.js-integration-chartbeat": "git+https://github.com/segment-integrations/analytics.js-integration-chartbeat.git",
+          "@segment/analytics.js-integration-clevertap": "../analytics.js/analytics.js-integrations/integrations/clevertap",
+          "@segment/analytics.js-integration-clicky": "git+https://github.com/segment-integrations/analytics.js-integration-clicky.git",
+          "@segment/analytics.js-integration-comscore": "git+https://github.com/segment-integrations/analytics.js-integration-comscore.git",
+          "@segment/analytics.js-integration-convertro": "../analytics.js/analytics.js-integrations/integrations/convertro",
+          "@segment/analytics.js-integration-crazy-egg": "git+https://github.com/segment-integrations/analytics.js-integration-crazy-egg.git",
+          "@segment/analytics.js-integration-criteo": "../analytics.js/analytics.js-integrations/integrations/criteo",
+          "@segment/analytics.js-integration-curebit": "git+https://github.com/segment-integrations/analytics.js-integration-curebit.git",
+          "@segment/analytics.js-integration-customerio": "git+https://github.com/segment-integrations/analytics.js-integration-customerio.git",
+          "@segment/analytics.js-integration-doubleclick-floodlight": "../analytics.js/analytics.js-integrations/integrations/doubleclick-floodlight",
+          "@segment/analytics.js-integration-drift": "git+https://github.com/segment-integrations/analytics.js-integration-drift.git",
+          "@segment/analytics.js-integration-drip": "git+https://github.com/segment-integrations/analytics.js-integration-drip.git",
+          "@segment/analytics.js-integration-elevio": "git+https://github.com/segment-integrations/analytics.js-integration-elevio.git",
+          "@segment/analytics.js-integration-eloqua": "../analytics.js/analytics.js-integrations/integrations/eloqua",
+          "@segment/analytics.js-integration-email-aptitude": "../analytics.js/analytics.js-integrations/integrations/email-aptitude",
+          "@segment/analytics.js-integration-errorception": "git+https://github.com/segment-integrations/analytics.js-integration-errorception.git",
+          "@segment/analytics.js-integration-evergage": "git+https://github.com/segment-integrations/analytics.js-integration-evergage.git",
+          "@segment/analytics.js-integration-extole": "git+https://github.com/segment-integrations/analytics.js-integration-extole.git",
+          "@segment/analytics.js-integration-facebook-conversion-tracking": "git+https://github.com/segment-integrations/analytics.js-integration-facebook-conversion-tracking.git",
+          "@segment/analytics.js-integration-facebook-custom-audiences": "git+https://github.com/segment-integrations/analytics.js-integration-facebook-custom-audiences.git",
+          "@segment/analytics.js-integration-facebook-pixel": "../analytics.js/analytics.js-integrations/integrations/facebook-pixel",
+          "@segment/analytics.js-integration-foxmetrics": "git+https://github.com/segment-integrations/analytics.js-integration-foxmetrics.git",
+          "@segment/analytics.js-integration-friendbuy": "../analytics.js/analytics.js-integrations/integrations/friendbuy",
+          "@segment/analytics.js-integration-frontleaf": "git+https://github.com/segment-integrations/analytics.js-integration-frontleaf.git",
+          "@segment/analytics.js-integration-fullstory": "../analytics.js/analytics.js-integrations/integrations/fullstory",
+          "@segment/analytics.js-integration-gauges": "git+https://github.com/segment-integrations/analytics.js-integration-gauges.git",
+          "@segment/analytics.js-integration-get-satisfaction": "git+https://github.com/segment-integrations/analytics.js-integration-get-satisfaction.git",
+          "@segment/analytics.js-integration-google-analytics": "git+https://github.com/segment-integrations/analytics.js-integration-google-analytics.git",
+          "@segment/analytics.js-integration-google-tag-manager": "git+https://github.com/segment-integrations/analytics.js-integration-google-tag-manager.git",
+          "@segment/analytics.js-integration-gosquared": "git+https://github.com/segment-integrations/analytics.js-integration-gosquared.git",
+          "@segment/analytics.js-integration-heap": "git+https://github.com/segment-integrations/analytics.js-integration-heap.git",
+          "@segment/analytics.js-integration-hellobar": "git+https://github.com/segment-integrations/analytics.js-integration-hellobar.git",
+          "@segment/analytics.js-integration-hindsight": "../analytics.js/analytics.js-integrations/integrations/hindsight",
+          "@segment/analytics.js-integration-hittail": "git+https://github.com/segment-integrations/analytics.js-integration-hittail.git",
+          "@segment/analytics.js-integration-hotjar": "../analytics.js/analytics.js-integrations/integrations/hotjar",
+          "@segment/analytics.js-integration-hubspot": "../analytics.js/analytics.js-integrations/integrations/hubspot",
+          "@segment/analytics.js-integration-improvely": "git+https://github.com/segment-integrations/analytics.js-integration-improvely.git",
+          "@segment/analytics.js-integration-inspectlet": "git+https://github.com/segment-integrations/analytics.js-integration-inspectlet.git",
+          "@segment/analytics.js-integration-intercom": "git+https://github.com/segment-integrations/analytics.js-integration-intercom.git",
+          "@segment/analytics.js-integration-keen-io": "git+https://github.com/segment-integrations/analytics.js-integration-keen-io.git",
+          "@segment/analytics.js-integration-kenshoo": "git+https://github.com/segment-integrations/analytics.js-integration-kenshoo.git",
+          "@segment/analytics.js-integration-kenshoo-infinity": "../analytics.js/analytics.js-integrations/integrations/kenshoo-infinity",
+          "@segment/analytics.js-integration-kissmetrics": "git+https://github.com/segment-integrations/analytics.js-integration-kissmetrics.git",
+          "@segment/analytics.js-integration-klaviyo": "git+https://github.com/segment-integrations/analytics.js-integration-klaviyo.git",
+          "@segment/analytics.js-integration-linkedin-insight-tag": "../analytics.js/analytics.js-integrations/integrations/linkedin-insight-tag",
+          "@segment/analytics.js-integration-livechat": "git+https://github.com/segment-integrations/analytics.js-integration-livechat.git",
+          "@segment/analytics.js-integration-localytics": "../analytics.js/analytics.js-integrations/integrations/localytics",
+          "@segment/analytics.js-integration-lucky-orange": "git+https://github.com/segment-integrations/analytics.js-integration-lucky-orange.git",
+          "@segment/analytics.js-integration-lytics": "git+https://github.com/segment-integrations/analytics.js-integration-lytics.git",
+          "@segment/analytics.js-integration-madkudu": "git+https://github.com/segment-integrations/analytics.js-integration-madkudu.git",
+          "@segment/analytics.js-integration-marketo": "../analytics.js/analytics.js-integrations/integrations/marketo",
+          "@segment/analytics.js-integration-marketo-v2": "../analytics.js/analytics.js-integrations/integrations/marketo-v2",
+          "@segment/analytics.js-integration-mediamath": "../analytics.js/analytics.js-integrations/integrations/mediamath",
+          "@segment/analytics.js-integration-mixpanel": "git+https://github.com/segment-integrations/analytics.js-integration-mixpanel.git",
+          "@segment/analytics.js-integration-moengage": "../analytics.js/analytics.js-integrations/integrations/moengage",
+          "@segment/analytics.js-integration-mojn": "git+https://github.com/segment-integrations/analytics.js-integration-mojn.git",
+          "@segment/analytics.js-integration-mouseflow": "git+https://github.com/segment-integrations/analytics.js-integration-mouseflow.git",
+          "@segment/analytics.js-integration-mousestats": "git+https://github.com/segment-integrations/analytics.js-integration-mousestats.git",
+          "@segment/analytics.js-integration-navilytics": "git+https://github.com/segment-integrations/analytics.js-integration-navilytics.git",
+          "@segment/analytics.js-integration-nielsen-dcr": "../analytics.js/analytics.js-integrations/integrations/nielsen-dcr",
+          "@segment/analytics.js-integration-nudgespot": "git+https://github.com/segment-integrations/analytics.js-integration-nudgespot.git",
+          "@segment/analytics.js-integration-olark": "git+https://github.com/segment-integrations/analytics.js-integration-olark.git",
+          "@segment/analytics.js-integration-omniture": "../analytics.js/analytics.js-integrations/integrations/omniture",
+          "@segment/analytics.js-integration-onespot": "../analytics.js/analytics.js-integrations/integrations/onespot",
+          "@segment/analytics.js-integration-optimizely": "../analytics.js/analytics.js-integrations/integrations/optimizely",
+          "@segment/analytics.js-integration-outbound": "git+https://github.com/segment-integrations/analytics.js-integration-outbound.git",
+          "@segment/analytics.js-integration-pardot": "../analytics.js/analytics.js-integrations/integrations/pardot",
+          "@segment/analytics.js-integration-parsely": "git+https://github.com/segment-integrations/analytics.js-integration-parsely.git",
+          "@segment/analytics.js-integration-perfect-audience": "git+https://github.com/segment-integrations/analytics.js-integration-perfect-audience.git",
+          "@segment/analytics.js-integration-pingdom": "git+https://github.com/segment-integrations/analytics.js-integration-pingdom.git",
+          "@segment/analytics.js-integration-pinterest-tag": "../analytics.js/analytics.js-integrations/integrations/pinterest-tag",
+          "@segment/analytics.js-integration-piwik": "git+https://github.com/segment-integrations/analytics.js-integration-piwik.git",
+          "@segment/analytics.js-integration-qualaroo": "git+https://github.com/segment-integrations/analytics.js-integration-qualaroo.git",
+          "@segment/analytics.js-integration-quantcast": "git+https://github.com/segment-integrations/analytics.js-integration-quantcast.git",
+          "@segment/analytics.js-integration-quanticmind": "git+https://github.com/segment-integrations/analytics.js-integration-quanticmind.git",
+          "@segment/analytics.js-integration-quora-conversion-pixel": "../analytics.js/analytics.js-integrations/integrations/quora-conversion-pixel",
+          "@segment/analytics.js-integration-ramen": "git+https://github.com/segment-integrations/analytics.js-integration-ramen.git",
+          "@segment/analytics.js-integration-rockerbox": "../analytics.js/analytics.js-integrations/integrations/rockerbox",
+          "@segment/analytics.js-integration-rocket-fuel": "../analytics.js/analytics.js-integrations/integrations/rocket-fuel",
+          "@segment/analytics.js-integration-rollbar": "git+https://github.com/segment-integrations/analytics.js-integration-rollbar.git",
+          "@segment/analytics.js-integration-route": "git+https://github.com/segment-integrations/analytics.js-integration-route.git",
+          "@segment/analytics.js-integration-saasquatch": "git+https://github.com/segment-integrations/analytics.js-integration-saasquatch.git",
+          "@segment/analytics.js-integration-salesforce-dmp": "../analytics.js/analytics.js-integrations/integrations/salesforce-dmp",
+          "@segment/analytics.js-integration-salesforce-live-agent": "../analytics.js/analytics.js-integrations/integrations/salesforce-live-agent",
+          "@segment/analytics.js-integration-satismeter": "git+https://github.com/segment-integrations/analytics.js-integration-satismeter.git",
+          "@segment/analytics.js-integration-segmentio": "git+https://github.com/segment-integrations/analytics.js-integration-segmentio.git",
+          "@segment/analytics.js-integration-sentry": "git+https://github.com/segment-integrations/analytics.js-integration-sentry.git",
+          "@segment/analytics.js-integration-shareasale": "../analytics.js/analytics.js-integrations/integrations/shareasale",
+          "@segment/analytics.js-integration-simplereach": "git+https://github.com/segment-integrations/analytics.js-integration-simplereach.git",
+          "@segment/analytics.js-integration-simplifi": "../analytics.js/analytics.js-integrations/integrations/simplifi",
+          "@segment/analytics.js-integration-snapengage": "git+https://github.com/segment-integrations/analytics.js-integration-snapengage.git",
+          "@segment/analytics.js-integration-spinnakr": "git+https://github.com/segment-integrations/analytics.js-integration-spinnakr.git",
+          "@segment/analytics.js-integration-steelhouse": "../analytics.js/analytics.js-integrations/integrations/steelhouse",
+          "@segment/analytics.js-integration-stripe-radar": "../analytics.js/analytics.js-integrations/integrations/stripe-radar",
+          "@segment/analytics.js-integration-supporthero": "git+https://github.com/segment-integrations/analytics.js-integration-supporthero.git",
+          "@segment/analytics.js-integration-tag-injector": "../analytics.js/analytics.js-integrations/integrations/tag-injector",
+          "@segment/analytics.js-integration-taplytics": "git+https://github.com/segment-integrations/analytics.js-integration-taplytics.git",
+          "@segment/analytics.js-integration-tapstream": "git+https://github.com/segment-integrations/analytics.js-integration-tapstream.git",
+          "@segment/analytics.js-integration-totango": "../analytics.js/analytics.js-integrations/integrations/totango",
+          "@segment/analytics.js-integration-trackjs": "../analytics.js/analytics.js-integrations/integrations/trackjs",
+          "@segment/analytics.js-integration-trakio": "git+https://github.com/segment-integrations/analytics.js-integration-trakio.git",
+          "@segment/analytics.js-integration-tvsquared": "../analytics.js/analytics.js-integrations/integrations/tvsquared",
+          "@segment/analytics.js-integration-twitter-ads": "git+https://github.com/segment-integrations/analytics.js-integration-twitter-ads.git",
+          "@segment/analytics.js-integration-userlike": "git+https://github.com/segment-integrations/analytics.js-integration-userlike.git",
+          "@segment/analytics.js-integration-uservoice": "git+https://github.com/segment-integrations/analytics.js-integration-uservoice.git",
+          "@segment/analytics.js-integration-vero": "git+https://github.com/segment-integrations/analytics.js-integration-vero.git",
+          "@segment/analytics.js-integration-visual-website-optimizer": "git+https://github.com/segment-integrations/analytics.js-integration-visual-website-optimizer.git",
+          "@segment/analytics.js-integration-webengage": "git+https://github.com/segment-integrations/analytics.js-integration-webengage.git",
+          "@segment/analytics.js-integration-woopra": "../analytics.js/analytics.js-integrations/integrations/woopra",
+          "@segment/analytics.js-integration-wootric": "../analytics.js/analytics.js-integrations/integrations/wootric",
+          "@segment/analytics.js-integration-yandex-metrica": "git+https://github.com/segment-integrations/analytics.js-integration-yandex-metrica.git",
+          "@segment/analytics.js-integration-zopim": "../analytics.js/analytics.js-integrations/integrations/zopim",
+          "express": "^4.17.1"
         },
-        'devDependencies': {
-          'browserify': '^13.0.1',
-          'eslint': '^2.9.0',
-          'eslint-config-segment': '^1.0.7',
-          'eslint-plugin-require-path-exists': '^1.1.5',
-          'uglify-js': '^3.1.1'
+        "devDependencies": {
+          "browserify": "^13.0.1",
+          "eslint": "^2.9.0",
+          "eslint-config-segment": "^1.0.7",
+          "eslint-plugin-require-path-exists": "^1.1.5",
+          "uglify-js": "^3.1.1"
         }
       }
 

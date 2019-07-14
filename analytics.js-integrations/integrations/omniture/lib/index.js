@@ -257,7 +257,6 @@ Omniture.prototype.page = function(page) {
   var properties = track.properties();
 
   clearKeys(dynamicKeys);
-
   // Update the omniture variable and explicitly mark the link vars
   function update(value, key) {
     if (!key || value === undefined || value === null) return;

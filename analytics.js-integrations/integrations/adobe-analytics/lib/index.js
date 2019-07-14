@@ -250,15 +250,13 @@ AdobeAnalytics.prototype.page = function(page) {
   if (!this.options.disableVisitorId) {
     var userId = this.analytics.user().id();
     if (userId) {
-      if (this.options.timestampOption === 'disabled') {
+      if (this.options.timestampOption === 'disabled')
         window.s.visitorID = userId;
-      }
       if (
         this.options.timestampOption === 'hybrid' &&
         this.options.preferVisitorId
-      ) {
+      )
         window.s.visitorID = userId;
-      }
     }
   }
 
@@ -477,14 +475,13 @@ function updateCommonVariables(facade, options) {
 
   // Some customers have said that adding pageName to s.tl() calls are having adverse effects on their pageview reporting
   // But since it is not reported by all users, we will make this an option.
-  if (options.enableTrackPageName && facade.type() === 'track') {
+  if (options.enableTrackPageName && facade.type() === 'track')
     update(
       properties.pageName ||
       options.pageName ||
       facade.proxy('context.page.title'),
       'pageName'
     );
-  }
 }
 
 /**
@@ -523,9 +520,8 @@ function calculateTimestamp(msg, options) {
   if (typeof timestamp !== 'string') timestamp = iso(timestamp);
   if (setting === 'disabled') return;
   if (setting === 'enabled') update(timestamp, 'timestamp');
-  if (setting === 'hybrid' && !options.preferVisitorId) {
+  if (setting === 'hybrid' && !options.preferVisitorId)
     update(timestamp, 'timestamp');
-  }
 }
 
 /**

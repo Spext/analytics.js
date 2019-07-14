@@ -91,9 +91,8 @@ SalesforceDMP.prototype.track = function(track) {
   // This re-fires the Krux tag with the given namespace without counting it as a new page view.
   // Namespace starts with 'ns:'
   var namespace = this.options.namespace;
-  if (namespace.length <= 3 || namespace.toLowerCase().slice(0, 3) !== 'ns:') {
+  if (namespace.length <= 3 || namespace.toLowerCase().slice(0, 3) !== 'ns:')
     namespace = 'ns:' + namespace;
-  }
 
   // This re-fires the pixel.gif. It will silently fail if `namespace` does not match the namespace on the main Krux instance!
   window.Krux(
@@ -167,14 +166,12 @@ SalesforceDMP.prototype.identifyV2 = SalesforceDMP.prototype.trackV2 = function(
     }
 
     if (msg.userId()) window.kruxDataLayer.segmentio_user_id = msg.userId();
-    if (msg.anonymousId()) {
+    if (msg.anonymousId())
       window.kruxDataLayer.segmentio_anonymous_id = msg.anonymousId();
-    }
-    if (msg.proxy('context.traits.crossDomainId')) {
+    if (msg.proxy('context.traits.crossDomainId'))
       window.kruxDataLayer.segmentio_xid = msg.proxy(
         'context.traits.crossDomainId'
       );
-    }
   }
 
   this.firePixel(resetDataLayer);
@@ -188,9 +185,8 @@ SalesforceDMP.prototype.firePixel = function(resetDataLayer) {
   // This re-fires the Krux tag with the given namespace without counting it as a new page view.
   // Namespace starts with 'ns:'
   var namespace = this.options.namespace;
-  if (namespace.length <= 3 || namespace.toLowerCase().slice(0, 3) !== 'ns:') {
+  if (namespace.length <= 3 || namespace.toLowerCase().slice(0, 3) !== 'ns:')
     namespace = 'ns:' + namespace;
-  }
 
   // This re-fires the pixel.gif. It will silently fail if `namespace` does not match the namespace on the main Krux instance!
   window.Krux(

@@ -169,9 +169,8 @@ if (!String.prototype.endsWith) {
  */
 
 function survey(email, createdAt, properties, eventName) {
-  if (createdAt && createdAt.getTime) {
+  if (createdAt && createdAt.getTime)
     window.wootricSettings.created_at = Math.round(createdAt.getTime() / 1000);
-  }
   window.wootricSettings.email = email;
   window.wootricSettings.event_name = eventName;
 

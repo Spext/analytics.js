@@ -87,9 +87,8 @@ Totango.prototype.page = function(page) {
   if (category && opts.trackCategorizedPages) this.track(page.track(category));
   if (name && opts.trackNamedPages) this.track(page.track(name));
   this._category = category;
-  if (!user.id() || !group.id()) {
+  if (!user.id() || !group.id())
     return this.debug('must identify and group first');
-  }
   if (!category) return this.debug('category required');
   this.go({ module: category });
 };

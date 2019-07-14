@@ -42,9 +42,8 @@ AppNexus.prototype.track = function(track) {
   for (var i = 0; i < this.options.events.length; i++) {
     var item = this.options.events[i];
     if (item.value) {
-      if (toNoCase(item.key) === toNoCase(track.event())) {
+      if (toNoCase(item.key) === toNoCase(track.event()))
         events.push(item.value);
-      }
     } else if (toNoCase(item.event) === toNoCase(track.event())) {
       events.push(item);
     }

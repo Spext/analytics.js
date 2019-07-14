@@ -167,21 +167,17 @@ Marketo.prototype.identify = function(identify) {
   var address = identify.address();
 
   traitsToSendMarketo.Email = email;
-  if (identify.birthday()) {
+  if (identify.birthday())
     traitsToSendMarketo.DateofBirth = identify.birthday();
-  }
-  if (identify.firstName()) {
+  if (identify.firstName())
     traitsToSendMarketo.FirstName = identify.firstName();
-  }
-  if (identify.gender()) {
+  if (identify.gender())
     traitsToSendMarketo.MarketoSocialGender = identify.gender();
-  }
   if (identify.lastName()) traitsToSendMarketo.LastName = identify.lastName();
   if (identify.phone()) traitsToSendMarketo.Phone = identify.phone();
   if (identify.userId()) traitsToSendMarketo.userId = identify.userId();
-  if (identify.anonymousId()) {
+  if (identify.anonymousId())
     traitsToSendMarketo.anonymousId = identify.anonymousId();
-  }
 
   if (address) {
     if (is.object(address)) {

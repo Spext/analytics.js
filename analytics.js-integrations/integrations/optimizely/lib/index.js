@@ -242,9 +242,8 @@ Optimizely.prototype.sendClassicDataToSegment = function(experimentState) {
       for (var j = 0; j < variationIds.length; j++) {
         var activeVariation = variationIds[j];
         var activeSection = variationIdsToSectionsMap[activeVariation];
-        if (activeSection) {
+        if (activeSection)
           activeSections[activeSection.id] = activeSection.name;
-        }
       }
 
       // Sorting for consistency across browsers

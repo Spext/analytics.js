@@ -84,9 +84,8 @@ Appboy.prototype.initializeV1 = function(customEndpoint) {
       i < s.length;
       i++
     ) {
-      for (var k = appboy, l = s[i].split('.'), j = 0; j < l.length - 1; j++) {
+      for (var k = appboy, l = s[i].split('.'), j = 0; j < l.length - 1; j++)
         k = k[l[j]];
-      }
       k[l[j]] = function() {
         console && console.error('The Appboy SDK has not yet been loaded.');
       };
@@ -117,9 +116,8 @@ Appboy.prototype.initializeV1 = function(customEndpoint) {
       us03: 'https://sdk.iad-03.braze.com',
       eu: 'https://sdk.fra-01.braze.eu'
     };
-    if (options.safariWebsitePushId) {
+    if (options.safariWebsitePushId)
       config.safariWebsitePushId = options.safariWebsitePushId;
-    }
     if (options.enableHtmlInAppMessages) config.enableHtmlInAppMessages = true;
 
     // Setup custom endpoints
@@ -139,9 +137,8 @@ Appboy.prototype.initializeV1 = function(customEndpoint) {
     self.initializeTester(options.apiKey, config);
     window.appboy.initialize(options.apiKey, config);
 
-    if (options.automaticallyDisplayMessages) {
+    if (options.automaticallyDisplayMessages)
       window.appboy.display.automaticallyShowNewInAppMessages();
-    }
     if (userId) window.appboy.changeUser(userId);
 
     window.appboy.openSession();
@@ -175,9 +172,8 @@ Appboy.prototype.initializeV2 = function(customEndpoint) {
         var m = s[i], k = appboy, l = m.split('.'), j = 0;
         j < l.length - 1;
         j++
-      ) {
+      )
         k = k[l[j]];
-      }
       k[l[j]] = new Function(
         'return function ' +
         m.replace(/\./g, '_') +
@@ -215,9 +211,8 @@ Appboy.prototype.initializeV2 = function(customEndpoint) {
   this.initializeTester(options.apiKey, config);
   window.appboy.initialize(options.apiKey, config);
 
-  if (options.automaticallyDisplayMessages) {
+  if (options.automaticallyDisplayMessages)
     window.appboy.display.automaticallyShowNewInAppMessages();
-  }
   if (userId) window.appboy.changeUser(userId);
 
   window.appboy.openSession();
@@ -438,15 +433,12 @@ function getGender(gender) {
   var maleGenders = ['man', 'male', 'm'];
   var otherGenders = ['other', 'o'];
 
-  if (femaleGenders.indexOf(gender.toLowerCase()) > -1) {
+  if (femaleGenders.indexOf(gender.toLowerCase()) > -1)
     return window.appboy.ab.User.Genders.FEMALE;
-  }
-  if (maleGenders.indexOf(gender.toLowerCase()) > -1) {
+  if (maleGenders.indexOf(gender.toLowerCase()) > -1)
     return window.appboy.ab.User.Genders.MALE;
-  }
-  if (otherGenders.indexOf(gender.toLowerCase()) > -1) {
+  if (otherGenders.indexOf(gender.toLowerCase()) > -1)
     return window.appboy.ab.User.Genders.OTHER;
-  }
 }
 
 /**

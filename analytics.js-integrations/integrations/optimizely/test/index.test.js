@@ -151,9 +151,8 @@ var mockOptimizelyXDataObject = function() {
       getRedirectInfo: function() {
         var campaigns = this.getCampaignStates({ isActive: true });
         for (var id in campaigns) {
-          if (campaigns[id].visitorRedirected) {
+          if (campaigns[id].visitorRedirected)
             return { referrer: 'barstools.com' };
-          }
         }
       }
     };

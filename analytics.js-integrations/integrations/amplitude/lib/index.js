@@ -237,9 +237,8 @@ Amplitude.prototype.identify = function(identify) {
   var groups = identify.options(this.name).groups;
   if (groups && is.object(groups)) {
     for (var group in groups) {
-      if (groups.hasOwnProperty(group)) {
+      if (groups.hasOwnProperty(group))
         window.amplitude.getInstance().setGroup(group, groups[group]);
-      }
     }
   }
 };
@@ -299,9 +298,8 @@ function logEvent(track, dontSetRevenue) {
       type === 'user_properties' ? (params[key] = query) : (props[key] = query);
     }, mapQueryParams);
 
-    if (type === 'user_properties') {
+    if (type === 'user_properties')
       window.amplitude.getInstance().setUserProperties(params);
-    }
   }
 
   // track the event
@@ -316,9 +314,8 @@ function logEvent(track, dontSetRevenue) {
   // Ideally, user's will track revenue using an Order Completed event.
   // However, we have previously setRevenue for any event given it had a revenue property.
   // We need to keep this behavior around for backwards compatibility.
-  if (track.revenue() && !dontSetRevenue) {
+  if (track.revenue() && !dontSetRevenue)
     this.setRevenue(mapRevenueAttributes(track));
-  }
 }
 
 Amplitude.prototype.orderCompleted = function(track) {
@@ -349,9 +346,8 @@ Amplitude.prototype.orderCompleted = function(track) {
       // Price and quantity are both required by Amplitude:
       // https://amplitude.zendesk.com/hc/en-us/articles/115001361248#tracking-revenue
       // Price could potentially be 0 so handle that edge case.
-      if (trackRevenuePerProduct && price != null && quantity) {
+      if (trackRevenuePerProduct && price != null && quantity)
         this.setRevenue(mapRevenueAttributes(new Track(clonedTrack)));
-      }
       logEvent.call(this, new Track(clonedTrack), trackRevenuePerProduct);
     }.bind(this),
     products
