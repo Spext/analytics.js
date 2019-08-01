@@ -496,7 +496,7 @@ function mapRevenueAttributes(track) {
   };
 }
 
-},{"@ndhoule/each":9,"@segment/analytics.js-integration":39,"@segment/top-domain":55,"component-bind":58,"do-when":71,"is":78,"segmentio-facade":97}],2:[function(require,module,exports){
+},{"@ndhoule/each":9,"@segment/analytics.js-integration":38,"@segment/top-domain":54,"component-bind":57,"do-when":70,"is":75,"segmentio-facade":92}],2:[function(require,module,exports){
 'use strict';
 /**
  * Analytics.js
@@ -533,7 +533,7 @@ Object.keys(Integrations).forEach(function(name) {
   analytics.use(Integrations[name]);
 });
 
-},{"../package.json":113,"./integrations":3,"@segment/analytics.js-core":22}],3:[function(require,module,exports){
+},{"../package.json":107,"./integrations":3,"@segment/analytics.js-core":22}],3:[function(require,module,exports){
 /* eslint quote-props: 0 */
 'use strict';
 
@@ -592,7 +592,7 @@ module.exports = {
   // 'fullstory': require('@segment/analytics.js-integration-fullstory'),
   // 'gauges': require('@segment/analytics.js-integration-gauges'),
   // 'get-satisfaction': require('@segment/analytics.js-integration-get-satisfaction'),
-  'google-analytics': require('@segment/analytics.js-integration-google-analytics'),
+  // 'google-analytics': require('@segment/analytics.js-integration-google-analytics'),
   // 'google-tag-manager': require('@segment/analytics.js-integration-google-tag-manager'),
   // 'gosquared': require('@segment/analytics.js-integration-gosquared'),
   // 'heap': require('@segment/analytics.js-integration-heap'),
@@ -681,7 +681,7 @@ module.exports = {
 //   'zopim': require('@segment/analytics.js-integration-zopim')
 };
 
-},{"@segment/analytics.js-integration-amplitude":1,"@segment/analytics.js-integration-google-analytics":33,"@segment/analytics.js-integration-intercom":34}],4:[function(require,module,exports){
+},{"@segment/analytics.js-integration-amplitude":1,"@segment/analytics.js-integration-intercom":33}],4:[function(require,module,exports){
 'use strict';
 
 /*
@@ -973,7 +973,7 @@ var clone = function clone(obj) {
 
 module.exports = clone;
 
-},{"component-type":67}],7:[function(require,module,exports){
+},{"component-type":66}],7:[function(require,module,exports){
 'use strict';
 
 /*
@@ -2764,7 +2764,7 @@ module.exports.store = store;
 module.exports.metrics = metrics;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./cookie":19,"./group":21,"./memory":23,"./metrics":24,"./middleware":25,"./normalize":26,"./pageDefaults":27,"./store":28,"./user":29,"@ndhoule/after":4,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/foldl":12,"@ndhoule/keys":14,"@ndhoule/pick":16,"@segment/is-meta":48,"@segment/prevent-default":52,"bind-all":57,"component-emitter":62,"component-event":63,"component-querystring":65,"component-type":67,"debug":30,"extend":31,"is":78,"next-tick":86,"segmentio-facade":97}],19:[function(require,module,exports){
+},{"./cookie":19,"./group":21,"./memory":23,"./metrics":24,"./middleware":25,"./normalize":26,"./pageDefaults":27,"./store":28,"./user":29,"@ndhoule/after":4,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/foldl":12,"@ndhoule/keys":14,"@ndhoule/pick":16,"@segment/is-meta":47,"@segment/prevent-default":51,"bind-all":56,"component-emitter":61,"component-event":62,"component-querystring":64,"component-type":66,"debug":30,"extend":31,"is":75,"next-tick":83,"segmentio-facade":92}],19:[function(require,module,exports){
 'use strict';
 
 /**
@@ -2892,7 +2892,7 @@ module.exports = bindAll(new Cookie());
 
 module.exports.Cookie = Cookie;
 
-},{"@ndhoule/clone":6,"@ndhoule/defaults":7,"@segment/top-domain":55,"bind-all":57,"component-cookie":59,"debug":30,"json3":79}],20:[function(require,module,exports){
+},{"@ndhoule/clone":6,"@ndhoule/defaults":7,"@segment/top-domain":54,"bind-all":56,"component-cookie":58,"debug":30,"json3":76}],20:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3192,7 +3192,7 @@ Entity.prototype.load = function() {
   this.traits(this.traits());
 };
 
-},{"./cookie":19,"./memory":23,"./store":28,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"@segment/isodate-traverse":49,"debug":30}],21:[function(require,module,exports){
+},{"./cookie":19,"./memory":23,"./store":28,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"@segment/isodate-traverse":48,"debug":30}],21:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3248,7 +3248,7 @@ module.exports = bindAll(new Group());
 
 module.exports.Group = Group;
 
-},{"./entity":20,"bind-all":57,"debug":30,"inherits":76}],22:[function(require,module,exports){
+},{"./entity":20,"bind-all":56,"debug":30,"inherits":73}],22:[function(require,module,exports){
 'use strict';
 
 /**
@@ -3341,7 +3341,7 @@ Memory.prototype.remove = function(key) {
   return true;
 };
 
-},{"@ndhoule/clone":6,"bind-all":57}],24:[function(require,module,exports){
+},{"@ndhoule/clone":6,"bind-all":56}],24:[function(require,module,exports){
 'use strict';
 
 var bindAll = require('bind-all');
@@ -3438,7 +3438,7 @@ module.exports = bindAll(new Metrics());
 
 module.exports.Metrics = Metrics;
 
-},{"@segment/send-json":53,"bind-all":57,"debug":30}],25:[function(require,module,exports){
+},{"@segment/send-json":52,"bind-all":56,"debug":30}],25:[function(require,module,exports){
 'use strict';
 
 var Facade = require('segmentio-facade');
@@ -3504,7 +3504,7 @@ function executeChain(payload, integration, middlewares, index) {
 
 module.exports.Chain = Chain;
 
-},{"segmentio-facade":97}],26:[function(require,module,exports){
+},{"segmentio-facade":92}],26:[function(require,module,exports){
 'use strict';
 
 /**
@@ -3605,7 +3605,7 @@ function normalize(msg, list) {
   }
 }
 
-},{"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/includes":13,"@ndhoule/map":15,"component-type":67,"debug":30,"json3":79,"spark-md5":104,"uuid":112}],27:[function(require,module,exports){
+},{"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/includes":13,"@ndhoule/map":15,"component-type":66,"debug":30,"json3":76,"spark-md5":99,"uuid":106}],27:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3669,7 +3669,7 @@ function canonicalUrl(search) {
 
 module.exports = pageDefaults;
 
-},{"@ndhoule/includes":13,"@segment/canonical":45,"component-url":68}],28:[function(require,module,exports){
+},{"@ndhoule/includes":13,"@segment/canonical":44,"component-url":67}],28:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3754,7 +3754,7 @@ module.exports = bindAll(new Store());
 
 module.exports.Store = Store;
 
-},{"@ndhoule/defaults":7,"@segment/store":54,"bind-all":57}],29:[function(require,module,exports){
+},{"@ndhoule/defaults":7,"@segment/store":53,"bind-all":56}],29:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3957,7 +3957,7 @@ module.exports = bindAll(new User());
 
 module.exports.User = User;
 
-},{"./cookie":19,"./entity":20,"./store":28,"bind-all":57,"component-cookie":59,"debug":30,"inherits":76,"uuid":112}],30:[function(require,module,exports){
+},{"./cookie":19,"./entity":20,"./store":28,"bind-all":56,"component-cookie":58,"debug":30,"inherits":73,"uuid":106}],30:[function(require,module,exports){
 
 /**
  * Expose `debug()` as the module.
@@ -4384,1107 +4384,6 @@ module.exports={
  * Module dependencies.
  */
 
-var Track = require('segmentio-facade').Track;
-var defaults = require('@ndhoule/defaults');
-var dot = require('obj-case');
-var each = require('component-each');
-var integration = require('@segment/analytics.js-integration');
-var is = require('is');
-var len = require('object-component').length;
-var push = require('global-queue')('_gaq');
-var reject = require('reject');
-var useHttps = require('use-https');
-var extend = require('extend');
-var user;
-
-/**
- * Expose plugin.
- */
-
-module.exports = exports = function(analytics) {
-  // eslint-disable-next-line no-use-before-define
-  analytics.addIntegration(GA);
-  user = analytics.user();
-};
-
-/**
- * Expose `GA` integration.
- *
- * http://support.google.com/analytics/bin/answer.py?hl=en&answer=2558867
- * https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiBasicConfiguration#_gat.GA_Tracker_._setSiteSpeedSampleRate
- */
-
-var GA = exports.Integration = integration('Google Analytics')
-  .readyOnLoad()
-  .global('ga')
-  .global('gaplugins')
-  .global('_gaq')
-  .global('GoogleAnalyticsObject')
-  .option('anonymizeIp', false)
-  .option('useGoogleAmpClientId', false)
-  .option('classic', false)
-  .option('contentGroupings', {})
-  .option('dimensions', {})
-  .option('domain', 'auto')
-  .option('doubleClick', false)
-  .option('enhancedEcommerce', false)
-  .option('enhancedLinkAttribution', false)
-  .option('ignoredReferrers', null)
-  .option('includeSearch', false)
-  .option('setAllMappedProps', true)
-  .option('metrics', {})
-  .option('nonInteraction', false)
-  .option('sendUserId', false)
-  .option('siteSpeedSampleRate', 1)
-  .option('sampleRate', 100)
-  .option('trackCategorizedPages', true)
-  .option('trackNamedPages', true)
-  .option('trackingId', '')
-  .option('optimize', '')
-  .option('nameTracker', false)
-  .tag('library', '<script src="//www.google-analytics.com/analytics.js">')
-  .tag('double click', '<script src="//stats.g.doubleclick.net/dc.js">')
-  .tag('http', '<script src="http://www.google-analytics.com/ga.js">')
-  .tag('https', '<script src="https://ssl.google-analytics.com/ga.js">');
-
-/**
- * On `construct` swap any config-based methods to the proper implementation.
- */
-
-GA.on('construct', function(integration) {
-  if (integration.options.classic) {
-    integration.initialize = integration.initializeClassic;
-    integration.loaded = integration.loadedClassic;
-    integration.page = integration.pageClassic;
-    integration.track = integration.trackClassic;
-    integration.orderCompleted = integration.completedOrderClassic;
-  } else if (integration.options.enhancedEcommerce) {
-    integration.productViewed = integration.productViewedEnhanced;
-    integration.productClicked = integration.productClickedEnhanced;
-    integration.productAdded = integration.productAddedEnhanced;
-    integration.productRemoved = integration.productRemovedEnhanced;
-    integration.checkoutStarted = integration.checkoutStartedEnhanced;
-    integration.checkoutStepViewed = integration.checkoutStepViewedEnhanced;
-    integration.checkoutStepCompleted = integration.checkoutStepCompletedEnhanced;
-    integration.orderUpdated = integration.orderUpdatedEnhanced;
-    integration.orderCompleted = integration.orderCompletedEnhanced;
-    integration.orderRefunded = integration.orderRefundedEnhanced;
-    integration.promotionViewed = integration.promotionViewedEnhanced;
-    integration.promotionClicked = integration.promotionClickedEnhanced;
-    integration.productListViewed = integration.productListViewedEnhanced;
-    integration.productListFiltered = integration.productListFilteredEnhanced;
-  }
-});
-
-/**
- * Initialize.
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced
- */
-
-GA.prototype.initialize = function() {
-  this.pageCalled = false;
-  var opts = this.options;
-
-  // setup the tracker globals
-  window.GoogleAnalyticsObject = 'ga';
-  window.ga = window.ga || function() {
-    window.ga.q = window.ga.q || [];
-    window.ga.q.push(arguments);
-  };
-  window.ga.l = new Date().getTime();
-
-  if (window.location.hostname === 'localhost') opts.domain = 'none';
-  var config = {
-    // Fall back on default to protect against empty string
-    cookieDomain: opts.domain || GA.prototype.defaults.domain,
-    siteSpeedSampleRate: opts.siteSpeedSampleRate,
-    sampleRate: opts.sampleRate,
-    allowLinker: true,
-    useAmpClientId: opts.useGoogleAmpClientId
-  };
-
-  // set tracker name to avoid collisions with unnamed third party trackers
-  if (opts.nameTracker) {
-    config.name = 'segmentGATracker';
-    this._trackerName = 'segmentGATracker.';  // tracker name must be prepended to all ga method calls with format [name].[method]
-  } else {
-    this._trackerName = ''; // tracker name must be set even if empty to avoid undefined references when prepending
-  }
-  window.ga('create', opts.trackingId, config);
-
-  if (opts.optimize) window.ga(this._trackerName + 'require', opts.optimize);
-
-  // display advertising
-  if (opts.doubleClick) {
-    window.ga(this._trackerName + 'require', 'displayfeatures');
-  }
-
-  // https://support.google.com/analytics/answer/2558867?hl=en
-  if (opts.enhancedLinkAttribution) {
-    window.ga(this._trackerName + 'require', 'linkid', 'linkid.js');
-  }
-
-  // send global id
-  if (opts.sendUserId && user.id()) {
-    window.ga(this._trackerName + 'set', 'userId', user.id());
-  }
-
-  // anonymize after initializing, otherwise a warning is shown
-  // in google analytics debugger
-  if (opts.anonymizeIp) window.ga(this._trackerName + 'set', 'anonymizeIp', true);
-
-  // initialize page with `id` appended to user's traits
-  // sets `id` as a custom dimension for the lifetime of the tracker object and
-  // ensures `id` sent as a custom dimension for all hits on the page
-  var userTraits = user.traits();
-  if (user.id()) {
-    userTraits.id = user.id();
-  }
-
-  // custom dimensions & metrics
-  var custom = metrics(userTraits, opts);
-  if (len(custom)) window.ga(this._trackerName + 'set', custom);
-
-  this.load('library', this.ready);
-};
-
-/**
- * Loaded?
- *
- * @return {Boolean}
- */
-
-GA.prototype.loaded = function() {
-  return !!window.gaplugins;
-};
-
-/**
- * Page.
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/pages
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications#multiple-hits
- *
- * @api public
- * @param {Page} page
- */
-
-GA.prototype.page = function(page) {
-  var category = page.category();
-  var props = page.properties();
-  var name = page.fullName();
-  var opts = this.options;
-  var campaign = page.proxy('context.campaign') || {};
-  var pageview = {};
-  var pagePath = path(props, this.options);
-  var pageTitle = name || props.title;
-  var pageReferrer = page.referrer() || '';
-  var self = this;
-  var track;
-
-  // store for later
-  // TODO: Why? Document this better
-  this._category = category;
-
-  pageview.page = pagePath;
-  pageview.title = pageTitle;
-  pageview.location = props.url;
-
-  if (campaign.name) pageview.campaignName = campaign.name;
-  if (campaign.source) pageview.campaignSource = campaign.source;
-  if (campaign.medium) pageview.campaignMedium = campaign.medium;
-  if (campaign.content) pageview.campaignContent = campaign.content;
-  if (campaign.term) pageview.campaignKeyword = campaign.term;
-
-  // set
-  var payload = {
-    page: pagePath,
-    title: pageTitle
-  };
-
-  pageview = extend(pageview, setCustomDimenionsAndMetrics(props, opts, self._trackerName));
-
-  if (pageReferrer !== document.referrer) payload.referrer = pageReferrer; // allow referrer override if referrer was manually set
-  window.ga(this._trackerName + 'set', payload);
-
-  if (this.pageCalled) delete pageview.location;
-
-  // send
-  window.ga(this._trackerName + 'send', 'pageview', pageview);
-
-  // categorized pages
-  if (category && this.options.trackCategorizedPages) {
-    track = page.track(category);
-    this.track(track, { nonInteraction: 1 });
-  }
-
-  // named pages
-  if (name && this.options.trackNamedPages) {
-    track = page.track(name);
-    this.track(track, { nonInteraction: 1 });
-  }
-
-  this.pageCalled = true;
-};
-
-/**
- * Identify.
- *
- * @api public
- * @param {Identify} event
- */
-
-GA.prototype.identify = function(identify) {
-  var opts = this.options;
-
-  if (opts.sendUserId && identify.userId()) {
-    window.ga(this._trackerName + 'set', 'userId', identify.userId());
-  }
-
-  // Set dimensions
-  var custom = metrics(identify.traits(), opts);
-  if (len(custom)) window.ga(this._trackerName + 'set', custom);
-};
-
-/**
- * Track.
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/events
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference
- *
- * @param {Track} event
- */
-
-GA.prototype.track = function(track, options) {
-  var contextOpts = track.options(this.name);
-  var interfaceOpts = this.options;
-  var opts = defaults(options || {}, contextOpts);
-  opts = defaults(opts, interfaceOpts);
-  var props = track.properties();
-  var campaign = track.proxy('context.campaign') || {};
-  var self = this;
-
-  var payload = {
-    eventAction: track.event(),
-    eventCategory: track.category() || this._category || 'All',
-    eventLabel: props.label,
-    eventValue: formatValue(props.value || track.revenue()),
-    // Allow users to override their nonInteraction integration setting for any single particluar event.
-    nonInteraction: props.nonInteraction !== undefined ? !!props.nonInteraction : !!opts.nonInteraction
-  };
-
-  if (campaign.name) payload.campaignName = campaign.name;
-  if (campaign.source) payload.campaignSource = campaign.source;
-  if (campaign.medium) payload.campaignMedium = campaign.medium;
-  if (campaign.content) payload.campaignContent = campaign.content;
-  if (campaign.term) payload.campaignKeyword = campaign.term;
-
-  payload = extend(payload, setCustomDimenionsAndMetrics(props, interfaceOpts, self._trackerName));
-
-  window.ga(this._trackerName + 'send', 'event', payload);
-};
-
-/**
- * Order completed.
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce#multicurrency
- *
- * @param {Track} track
- * @api private
- */
-
-GA.prototype.orderCompleted = function(track) {
-  var total = track.total() || track.revenue() || 0;
-  var orderId = track.orderId();
-  var products = track.products();
-  var props = track.properties();
-  var self = this;
-
-  // orderId is required.
-  if (!orderId) return;
-
-  // require ecommerce
-  if (!this.ecommerce) {
-    window.ga(this._trackerName + 'require', 'ecommerce');
-    this.ecommerce = true;
-  }
-
-  // add transaction
-  window.ga(this._trackerName + 'ecommerce:addTransaction', {
-    affiliation: props.affiliation,
-    shipping: track.shipping(),
-    revenue: total,
-    tax: track.tax(),
-    id: orderId,
-    currency: track.currency()
-  });
-
-  // add products
-  each(products, function(product) {
-    var productTrack = createProductTrack(track, product);
-    window.ga(self._trackerName + 'ecommerce:addItem', {
-      category: productTrack.category(),
-      quantity: productTrack.quantity(),
-      price: productTrack.price(),
-      name: productTrack.name(),
-      sku: productTrack.sku(),
-      id: orderId,
-      currency: productTrack.currency()
-    });
-  });
-
-  // send
-  window.ga(this._trackerName + 'ecommerce:send');
-};
-
-/**
- * Initialize (classic).
- *
- * https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiBasicConfiguration
- */
-
-GA.prototype.initializeClassic = function() {
-  var opts = this.options;
-  var anonymize = opts.anonymizeIp;
-  var domain = opts.domain;
-  var enhanced = opts.enhancedLinkAttribution;
-  var ignore = opts.ignoredReferrers;
-  var sample = opts.siteSpeedSampleRate;
-
-  window._gaq = window._gaq || [];
-  push('_setAccount', opts.trackingId);
-  push('_setAllowLinker', true);
-
-  if (anonymize) push('_gat._anonymizeIp');
-  if (domain) push('_setDomainName', domain);
-  if (sample) push('_setSiteSpeedSampleRate', sample);
-
-  if (enhanced) {
-    var protocol = document.location.protocol === 'https:' ? 'https:' : 'http:';
-    var pluginUrl = protocol + '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-    push('_require', 'inpage_linkid', pluginUrl);
-  }
-
-  if (ignore) {
-    if (!is.array(ignore)) ignore = [ignore];
-    each(ignore, function(domain) {
-      push('_addIgnoredRef', domain);
-    });
-  }
-
-  if (this.options.doubleClick) {
-    this.load('double click', this.ready);
-  } else {
-    var name = useHttps() ? 'https' : 'http';
-    this.load(name, this.ready);
-  }
-};
-
-/**
- * Loaded? (classic)
- *
- * @return {Boolean}
- */
-
-GA.prototype.loadedClassic = function() {
-  return !!(window._gaq && window._gaq.push !== Array.prototype.push);
-};
-
-/**
- * Page (classic).
- *
- * https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiBasicConfiguration
- *
- * @param {Page} page
- */
-
-GA.prototype.pageClassic = function(page) {
-  var category = page.category();
-  var props = page.properties();
-  var name = page.fullName();
-  var track;
-
-  push('_trackPageview', path(props, this.options));
-
-  // categorized pages
-  if (category && this.options.trackCategorizedPages) {
-    track = page.track(category);
-    this.track(track, { nonInteraction: 1 });
-  }
-
-  // named pages
-  if (name && this.options.trackNamedPages) {
-    track = page.track(name);
-    this.track(track, { nonInteraction: 1 });
-  }
-};
-
-/**
- * Track (classic).
- *
- * https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiEventTracking
- *
- * @param {Track} track
- */
-
-GA.prototype.trackClassic = function(track, options) {
-  var opts = options || track.options(this.name);
-  var props = track.properties();
-  var revenue = track.revenue();
-  var event = track.event();
-  var category = this._category || track.category() || 'All';
-  var label = props.label;
-  var value = formatValue(revenue || props.value);
-  var nonInteraction = !!(props.nonInteraction || opts.nonInteraction);
-  push('_trackEvent', category, event, label, value, nonInteraction);
-};
-
-/**
- * Completed order.
- *
- * https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingEcommerce
- * https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingEcommerce#localcurrencies
- *
- * @param {Track} track
- * @api private
- */
-
-GA.prototype.completedOrderClassic = function(track) {
-  var total = track.total() || track.revenue() || 0;
-  var orderId = track.orderId();
-  var products = track.products() || [];
-  var props = track.properties();
-  var currency = track.currency();
-
-  // required
-  if (!orderId) return;
-
-  // add transaction
-  push('_addTrans',
-    orderId,
-    props.affiliation,
-    total,
-    track.tax(),
-    track.shipping(),
-    track.city(),
-    track.state(),
-    track.country());
-
-  // add items
-  each(products, function(product) {
-    var track = new Track({ properties: product });
-    push('_addItem',
-      orderId,
-      track.sku(),
-      track.name(),
-      track.category(),
-      track.price(),
-      track.quantity());
-  });
-
-  // send
-  push('_set', 'currencyCode', currency);
-  push('_trackTrans');
-};
-
-/**
- * Return the path based on `properties` and `options`.
- *
- * @param {Object} properties
- * @param {Object} options
- * @return {string|undefined}
- */
-
-function path(properties, options) {
-  if (!properties) return;
-  var str = properties.path;
-  if (options.includeSearch && properties.search) str += properties.search;
-  return str;
-}
-
-/**
- * Set custom dimensions and metrics
- *
- * @param {Properties} props
- * @param {Options} opts
- * @param {String} trackerName
- * @return {Object}
- */
-
-function setCustomDimenionsAndMetrics(props, opts, trackerName) {
-  var ret = {};
-  var custom = metrics(props, opts);
-  if (len(custom)) {
-    if (opts.setAllMappedProps) {
-      window.ga(trackerName + 'set', custom);
-    } else {
-      // Add custom dimensions / metrics to event payload
-      each(custom, function(key, value) {
-        ret[key] = value;
-      });
-      return ret;
-    }
-  }
-}
-
-/**
- * Format the value property to Google's liking.
- *
- * @param {Number} value
- * @return {Number}
- */
-
-function formatValue(value) {
-  if (!value || value < 0) return 0;
-  return Math.round(value);
-}
-
-/**
- * Map google's custom dimensions, metrics & content groupings with `obj`.
- *
- * Example:
- *
- *      metrics({ revenue: 1.9 }, { { metrics : { revenue: 'metric8' } });
- *      // => { metric8: 1.9 }
- *
- *      metrics({ revenue: 1.9 }, {});
- *      // => {}
- *
- * @param {Object} obj
- * @param {Object} data
- * @return {Object|null}
- * @api private
- */
-
-function metrics(obj, data) {
-  var dimensions = data.dimensions;
-  var metrics = data.metrics;
-  var contentGroupings = data.contentGroupings;
-
-  var ret = {};
-
-  each([metrics, dimensions, contentGroupings], function(group) {
-    each(group, function(prop, key) {
-      var value = dot(obj, prop) || obj[prop];
-      if (is.bool(value)) value = value.toString();
-      if (value || value === 0) ret[key] = value;
-    });
-  });
-
-  return ret;
-}
-
-/**
- * Loads ec.js (unless already loaded)
- *
- * @param {Track} track
- */
-
-GA.prototype.loadEnhancedEcommerce = function(track) {
-  var self = this;
-
-  if (!this.enhancedEcommerceLoaded) {
-    window.ga(self._trackerName + 'require', 'ec');
-    this.enhancedEcommerceLoaded = true;
-  }
-
-  // Ensure we set currency for every hit
-  window.ga(self._trackerName + 'set', '&cu', track.currency());
-};
-
-/**
- * Pushes an event and all previously set EE data to GA.
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.pushEnhancedEcommerce = function(track, opts, trackerName) {
-  var self = this;
-  // Send a custom non-interaction event to ensure all EE data is pushed.
-  // Without doing this we'd need to require page display after setting EE data.
-  var args = reject([
-    self._trackerName + 'send',
-    'event',
-    track.category() || 'EnhancedEcommerce',
-    track.event() || 'Action not defined',
-    track.properties().label,
-    extend({ nonInteraction: 1 }, setCustomDimenionsAndMetrics(track.properties(), opts, trackerName))
-  ]);
-  window.ga.apply(window, args);
-};
-
-/**
- * Started order - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#checkout-steps
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.checkoutStartedEnhanced = function(track) {
-  // same as viewed checkout step #1
-  this.checkoutStepViewed(track);
-};
-
-/**
- * Updated order - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#checkout-steps
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.orderUpdatedEnhanced = function(track) {
-  // Same event as started order - will override
-  this.checkoutStartedEnhanced(track);
-};
-
-/**
- * Viewed checkout step - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#checkout-steps
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.checkoutStepViewedEnhanced = function(track) {
-  var products = track.products();
-  var props = track.properties();
-  var options = extractCheckoutOptions(props);
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-
-  each(products, function(product) {
-    var productTrack = createProductTrack(track, product);
-    enhancedEcommerceTrackProduct(productTrack, self._trackerName, opts);
-  });
-  window.ga(self._trackerName + 'ec:setAction', 'checkout', {
-    step: props.step || 1,
-    option: options || undefined
-  });
-
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Completed checkout step - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#checkout-options
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.checkoutStepCompletedEnhanced = function(track) {
-  var props = track.properties();
-  var options = extractCheckoutOptions(props);
-  var self = this;
-
-  // Only send an event if we have step and options to update
-  if (!props.step || !options) return;
-
-  this.loadEnhancedEcommerce(track);
-
-  window.ga(self._trackerName + 'ec:setAction', 'checkout_option', {
-    step: props.step || 1,
-    option: options
-  });
-
-  window.ga(self._trackerName + 'send', 'event', 'Checkout', 'Option');
-};
-
-/**
- * Completed order - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-transactions
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.orderCompletedEnhanced = function(track) {
-  var total = track.total() || track.revenue() || 0;
-  var orderId = track.orderId();
-  var products = track.products();
-  var props = track.properties();
-  var opts = this.options;
-  var self = this;
-
-  // orderId is required.
-  if (!orderId) return;
-
-  this.loadEnhancedEcommerce(track);
-
-  each(products, function(product) {
-    var productTrack = createProductTrack(track, product);
-    enhancedEcommerceTrackProduct(productTrack, self._trackerName, opts);
-  });
-
-  window.ga(self._trackerName + 'ec:setAction', 'purchase', {
-    id: orderId,
-    affiliation: props.affiliation,
-    revenue: total,
-    tax: track.tax(),
-    shipping: track.shipping(),
-    coupon: track.coupon()
-  });
-
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Refunded order - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-refunds
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.orderRefundedEnhanced = function(track) {
-  var orderId = track.orderId();
-  var products = track.products();
-  var self = this;
-  var opts = this.options;
-
-  // orderId is required.
-  if (!orderId) return;
-
-  this.loadEnhancedEcommerce(track);
-
-  // Without any products it's a full refund
-  each(products, function(product) {
-    var track = new Track({ properties: product });
-    window.ga(self._trackerName + 'ec:addProduct', {
-      id: track.productId() || track.id() || track.sku(),
-      quantity: track.quantity()
-    });
-  });
-
-  window.ga(self._trackerName + 'ec:setAction', 'refund', {
-    id: orderId
-  });
-
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Added product - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#add-remove-cart
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.productAddedEnhanced = function(track) {
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-  enhancedEcommerceProductAction(track, 'add', null, self._trackerName, opts);
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Removed product - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#add-remove-cart
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.productRemovedEnhanced = function(track) {
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-  enhancedEcommerceProductAction(track, 'remove', null, self._trackerName, opts);
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Viewed product details - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#product-detail-view
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.productViewedEnhanced = function(track) {
-  var props = track.properties();
-  var data = {};
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-  // list property is optional
-  if (props.list) data.list = props.list;
-  enhancedEcommerceProductAction(track, 'detail', data, self._trackerName, opts);
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Clicked product - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-actions
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.productClickedEnhanced = function(track) {
-  var props = track.properties();
-  var data = {};
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-  // list property is optional
-  if (props.list) data.list = props.list;
-  enhancedEcommerceProductAction(track, 'click', data, self._trackerName, opts);
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Viewed promotion - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-promo-impressions
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.promotionViewedEnhanced = function(track) {
-  var props = track.properties();
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-  window.ga(self._trackerName + 'ec:addPromo', {
-    id: track.promotionId() || track.id(),
-    name: track.name(),
-    creative: props.creative,
-    position: props.position
-  });
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Clicked promotion - Enhanced Ecommerce
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-promo-clicks
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.promotionClickedEnhanced = function(track) {
-  var props = track.properties();
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-  window.ga(self._trackerName + 'ec:addPromo', {
-    id: track.promotionId() || track.id(),
-    name: track.name(),
-    creative: props.creative,
-    position: props.position
-  });
-  window.ga(self._trackerName + 'ec:setAction', 'promo_click', {});
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Product List Viewed - Enhanced Ecommerce (Mapped to Product Impression)
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#product-impression
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.productListViewedEnhanced = function(track) {
-  var props = track.properties();
-  var products = track.products();
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-
-  each(products, function(product) {
-    // If we don't have an ID/SKU or name, return - GA will reject the impression.
-    var item = new Track({ properties: product });
-    if (!(item.productId() || item.sku()) && !item.name()) return;
-    var impressionObj = {
-      id: item.productId() || item.sku(),
-      name: item.name(),
-      category: item.category() || track.category(),
-      list: props.list_id || track.category() || 'products',
-      brand: item.properties().brand,
-      variant: item.properties().variant,
-      price: item.price(),
-      position: products.map(function(x) { return x.product_id; }).indexOf(item.productId()) + 1
-    };
-
-    impressionObj = extend(impressionObj, metrics(item.properties(), opts));
-
-    for (var prop in impressionObj) {
-      if (impressionObj[prop] === undefined) delete impressionObj[prop];
-    }
-    window.ga(self._trackerName + 'ec:addImpression', impressionObj);
-  });
-
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-/**
- * Product List Filtered - Enhanced Ecommerce (Mapped to Product Impression)
- *
- * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#product-impression
- *
- * @api private
- * @param {Track} track
- */
-
-GA.prototype.productListFilteredEnhanced = function(track) {
-  var props = track.properties();
-  var products = track.products();
-  props.filters = props.filters || [];
-  props.sorters = props.sorters || [];
-  var filters = props.filters.map(function(obj) { return obj.type + ':' + obj.value;}).join();
-  var sorts = props.sorts.map(function(obj) { return obj.type + ':' + obj.value;}).join();
-  var self = this;
-  var opts = this.options;
-
-  this.loadEnhancedEcommerce(track);
-  each(products, function(product) {
-    // If we don't have an ID/SKU or name, return - GA will reject the impression.
-    var item = new Track({ properties: product });
-    if (!(item.productId() || item.sku()) && !item.name()) return;
-    var impressionObj = {
-      id: item.productId() || item.sku(),
-      name: item.name(),
-      category: item.category() || track.category(),
-      list: props.list_id || track.category() || 'search results',
-      brand: item.properties().brand,
-      variant: filters + '::' + sorts,
-      price: item.price(),
-      position: products.map(function(x) { return x.product_id; }).indexOf(item.productId()) + 1
-    };
-
-    impressionObj = extend(impressionObj, metrics(item.properties(), opts));
-
-    for (var prop in impressionObj) {
-      if (impressionObj[prop] === undefined) delete impressionObj[prop];
-    }
-    window.ga(self._trackerName + 'ec:addImpression', impressionObj);
-  });
-
-  this.pushEnhancedEcommerce(track, opts, self._trackerName);
-};
-
-
-/**
- * Enhanced ecommerce track product.
- *
- * Simple helper so that we don't repeat `ec:addProduct` everywhere.
- *
- * @api private
- * @param {Track} track
- */
-
-function enhancedEcommerceTrackProduct(track, trackerName, opts) {
-  var props = track.properties();
-  var product = {
-    id: track.productId() || track.id() || track.sku(),
-    name: track.name(),
-    category: track.category(),
-    quantity: track.quantity(),
-    price: track.price(),
-    brand: props.brand,
-    variant: props.variant,
-    currency: track.currency()
-  };
-
-  // https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#product-data
-  // GA requires an integer but our specs says "Number", so it could be a float.
-  if (props.position != null) {
-    product.position = Math.round(props.position);
-  }
-
-  // append coupon if it set
-  // https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-transactions
-  var coupon = track.proxy('properties.coupon');
-  if (coupon) product.coupon = coupon;
-
-  product = extend(product, metrics(props, opts));
-  window.ga(trackerName + 'ec:addProduct', product);
-}
-
-/**
- * Set `action` on `track` with `data`.
- *
- * @api private
- * @param {Track} track
- * @param {String} action
- * @param {Object} data
- */
-
-function enhancedEcommerceProductAction(track, action, data, trackerName, opts) {
-  enhancedEcommerceTrackProduct(track, trackerName, opts);
-  window.ga(trackerName + 'ec:setAction', action, data || {});
-}
-
-/**
- * Extracts checkout options.
- *
- * @api private
- * @param {Object} props
- * @return {string|null}
- */
-
-function extractCheckoutOptions(props) {
-  var options = [
-    props.paymentMethod,
-    props.shippingMethod
-  ];
-
-  // Remove all nulls, and join with commas.
-  var valid = reject(options);
-  return valid.length > 0 ? valid.join(', ') : null;
-}
-
-/**
- * Creates a track out of product properties.
- *
- * @api private
- * @param {Track} track
- * @param {Object} properties
- * @return {Track}
- */
-
-function createProductTrack(track, properties) {
-  properties.currency = properties.currency || track.currency();
-  return new Track({ properties: properties });
-}
-
-},{"@ndhoule/defaults":7,"@segment/analytics.js-integration":39,"component-each":60,"extend":73,"global-queue":74,"is":78,"obj-case":87,"object-component":88,"reject":90,"segmentio-facade":97,"use-https":109}],34:[function(require,module,exports){
-'use strict';
-
-/**
- * Module dependencies.
- */
-
 var convertDates = require('@segment/convert-dates');
 var defaults = require('@ndhoule/defaults');
 var del = require('obj-case').del;
@@ -5787,7 +4686,7 @@ function hideDefaultLauncher(options) {
   return ret;
 }
 
-},{"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/extend":11,"@ndhoule/pick":16,"@segment/analytics.js-integration":35,"@segment/convert-dates":46,"is":78,"obj-case":87}],35:[function(require,module,exports){
+},{"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/extend":11,"@ndhoule/pick":16,"@segment/analytics.js-integration":34,"@segment/convert-dates":45,"is":75,"obj-case":84}],34:[function(require,module,exports){
 'use strict';
 
 /**
@@ -5852,7 +4751,7 @@ function createIntegration(name) {
 
 module.exports = createIntegration;
 
-},{"./protos":36,"./statics":37,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"component-bind":58,"debug":69,"slug-component":103}],36:[function(require,module,exports){
+},{"./protos":35,"./statics":36,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"component-bind":57,"debug":68,"slug-component":98}],35:[function(require,module,exports){
 'use strict';
 
 /**
@@ -6328,7 +5227,7 @@ function render(template, locals) {
   }, {}, template.attrs);
 }
 
-},{"@ndhoule/after":4,"@ndhoule/each":9,"@ndhoule/every":10,"@ndhoule/foldl":12,"@segment/fmt":47,"@segment/load-script":51,"analytics-events":38,"component-emitter":62,"is":78,"load-iframe":81,"next-tick":86,"to-no-case":106}],37:[function(require,module,exports){
+},{"@ndhoule/after":4,"@ndhoule/each":9,"@ndhoule/every":10,"@ndhoule/foldl":12,"@segment/fmt":46,"@segment/load-script":50,"analytics-events":37,"component-emitter":61,"is":75,"load-iframe":78,"next-tick":83,"to-no-case":101}],36:[function(require,module,exports){
 'use strict';
 
 /**
@@ -6493,7 +5392,7 @@ function objectify(str) {
   };
 }
 
-},{"@ndhoule/each":9,"@ndhoule/includes":13,"component-emitter":62,"domify":72}],38:[function(require,module,exports){
+},{"@ndhoule/each":9,"@ndhoule/includes":13,"component-emitter":61,"domify":71}],37:[function(require,module,exports){
 
 module.exports = {
   // Promotions
@@ -6560,9 +5459,9 @@ module.exports = {
   pushNotificationBounced: /^[ _]?push[ _]?notification[ _]?bounced[ _]?$/i
 };
 
-},{}],39:[function(require,module,exports){
-arguments[4][35][0].apply(exports,arguments)
-},{"./protos":40,"./statics":41,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"component-bind":58,"debug":69,"dup":35,"slug-component":103}],40:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
+arguments[4][34][0].apply(exports,arguments)
+},{"./protos":39,"./statics":40,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"component-bind":57,"debug":68,"dup":34,"slug-component":98}],39:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7032,7 +5931,7 @@ function render(template, locals) {
   }, {}, template.attrs);
 }
 
-},{"@ndhoule/after":4,"@ndhoule/each":9,"@ndhoule/every":10,"@ndhoule/foldl":12,"@segment/fmt":47,"@segment/load-script":51,"analytics-events":56,"component-emitter":42,"is":78,"load-iframe":81,"next-tick":86,"to-no-case":43}],41:[function(require,module,exports){
+},{"@ndhoule/after":4,"@ndhoule/each":9,"@ndhoule/every":10,"@ndhoule/foldl":12,"@segment/fmt":46,"@segment/load-script":50,"analytics-events":55,"component-emitter":41,"is":75,"load-iframe":78,"next-tick":83,"to-no-case":42}],40:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7197,7 +6096,7 @@ function objectify(str) {
   };
 }
 
-},{"@ndhoule/each":9,"@ndhoule/includes":13,"component-emitter":42,"domify":72}],42:[function(require,module,exports){
+},{"@ndhoule/each":9,"@ndhoule/includes":13,"component-emitter":41,"domify":71}],41:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -7362,7 +6261,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],43:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 
 /**
  * Expose `toNoCase`.
@@ -7434,7 +6333,7 @@ function uncamelize (string) {
     return previous + ' ' + uppers.toLowerCase().split('').join(' ');
   });
 }
-},{}],44:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 var utf8Encode = require('utf8-encode');
 var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
@@ -7471,7 +6370,7 @@ function encode(input) {
 
     return output;
 }
-},{"utf8-encode":110}],45:[function(require,module,exports){
+},{"utf8-encode":104}],44:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7495,7 +6394,7 @@ function canonical() {
 
 module.exports = canonical;
 
-},{}],46:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 /*
@@ -7532,7 +6431,7 @@ function convertDates(obj, convert) {
 
 module.exports = convertDates;
 
-},{"@ndhoule/clone":6,"@ndhoule/each":9,"component-type":67}],47:[function(require,module,exports){
+},{"@ndhoule/clone":6,"@ndhoule/each":9,"component-type":66}],46:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -7567,7 +6466,7 @@ fmt.d = parseInt;
 module.exports = fmt;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],48:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
 
 function isMeta(e) {
@@ -7595,7 +6494,7 @@ function isMeta(e) {
 
 module.exports = isMeta;
 
-},{}],49:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 'use strict';
 
 var type = require('component-type');
@@ -7672,7 +6571,7 @@ function array(arr, strict) {
   return arr;
 }
 
-},{"@segment/isodate":50,"component-each":60,"component-type":67}],50:[function(require,module,exports){
+},{"@segment/isodate":49,"component-each":59,"component-type":66}],49:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7750,7 +6649,7 @@ exports.is = function(string, strict) {
   return matcher.test(string);
 };
 
-},{}],51:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 /*
@@ -7822,7 +6721,7 @@ function loadScript(options, cb) {
 
 module.exports = loadScript;
 
-},{"component-type":67,"next-tick":86,"script-onload":91}],52:[function(require,module,exports){
+},{"component-type":66,"next-tick":83,"script-onload":86}],51:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7847,7 +6746,7 @@ function preventDefault(e) {
 
 module.exports = preventDefault;
 
-},{}],53:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 'use strict';
 
 /*
@@ -7965,7 +6864,7 @@ function encode(obj) {
   return encodeURIComponent(str);
 }
 
-},{"@segment/base64-encode":44,"has-cors":75,"json3":79,"jsonp":80}],54:[function(require,module,exports){
+},{"@segment/base64-encode":43,"has-cors":72,"json3":76,"jsonp":77}],53:[function(require,module,exports){
 (function (global){
 "use strict"
 
@@ -8138,7 +7037,7 @@ module.exports = (function() {
 }())
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"json3":79}],55:[function(require,module,exports){
+},{"json3":76}],54:[function(require,module,exports){
 'use strict';
 
 /**
@@ -8238,7 +7137,7 @@ domain.cookie = cookie;
 
 exports = module.exports = domain;
 
-},{"component-cookie":59,"component-url":68}],56:[function(require,module,exports){
+},{"component-cookie":58,"component-url":67}],55:[function(require,module,exports){
 'use strict';
 
 /**
@@ -8530,7 +7429,7 @@ module.exports = foldl(function transform(ret, pairs, method) {
   return ret;
 }, {}, eventMap);
 
-},{"@ndhoule/foldl":12,"@ndhoule/map":15}],57:[function(require,module,exports){
+},{"@ndhoule/foldl":12,"@ndhoule/map":15}],56:[function(require,module,exports){
 'use strict';
 
 var bind = require('component-bind');
@@ -8548,7 +7447,7 @@ function bindAll(obj) {
 
 module.exports = bindAll;
 
-},{"component-bind":58}],58:[function(require,module,exports){
+},{"component-bind":57}],57:[function(require,module,exports){
 /**
  * Slice reference.
  */
@@ -8573,7 +7472,7 @@ module.exports = function(obj, fn){
   }
 };
 
-},{}],59:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -8706,7 +7605,7 @@ function decode(value) {
   }
 }
 
-},{"debug":69}],60:[function(require,module,exports){
+},{"debug":68}],59:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -8797,7 +7696,7 @@ function array(obj, fn, ctx) {
   }
 }
 
-},{"component-type":61,"to-function":105,"type":61}],61:[function(require,module,exports){
+},{"component-type":60,"to-function":100,"type":60}],60:[function(require,module,exports){
 
 /**
  * toString ref.
@@ -8831,7 +7730,7 @@ module.exports = function(val){
   return typeof val;
 };
 
-},{}],62:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -9008,7 +7907,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],63:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 var bind = window.addEventListener ? 'addEventListener' : 'attachEvent',
     unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent',
     prefix = bind !== 'addEventListener' ? 'on' : '';
@@ -9044,7 +7943,7 @@ exports.unbind = function(el, type, fn, capture){
   el[unbind](prefix + type, fn, capture || false);
   return fn;
 };
-},{}],64:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 /**
  * Global Names
  */
@@ -9131,7 +8030,7 @@ function prefixed(str) {
   };
 }
 
-},{}],65:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -9238,7 +8137,7 @@ exports.stringify = function(obj){
   return pairs.join('&');
 };
 
-},{"trim":107,"type":66}],66:[function(require,module,exports){
+},{"trim":102,"type":65}],65:[function(require,module,exports){
 /**
  * toString ref.
  */
@@ -9274,7 +8173,7 @@ module.exports = function(val){
   return typeof val;
 };
 
-},{}],67:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 /**
  * toString ref.
  */
@@ -9322,7 +8221,7 @@ function isBuffer(obj) {
     ))
 }
 
-},{}],68:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 
 /**
  * Parse the given `url`.
@@ -9406,7 +8305,7 @@ function port (protocol){
   }
 }
 
-},{}],69:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 (function (process){
 /**
  * This is the web browser implementation of `debug()`.
@@ -9595,7 +8494,7 @@ function localstorage() {
 }
 
 }).call(this,require('_process'))
-},{"./debug":70,"_process":89}],70:[function(require,module,exports){
+},{"./debug":69,"_process":85}],69:[function(require,module,exports){
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -9799,7 +8698,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":82}],71:[function(require,module,exports){
+},{"ms":79}],70:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -9833,7 +8732,7 @@ function when(condition, fn, interval) {
 
 module.exports = when;
 
-},{"next-tick":86}],72:[function(require,module,exports){
+},{"next-tick":83}],71:[function(require,module,exports){
 
 /**
  * Expose `parse`.
@@ -9947,132 +8846,7 @@ function parse(html, doc) {
   return fragment;
 }
 
-},{}],73:[function(require,module,exports){
-'use strict';
-
-var hasOwn = Object.prototype.hasOwnProperty;
-var toStr = Object.prototype.toString;
-
-var isArray = function isArray(arr) {
-	if (typeof Array.isArray === 'function') {
-		return Array.isArray(arr);
-	}
-
-	return toStr.call(arr) === '[object Array]';
-};
-
-var isPlainObject = function isPlainObject(obj) {
-	if (!obj || toStr.call(obj) !== '[object Object]') {
-		return false;
-	}
-
-	var hasOwnConstructor = hasOwn.call(obj, 'constructor');
-	var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn.call(obj.constructor.prototype, 'isPrototypeOf');
-	// Not own constructor property must be Object
-	if (obj.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
-		return false;
-	}
-
-	// Own properties are enumerated firstly, so to speed up,
-	// if last one is own, then all properties are own.
-	var key;
-	for (key in obj) { /**/ }
-
-	return typeof key === 'undefined' || hasOwn.call(obj, key);
-};
-
-module.exports = function extend() {
-	var options, name, src, copy, copyIsArray, clone;
-	var target = arguments[0];
-	var i = 1;
-	var length = arguments.length;
-	var deep = false;
-
-	// Handle a deep copy situation
-	if (typeof target === 'boolean') {
-		deep = target;
-		target = arguments[1] || {};
-		// skip the boolean and the target
-		i = 2;
-	}
-	if (target == null || (typeof target !== 'object' && typeof target !== 'function')) {
-		target = {};
-	}
-
-	for (; i < length; ++i) {
-		options = arguments[i];
-		// Only deal with non-null/undefined values
-		if (options != null) {
-			// Extend the base object
-			for (name in options) {
-				src = target[name];
-				copy = options[name];
-
-				// Prevent never-ending loop
-				if (target !== copy) {
-					// Recurse if we're merging plain objects or arrays
-					if (deep && copy && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
-						if (copyIsArray) {
-							copyIsArray = false;
-							clone = src && isArray(src) ? src : [];
-						} else {
-							clone = src && isPlainObject(src) ? src : {};
-						}
-
-						// Never move original objects, clone them
-						target[name] = extend(deep, clone, copy);
-
-					// Don't bring in undefined values
-					} else if (typeof copy !== 'undefined') {
-						target[name] = copy;
-					}
-				}
-			}
-		}
-	}
-
-	// Return the modified object
-	return target;
-};
-
-},{}],74:[function(require,module,exports){
-
-/**
- * Module dependencies.
- */
-
-var debug = require('debug');
-
-/**
- * Expose `generate`.
- */
-
-module.exports = generate;
-
-/**
- * Generate a global queue pushing method with `name`.
- *
- * @param {String} name
- * @param {Object} options
- *   @property {Boolean} wrap
- * @return {Function}
- */
-
-function generate (name, options) {
-  var log = debug('global-queue:' + name);
-  options = options || {};
-
-  return function (args) {
-    args = [].slice.call(arguments);
-    window[name] || (window[name] = []);
-    log('%o', args);
-    options.wrap === false
-      ? window[name].push.apply(window[name], args)
-      : window[name].push(args);
-  };
-}
-
-},{"debug":69}],75:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 
 /**
  * Module exports.
@@ -10091,7 +8865,7 @@ try {
   module.exports = false;
 }
 
-},{}],76:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -10116,12 +8890,12 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],77:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 
 module.exports = function isEmail (string) {
     return (/.+\@.+\..+/).test(string);
 };
-},{}],78:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 /* globals window, HTMLElement */
 
 'use strict';
@@ -10923,7 +9697,7 @@ is.symbol = function (value) {
 
 module.exports = is;
 
-},{}],79:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 (function (global){
 /*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 ;(function () {
@@ -11829,7 +10603,7 @@ module.exports = is;
 }).call(this);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],80:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 /**
  * Module dependencies
  */
@@ -11928,7 +10702,7 @@ function jsonp(url, opts, fn){
   return cancel;
 }
 
-},{"debug":69}],81:[function(require,module,exports){
+},{"debug":68}],78:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -11990,7 +10764,7 @@ module.exports = function loadIframe(options, fn){
   return iframe;
 };
 
-},{"is":78,"next-tick":86,"script-onload":91}],82:[function(require,module,exports){
+},{"is":75,"next-tick":83,"script-onload":86}],79:[function(require,module,exports){
 /**
  * Helpers.
  */
@@ -12144,7 +10918,7 @@ function plural(ms, n, name) {
   return Math.ceil(ms / n) + ' ' + name + 's';
 }
 
-},{}],83:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 var is = require('is');
@@ -12189,7 +10963,7 @@ function toMs(num) {
   return num;
 }
 
-},{"./milliseconds":84,"./seconds":85,"@segment/isodate":50,"is":78}],84:[function(require,module,exports){
+},{"./milliseconds":81,"./seconds":82,"@segment/isodate":49,"is":75}],81:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12221,7 +10995,7 @@ exports.parse = function(millis) {
   return new Date(millis);
 };
 
-},{}],85:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12253,7 +11027,7 @@ exports.parse = function(seconds) {
   return new Date(millis);
 };
 
-},{}],86:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -12321,7 +11095,7 @@ module.exports = (function () {
 }());
 
 }).call(this,require('_process'))
-},{"_process":89}],87:[function(require,module,exports){
+},{"_process":85}],84:[function(require,module,exports){
 
 var identity = function(_){ return _; };
 
@@ -12475,92 +11249,7 @@ function isFunction(val) {
   return typeof val === 'function';
 }
 
-},{}],88:[function(require,module,exports){
-
-/**
- * HOP ref.
- */
-
-var has = Object.prototype.hasOwnProperty;
-
-/**
- * Return own keys in `obj`.
- *
- * @param {Object} obj
- * @return {Array}
- * @api public
- */
-
-exports.keys = Object.keys || function(obj){
-  var keys = [];
-  for (var key in obj) {
-    if (has.call(obj, key)) {
-      keys.push(key);
-    }
-  }
-  return keys;
-};
-
-/**
- * Return own values in `obj`.
- *
- * @param {Object} obj
- * @return {Array}
- * @api public
- */
-
-exports.values = function(obj){
-  var vals = [];
-  for (var key in obj) {
-    if (has.call(obj, key)) {
-      vals.push(obj[key]);
-    }
-  }
-  return vals;
-};
-
-/**
- * Merge `b` into `a`.
- *
- * @param {Object} a
- * @param {Object} b
- * @return {Object} a
- * @api public
- */
-
-exports.merge = function(a, b){
-  for (var key in b) {
-    if (has.call(b, key)) {
-      a[key] = b[key];
-    }
-  }
-  return a;
-};
-
-/**
- * Return length of `obj`.
- *
- * @param {Object} obj
- * @return {Number}
- * @api public
- */
-
-exports.length = function(obj){
-  return exports.keys(obj).length;
-};
-
-/**
- * Check if `obj` is empty.
- *
- * @param {Object} obj
- * @return {Boolean}
- * @api public
- */
-
-exports.isEmpty = function(obj){
-  return 0 == exports.length(obj);
-};
-},{}],89:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -12746,110 +11435,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],90:[function(require,module,exports){
-
-/**
- * Module dependencies.
- */
-
-var type = require('type-component');
-
-/**
- * Expose `reject`
- */
-
-module.exports = reject;
-
-/**
- * Reject `obj`, `fn`.
- *
- * If `fn` is omitted a default function
- * that removes nulls (undefined/null) will
- * be supplied.
- *
- * @param {Object} obj
- * @param {Function} fn
- * @return {Object}
- * @api public
- */
-
-function reject(obj, fn){
-  fn = fn || compact;
-  return 'array' == type(obj)
-    ? reject.array(obj, fn)
-    : reject.object(obj, fn);
-}
-
-/**
- * Reject `arr`, `fn`.
- *
- * @param {Array|String} arr
- * @param {Function} fn
- * @return {Object}
- * @api public
- */
-
-reject.array = function(arr, fn){
-  var ret = [];
-
-  for (var i = 0; i < arr.length; ++i) {
-    if (!fn(arr[i], i)) ret[ret.length] = arr[i];
-  }
-
-  return ret;
-};
-
-/**
- * Reject `obj`, `fn`.
- *
- * @param {Object} obj
- * @param {Function} fn
- * @return {Object}
- * @api public
- */
-
-reject.object = function(obj, fn){
-  var ret = {};
-
-  for (var k in obj) {
-    if (obj.hasOwnProperty(k) && !fn(obj[k], k)) {
-      ret[k] = obj[k]
-    }
-  }
-
-  return ret;
-};
-
-/**
- * Reject `type(s)` of `obj/arr`.
- *
- * @param {Object|Array} obj
- * @param {Array|String} type(s)
- * @return {Object|Array}
- * @api public
- */
-
-reject.types =
-reject.type = function(obj, types){
-  if (!Array.isArray(types)) types = [types];
-  return reject(obj, function(value){
-    return -1 != types.indexOf(type(value));
-  });
-};
-
-/**
- * Reject `value` if it's `null` or `undefined`.
- *
- * @param {Mixed} value
- * @return {Mixed}
- * @api private
- */
-
-function compact(value){
-  return null == value;
-}
-
-},{"type-component":108}],91:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 
 // https://github.com/thirdpartyjs/thirdpartyjs-code/blob/master/examples/templates/02/loading-files/index.html
 
@@ -12904,7 +11490,7 @@ function attach(el, fn){
   });
 }
 
-},{}],92:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12943,7 +11529,7 @@ module.exports = function(proto) {
   }
 };
 
-},{"obj-case":87}],93:[function(require,module,exports){
+},{"obj-case":84}],88:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13014,7 +11600,7 @@ Alias.prototype.to = Alias.prototype.userId;
 
 module.exports = Alias;
 
-},{"./facade":94,"./utils":102}],94:[function(require,module,exports){
+},{"./facade":89,"./utils":97}],89:[function(require,module,exports){
 'use strict';
 
 var address = require('./address');
@@ -13328,7 +11914,7 @@ function transform(obj) {
 
 module.exports = Facade;
 
-},{"./address":92,"./is-enabled":98,"./utils":102,"@segment/isodate-traverse":49,"new-date":83,"obj-case":87}],95:[function(require,module,exports){
+},{"./address":87,"./is-enabled":93,"./utils":97,"@segment/isodate-traverse":48,"new-date":80,"obj-case":84}],90:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13449,7 +12035,7 @@ Group.prototype.properties = function() {
 
 module.exports = Group;
 
-},{"./facade":94,"./utils":102,"is-email":77,"new-date":83}],96:[function(require,module,exports){
+},{"./facade":89,"./utils":97,"is-email":74,"new-date":80}],91:[function(require,module,exports){
 'use strict';
 
 var Facade = require('./facade');
@@ -13694,7 +12280,7 @@ Identify.prototype.birthday = Facade.proxy('traits.birthday');
 
 module.exports = Identify;
 
-},{"./facade":94,"./utils":102,"is-email":77,"new-date":83,"obj-case":87,"trim":107}],97:[function(require,module,exports){
+},{"./facade":89,"./utils":97,"is-email":74,"new-date":80,"obj-case":84,"trim":102}],92:[function(require,module,exports){
 'use strict';
 
 var Facade = require('./facade');
@@ -13716,7 +12302,7 @@ Facade.Screen = require('./screen');
 
 module.exports = Facade;
 
-},{"./alias":93,"./facade":94,"./group":95,"./identify":96,"./page":99,"./screen":100,"./track":101}],98:[function(require,module,exports){
+},{"./alias":88,"./facade":89,"./group":90,"./identify":91,"./page":94,"./screen":95,"./track":96}],93:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13739,7 +12325,7 @@ module.exports = function(integration) {
   return !disabled[integration];
 };
 
-},{}],99:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 'use strict';
 
 var inherit = require('./utils').inherit;
@@ -13888,7 +12474,7 @@ Page.prototype.track = function(name) {
 
 module.exports = Page;
 
-},{"./facade":94,"./track":101,"./utils":102,"is-email":77}],100:[function(require,module,exports){
+},{"./facade":89,"./track":96,"./utils":97,"is-email":74}],95:[function(require,module,exports){
 'use strict';
 
 var inherit = require('./utils').inherit;
@@ -13960,7 +12546,7 @@ Screen.prototype.track = function(name) {
 
 module.exports = Screen;
 
-},{"./page":99,"./track":101,"./utils":102}],101:[function(require,module,exports){
+},{"./page":94,"./track":96,"./utils":97}],96:[function(require,module,exports){
 'use strict';
 
 var inherit = require('./utils').inherit;
@@ -14287,14 +12873,14 @@ function currency(val) {
 
 module.exports = Track;
 
-},{"./facade":94,"./identify":96,"./utils":102,"is-email":77,"obj-case":87}],102:[function(require,module,exports){
+},{"./facade":89,"./identify":91,"./utils":97,"is-email":74,"obj-case":84}],97:[function(require,module,exports){
 'use strict';
 
 exports.inherit = require('inherits');
 exports.clone = require('@ndhoule/clone');
 exports.type = require('type-component');
 
-},{"@ndhoule/clone":6,"inherits":76,"type-component":108}],103:[function(require,module,exports){
+},{"@ndhoule/clone":6,"inherits":73,"type-component":103}],98:[function(require,module,exports){
 
 /**
  * Generate a slug from the given `str`.
@@ -14319,7 +12905,7 @@ module.exports = function (str, options) {
     .replace(/ +/g, options.separator || '-')
 };
 
-},{}],104:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 (function (factory) {
     if (typeof exports === 'object') {
         // Node/CommonJS
@@ -15024,7 +13610,7 @@ module.exports = function (str, options) {
     return SparkMD5;
 }));
 
-},{}],105:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 
 /**
  * Module Dependencies
@@ -15178,9 +13764,9 @@ function stripNested (prop, str, val) {
   });
 }
 
-},{"component-props":64,"props":64}],106:[function(require,module,exports){
-arguments[4][43][0].apply(exports,arguments)
-},{"dup":43}],107:[function(require,module,exports){
+},{"component-props":63,"props":63}],101:[function(require,module,exports){
+arguments[4][42][0].apply(exports,arguments)
+},{"dup":42}],102:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -15196,7 +13782,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],108:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 
 /**
  * toString ref.
@@ -15228,45 +13814,7 @@ module.exports = function(val){
   return typeof val;
 };
 
-},{}],109:[function(require,module,exports){
-
-/**
- * Protocol.
- */
-
-module.exports = function (url) {
-  switch (arguments.length) {
-    case 0: return check();
-    case 1: return transform(url);
-  }
-};
-
-
-/**
- * Transform a protocol-relative `url` to the use the proper protocol.
- *
- * @param {String} url
- * @return {String}
- */
-
-function transform (url) {
-  return check() ? 'https:' + url : 'http:' + url;
-}
-
-
-/**
- * Check whether `https:` be used for loading scripts.
- *
- * @return {Boolean}
- */
-
-function check () {
-  return (
-    location.protocol == 'https:' ||
-    location.protocol == 'chrome-extension:'
-  );
-}
-},{}],110:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = encode;
 
 function encode(string) {
@@ -15294,7 +13842,7 @@ function encode(string) {
 
     return utftext;
 }
-},{}],111:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 (function (global){
 
 var rng;
@@ -15330,7 +13878,7 @@ module.exports = rng;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],112:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -15515,7 +14063,7 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":111}],113:[function(require,module,exports){
+},{"./rng":105}],107:[function(require,module,exports){
 module.exports={
   "name": "@segment/analytics.js",
   "author": "Segment <friends@segment.com>",
