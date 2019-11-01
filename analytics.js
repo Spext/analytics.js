@@ -496,7 +496,701 @@ function mapRevenueAttributes(track) {
   };
 }
 
-},{"@ndhoule/each":9,"@segment/analytics.js-integration":38,"@segment/top-domain":54,"component-bind":57,"do-when":70,"is":75,"segmentio-facade":92}],2:[function(require,module,exports){
+},{"@ndhoule/each":12,"@segment/analytics.js-integration":2,"@segment/top-domain":59,"component-bind":62,"do-when":75,"is":81,"segmentio-facade":98}],2:[function(require,module,exports){
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+
+var bind = require('component-bind');
+var debug = require('debug');
+var defaults = require('@ndhoule/defaults');
+var extend = require('extend');
+var slug = require('slug-component');
+var protos = require('./protos');
+var statics = require('./statics');
+
+/**
+ * Create a new `Integration` constructor.
+ *
+ * @constructs Integration
+ * @param {string} name
+ * @return {Function} Integration
+ */
+
+function createIntegration(name) {
+  /**
+   * Initialize a new `Integration`.
+   *
+   * @class
+   * @param {Object} options
+   */
+
+  function Integration(options) {
+    if (options && options.addIntegration) {
+      // plugin
+      return options.addIntegration(Integration);
+    }
+    this.debug = debug('analytics:integration:' + slug(name));
+    var clonedOpts = {};
+    extend(true, clonedOpts, options); // deep clone options
+    this.options = defaults(clonedOpts || {}, this.defaults);
+    this._queue = [];
+    this.once('ready', bind(this, this.flush));
+
+    Integration.emit('construct', this);
+    this.ready = bind(this, this.ready);
+    this._wrapInitialize();
+    this._wrapPage();
+    this._wrapTrack();
+  }
+
+  Integration.prototype.defaults = {};
+  Integration.prototype.globals = [];
+  Integration.prototype.templates = {};
+  Integration.prototype.name = name;
+  extend(Integration, statics);
+  extend(Integration.prototype, protos);
+
+  return Integration;
+}
+
+/**
+ * Exports.
+ */
+
+module.exports = createIntegration;
+
+},{"./protos":3,"./statics":4,"@ndhoule/defaults":10,"component-bind":62,"debug":73,"extend":77,"slug-component":104}],3:[function(require,module,exports){
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+
+var Emitter = require('component-emitter');
+var after = require('@ndhoule/after');
+var each = require('@ndhoule/each');
+var events = require('analytics-events');
+var every = require('@ndhoule/every');
+var fmt = require('@segment/fmt');
+var foldl = require('@ndhoule/foldl');
+var is = require('is');
+var loadIframe = require('load-iframe');
+var loadScript = require('@segment/load-script');
+var nextTick = require('next-tick');
+var normalize = require('to-no-case');
+
+/**
+ * hasOwnProperty reference.
+ */
+
+var has = Object.prototype.hasOwnProperty;
+
+/**
+ * No operation.
+ */
+
+var noop = function noop() {};
+
+/**
+ * Window defaults.
+ */
+
+var onerror = window.onerror;
+var onload = null;
+
+/**
+ * Mixin emitter.
+ */
+
+/* eslint-disable new-cap */
+Emitter(exports);
+/* eslint-enable new-cap */
+
+/**
+ * Initialize.
+ */
+
+exports.initialize = function() {
+  var ready = this.ready;
+  nextTick(ready);
+};
+
+/**
+ * Loaded?
+ *
+ * @api private
+ * @return {boolean}
+ */
+
+exports.loaded = function() {
+  return false;
+};
+
+/**
+ * Page.
+ *
+ * @api public
+ * @param {Page} page
+ */
+
+/* eslint-disable no-unused-vars */
+exports.page = function(page) {};
+/* eslint-enable no-unused-vars */
+
+/**
+ * Track.
+ *
+ * @api public
+ * @param {Track} track
+ */
+
+/* eslint-disable no-unused-vars */
+exports.track = function(track) {};
+/* eslint-enable no-unused-vars */
+
+/**
+ * Get values from items in `options` that are mapped to `key`.
+ * `options` is an integration setting which is a collection
+ * of type 'map', 'array', or 'mixed'
+ *
+ * Use cases include mapping events to pixelIds (map), sending generic
+ * conversion pixels only for specific events (array), or configuring dynamic
+ * mappings of event properties to query string parameters based on event (mixed)
+ *
+ * @api public
+ * @param {Object|Object[]|String[]} options An object, array of objects, or
+ * array of strings pulled from settings.mapping.
+ * @param {string} key The name of the item in options whose metadata
+ * we're looking for.
+ * @return {Array} An array of settings that match the input `key` name.
+ * @example
+ *
+ * // 'Map'
+ * var events = { my_event: 'a4991b88' };
+ * .map(events, 'My Event');
+ * // => ["a4991b88"]
+ * .map(events, 'whatever');
+ * // => []
+ *
+ * // 'Array'
+ * * var events = ['Completed Order', 'My Event'];
+ * .map(events, 'My Event');
+ * // => ["My Event"]
+ * .map(events, 'whatever');
+ * // => []
+ *
+ * // 'Mixed'
+ * var events = [{ key: 'my event', value: '9b5eb1fa' }];
+ * .map(events, 'my_event');
+ * // => ["9b5eb1fa"]
+ * .map(events, 'whatever');
+ * // => []
+ */
+
+exports.map = function(options, key) {
+  var normalizedComparator = normalize(key);
+  var mappingType = getMappingType(options);
+
+  if (mappingType === 'unknown') {
+    return [];
+  }
+
+  return foldl(function(matchingValues, val, key) {
+    var compare;
+    var result;
+
+    if (mappingType === 'map') {
+      compare = key;
+      result = val;
+    }
+
+    if (mappingType === 'array') {
+      compare = val;
+      result = val;
+    }
+
+    if (mappingType === 'mixed') {
+      compare = val.key;
+      result = val.value;
+    }
+
+    if (normalize(compare) === normalizedComparator) {
+      matchingValues.push(result);
+    }
+
+    return matchingValues;
+  }, [], options);
+};
+
+/**
+ * Invoke a `method` that may or may not exist on the prototype with `args`,
+ * queueing or not depending on whether the integration is "ready". Don't
+ * trust the method call, since it contains integration party code.
+ *
+ * @api private
+ * @param {string} method
+ * @param {...*} args
+ */
+
+exports.invoke = function(method) {
+  if (!this[method]) return;
+  var args = Array.prototype.slice.call(arguments, 1);
+  if (!this._ready) return this.queue(method, args);
+
+  this.debug('%s with %o', method, args);
+  return this[method].apply(this, args);
+};
+
+/**
+ * Queue a `method` with `args`.
+ *
+ * @api private
+ * @param {string} method
+ * @param {Array} args
+ */
+
+exports.queue = function(method, args) {
+  this._queue.push({ method: method, args: args });
+};
+
+/**
+ * Flush the internal queue.
+ *
+ * @api private
+ */
+
+exports.flush = function() {
+  this._ready = true;
+  var self = this;
+
+  each(function(call) {
+    self[call.method].apply(self, call.args);
+  }, this._queue);
+
+  // Empty the queue.
+  this._queue.length = 0;
+};
+
+/**
+ * Reset the integration, removing its global variables.
+ *
+ * @api private
+ */
+
+exports.reset = function() {
+  for (var i = 0; i < this.globals.length; i++) {
+    window[this.globals[i]] = undefined;
+  }
+
+  window.onerror = onerror;
+  window.onload = onload;
+};
+
+/**
+ * Load a tag by `name`.
+ *
+ * @param {string} name The name of the tag.
+ * @param {Object} locals Locals used to populate the tag's template variables
+ * (e.g. `userId` in '<img src="https://whatever.com/{{ userId }}">').
+ * @param {Function} [callback=noop] A callback, invoked when the tag finishes
+ * loading.
+ */
+
+exports.load = function(name, locals, callback) {
+  // Argument shuffling
+  if (typeof name === 'function') { callback = name; locals = null; name = null; }
+  if (name && typeof name === 'object') { callback = locals; locals = name; name = null; }
+  if (typeof locals === 'function') { callback = locals; locals = null; }
+
+  // Default arguments
+  name = name || 'library';
+  locals = locals || {};
+
+  locals = this.locals(locals);
+  var template = this.templates[name];
+  if (!template) throw new Error(fmt('template "%s" not defined.', name));
+  var attrs = render(template, locals);
+  callback = callback || noop;
+  var self = this;
+  var el;
+
+  switch (template.type) {
+  case 'img':
+    attrs.width = 1;
+    attrs.height = 1;
+    el = loadImage(attrs, callback);
+    break;
+  case 'script':
+    el = loadScript(attrs, function(err) {
+      if (!err) return callback();
+      self.debug('error loading "%s" error="%s"', self.name, err);
+    });
+      // TODO: hack until refactoring load-script
+    delete attrs.src;
+    each(function(val, key) {
+      el.setAttribute(key, val);
+    }, attrs);
+    break;
+  case 'iframe':
+    el = loadIframe(attrs, callback);
+    break;
+  default:
+      // No default case
+  }
+
+  return el;
+};
+
+/**
+ * Locals for tag templates.
+ *
+ * By default it includes a cache buster and all of the options.
+ *
+ * @param {Object} [locals]
+ * @return {Object}
+ */
+
+exports.locals = function(locals) {
+  locals = locals || {};
+  var cache = Math.floor(new Date().getTime() / 3600000);
+  if (!locals.hasOwnProperty('cache')) locals.cache = cache;
+  each(function(val, key) {
+    if (!locals.hasOwnProperty(key)) locals[key] = val;
+  }, this.options);
+  return locals;
+};
+
+/**
+ * Simple way to emit ready.
+ *
+ * @api public
+ */
+
+exports.ready = function() {
+  this.emit('ready');
+};
+
+/**
+ * Wrap the initialize method in an exists check, so we don't have to do it for
+ * every single integration.
+ *
+ * @api private
+ */
+
+exports._wrapInitialize = function() {
+  var initialize = this.initialize;
+  this.initialize = function() {
+    this.debug('initialize');
+    this._initialized = true;
+    var ret = initialize.apply(this, arguments);
+    this.emit('initialize');
+    return ret;
+  };
+};
+
+/**
+ * Wrap the page method to call to noop the first page call if the integration assumes
+ * a pageview.
+ *
+ * @api private
+ */
+
+exports._wrapPage = function() {
+  // Noop the first page call if integration assumes pageview
+  if (this._assumesPageview) return this.page = after(2, this.page);
+};
+
+/**
+ * Wrap the track method to call other ecommerce methods if available depending
+ * on the `track.event()`.
+ *
+ * @api private
+ */
+
+exports._wrapTrack = function() {
+  var t = this.track;
+  this.track = function(track) {
+    var event = track.event();
+    var called;
+    var ret;
+
+    for (var method in events) {
+      if (has.call(events, method)) {
+        var regexp = events[method];
+        if (!this[method]) continue;
+        if (!regexp.test(event)) continue;
+        ret = this[method].apply(this, arguments);
+        called = true;
+        break;
+      }
+    }
+
+    if (!called) ret = t.apply(this, arguments);
+    return ret;
+  };
+};
+
+/**
+ * Determine the type of the option passed to `#map`
+ *
+ * @api private
+ * @param {Object|Object[]} mapping
+ * @return {String} mappingType
+ */
+
+function getMappingType(mapping) {
+  if (is.array(mapping)) {
+    return every(isMixed, mapping) ? 'mixed' : 'array';
+  }
+  if (is.object(mapping)) return 'map';
+  return 'unknown';
+}
+
+/**
+ * Determine if item in mapping array is a valid "mixed" type value
+ *
+ * Must be an object with properties "key" (of type string)
+ * and "value" (of any type)
+ *
+ * @api private
+ * @param {*} item
+ * @return {Boolean}
+ */
+
+function isMixed(item) {
+  if (!is.object(item)) return false;
+  if (!is.string(item.key)) return false;
+  if (!has.call(item, 'value')) return false;
+  return true;
+}
+
+/**
+ * TODO: Document me
+ *
+ * @api private
+ * @param {Object} attrs
+ * @param {Function} fn
+ * @return {Image}
+ */
+
+function loadImage(attrs, fn) {
+  fn = fn || function() {};
+  var img = new Image();
+  img.onerror = error(fn, 'failed to load pixel', img);
+  img.onload = function() { fn(); };
+  img.src = attrs.src;
+  img.width = 1;
+  img.height = 1;
+  return img;
+}
+
+/**
+ * TODO: Document me
+ *
+ * @api private
+ * @param {Function} fn
+ * @param {string} message
+ * @param {Element} img
+ * @return {Function}
+ */
+
+function error(fn, message, img) {
+  return function(e) {
+    e = e || window.event;
+    var err = new Error(message);
+    err.event = e;
+    err.source = img;
+    fn(err);
+  };
+}
+
+/**
+ * Render template + locals into an `attrs` object.
+ *
+ * @api private
+ * @param {Object} template
+ * @param {Object} locals
+ * @return {Object}
+ */
+
+function render(template, locals) {
+  return foldl(function(attrs, val, key) {
+    attrs[key] = val.replace(/\{\{\ *(\w+)\ *\}\}/g, function(_, $1) {
+      return locals[$1];
+    });
+    return attrs;
+  }, {}, template.attrs);
+}
+
+},{"@ndhoule/after":7,"@ndhoule/each":12,"@ndhoule/every":13,"@ndhoule/foldl":15,"@segment/fmt":50,"@segment/load-script":54,"analytics-events":60,"component-emitter":66,"is":81,"load-iframe":84,"next-tick":89,"to-no-case":107}],4:[function(require,module,exports){
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+
+var Emitter = require('component-emitter');
+var domify = require('domify');
+var each = require('@ndhoule/each');
+var includes = require('@ndhoule/includes');
+
+/**
+ * Mix in emitter.
+ */
+
+/* eslint-disable new-cap */
+Emitter(exports);
+/* eslint-enable new-cap */
+
+/**
+ * Add a new option to the integration by `key` with default `value`.
+ *
+ * @api public
+ * @param {string} key
+ * @param {*} value
+ * @return {Integration}
+ */
+
+exports.option = function(key, value) {
+  this.prototype.defaults[key] = value;
+  return this;
+};
+
+/**
+ * Add a new mapping option.
+ *
+ * This will create a method `name` that will return a mapping for you to use.
+ *
+ * @api public
+ * @param {string} name
+ * @return {Integration}
+ * @example
+ * Integration('My Integration')
+ *   .mapping('events');
+ *
+ * new MyIntegration().track('My Event');
+ *
+ * .track = function(track){
+ *   var events = this.events(track.event());
+ *   each(send, events);
+ *  };
+ */
+
+exports.mapping = function(name) {
+  this.option(name, []);
+  this.prototype[name] = function(key) {
+    return this.map(this.options[name], key);
+  };
+  return this;
+};
+
+/**
+ * Register a new global variable `key` owned by the integration, which will be
+ * used to test whether the integration is already on the page.
+ *
+ * @api public
+ * @param {string} key
+ * @return {Integration}
+ */
+
+exports.global = function(key) {
+  this.prototype.globals.push(key);
+  return this;
+};
+
+/**
+ * Mark the integration as assuming an initial pageview, so to defer the first page call, keep track of
+ * whether we already nooped the first page call.
+ *
+ * @api public
+ * @return {Integration}
+ */
+
+exports.assumesPageview = function() {
+  this.prototype._assumesPageview = true;
+  return this;
+};
+
+/**
+ * Mark the integration as being "ready" once `load` is called.
+ *
+ * @api public
+ * @return {Integration}
+ */
+
+exports.readyOnLoad = function() {
+  this.prototype._readyOnLoad = true;
+  return this;
+};
+
+/**
+ * Mark the integration as being "ready" once `initialize` is called.
+ *
+ * @api public
+ * @return {Integration}
+ */
+
+exports.readyOnInitialize = function() {
+  this.prototype._readyOnInitialize = true;
+  return this;
+};
+
+/**
+ * Define a tag to be loaded.
+ *
+ * @api public
+ * @param {string} [name='library'] A nicename for the tag, commonly used in
+ * #load. Helpful when the integration has multiple tags and you need a way to
+ * specify which of the tags you want to load at a given time.
+ * @param {String} str DOM tag as string or URL.
+ * @return {Integration}
+ */
+
+exports.tag = function(name, tag) {
+  if (tag == null) {
+    tag = name;
+    name = 'library';
+  }
+  this.prototype.templates[name] = objectify(tag);
+  return this;
+};
+
+/**
+ * Given a string, give back DOM attributes.
+ *
+ * Do it in a way where the browser doesn't load images or iframes. It turns
+ * out domify will load images/iframes because whenever you construct those
+ * DOM elements, the browser immediately loads them.
+ *
+ * @api private
+ * @param {string} str
+ * @return {Object}
+ */
+
+function objectify(str) {
+  // replace `src` with `data-src` to prevent image loading
+  str = str.replace(' src="', ' data-src="');
+
+  var el = domify(str);
+  var attrs = {};
+
+  each(function(attr) {
+    // then replace it back
+    var name = attr.name === 'data-src' ? 'src' : attr.name;
+    if (!includes(attr.name + '=', str)) return;
+    attrs[name] = attr.value;
+  }, el.attributes);
+
+  return {
+    type: el.tagName.toLowerCase(),
+    attrs: attrs
+  };
+}
+
+},{"@ndhoule/each":12,"@ndhoule/includes":16,"component-emitter":66,"domify":76}],5:[function(require,module,exports){
 'use strict';
 /**
  * Analytics.js
@@ -533,7 +1227,7 @@ Object.keys(Integrations).forEach(function(name) {
   analytics.use(Integrations[name]);
 });
 
-},{"../package.json":107,"./integrations":3,"@segment/analytics.js-core":22}],3:[function(require,module,exports){
+},{"../package.json":113,"./integrations":6,"@segment/analytics.js-core":25}],6:[function(require,module,exports){
 /* eslint quote-props: 0 */
 'use strict';
 
@@ -595,7 +1289,7 @@ module.exports = {
   // 'google-analytics': require('@segment/analytics.js-integration-google-analytics'),
   // 'google-tag-manager': require('@segment/analytics.js-integration-google-tag-manager'),
   // 'gosquared': require('@segment/analytics.js-integration-gosquared'),
-  // 'heap': require('@segment/analytics.js-integration-heap'),
+  'heap': require('@segment/analytics.js-integration-heap'),
   // 'hellobar': require('@segment/analytics.js-integration-hellobar'),
   // 'hindsight': require('@segment/analytics.js-integration-hindsight'),
   // 'hittail': require('@segment/analytics.js-integration-hittail'),
@@ -681,7 +1375,7 @@ module.exports = {
 //   'zopim': require('@segment/analytics.js-integration-zopim')
 };
 
-},{"@segment/analytics.js-integration-amplitude":1,"@segment/analytics.js-integration-intercom":33}],4:[function(require,module,exports){
+},{"@segment/analytics.js-integration-amplitude":1,"@segment/analytics.js-integration-heap":36,"@segment/analytics.js-integration-intercom":37}],7:[function(require,module,exports){
 'use strict';
 
 /*
@@ -756,7 +1450,7 @@ var after = function after(n, fn) {
 
 module.exports = after;
 
-},{"@ndhoule/arity":5}],5:[function(require,module,exports){
+},{"@ndhoule/arity":8}],8:[function(require,module,exports){
 'use strict';
 
 var objToString = Object.prototype.toString;
@@ -914,7 +1608,7 @@ var arity = function arity(n, func) {
 
 module.exports = arity;
 
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 /*
@@ -973,7 +1667,7 @@ var clone = function clone(obj) {
 
 module.exports = clone;
 
-},{"component-type":66}],7:[function(require,module,exports){
+},{"component-type":71}],10:[function(require,module,exports){
 'use strict';
 
 /*
@@ -1125,7 +1819,7 @@ var defaults = function(target /*, ...sources */) {
 module.exports = defaults;
 module.exports.deep = defaultsDeep;
 
-},{"@ndhoule/drop":8,"@ndhoule/rest":17}],8:[function(require,module,exports){
+},{"@ndhoule/drop":11,"@ndhoule/rest":20}],11:[function(require,module,exports){
 'use strict';
 
 var max = Math.max;
@@ -1172,7 +1866,7 @@ var drop = function drop(count, collection) {
 
 module.exports = drop;
 
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 /*
@@ -1303,7 +1997,7 @@ var each = function each(iterator, collection) {
 
 module.exports = each;
 
-},{"@ndhoule/keys":14}],10:[function(require,module,exports){
+},{"@ndhoule/keys":17}],13:[function(require,module,exports){
 'use strict';
 
 /*
@@ -1353,7 +2047,7 @@ var every = function every(predicate, collection) {
 
 module.exports = every;
 
-},{"@ndhoule/each":9}],11:[function(require,module,exports){
+},{"@ndhoule/each":12}],14:[function(require,module,exports){
 'use strict';
 
 var has = Object.prototype.hasOwnProperty;
@@ -1398,7 +2092,7 @@ var extend = function extend(dest /*, sources */) {
 
 module.exports = extend;
 
-},{}],12:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 /*
@@ -1454,7 +2148,7 @@ var foldl = function foldl(iterator, accumulator, collection) {
 
 module.exports = foldl;
 
-},{"@ndhoule/each":9}],13:[function(require,module,exports){
+},{"@ndhoule/each":12}],16:[function(require,module,exports){
 'use strict';
 
 /*
@@ -1538,7 +2232,7 @@ var includes = function includes(searchElement, collection) {
 
 module.exports = includes;
 
-},{"@ndhoule/each":9}],14:[function(require,module,exports){
+},{"@ndhoule/each":12}],17:[function(require,module,exports){
 'use strict';
 
 var hop = Object.prototype.hasOwnProperty;
@@ -1705,7 +2399,7 @@ var keys = function keys(source) {
 
 module.exports = keys;
 
-},{}],15:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 /*
@@ -1750,7 +2444,7 @@ var map = function map(iterator, collection) {
 
 module.exports = map;
 
-},{"@ndhoule/each":9}],16:[function(require,module,exports){
+},{"@ndhoule/each":12}],19:[function(require,module,exports){
 'use strict';
 
 var objToString = Object.prototype.toString;
@@ -1822,7 +2516,7 @@ var pick = function pick(props, object) {
 
 module.exports = pick;
 
-},{}],17:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 var max = Math.max;
@@ -1862,7 +2556,7 @@ var rest = function rest(collection) {
 
 module.exports = rest;
 
-},{}],18:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2764,7 +3458,7 @@ module.exports.store = store;
 module.exports.metrics = metrics;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./cookie":19,"./group":21,"./memory":23,"./metrics":24,"./middleware":25,"./normalize":26,"./pageDefaults":27,"./store":28,"./user":29,"@ndhoule/after":4,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/foldl":12,"@ndhoule/keys":14,"@ndhoule/pick":16,"@segment/is-meta":47,"@segment/prevent-default":51,"bind-all":56,"component-emitter":61,"component-event":62,"component-querystring":64,"component-type":66,"debug":30,"extend":31,"is":75,"next-tick":83,"segmentio-facade":92}],19:[function(require,module,exports){
+},{"./cookie":22,"./group":24,"./memory":26,"./metrics":27,"./middleware":28,"./normalize":29,"./pageDefaults":30,"./store":31,"./user":32,"@ndhoule/after":7,"@ndhoule/clone":9,"@ndhoule/defaults":10,"@ndhoule/each":12,"@ndhoule/foldl":15,"@ndhoule/keys":17,"@ndhoule/pick":19,"@segment/is-meta":51,"@segment/prevent-default":55,"bind-all":61,"component-emitter":66,"component-event":67,"component-querystring":69,"component-type":71,"debug":33,"extend":34,"is":81,"next-tick":89,"segmentio-facade":98}],22:[function(require,module,exports){
 'use strict';
 
 /**
@@ -2892,7 +3586,7 @@ module.exports = bindAll(new Cookie());
 
 module.exports.Cookie = Cookie;
 
-},{"@ndhoule/clone":6,"@ndhoule/defaults":7,"@segment/top-domain":54,"bind-all":56,"component-cookie":58,"debug":30,"json3":76}],20:[function(require,module,exports){
+},{"@ndhoule/clone":9,"@ndhoule/defaults":10,"@segment/top-domain":59,"bind-all":61,"component-cookie":63,"debug":33,"json3":82}],23:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3192,7 +3886,7 @@ Entity.prototype.load = function() {
   this.traits(this.traits());
 };
 
-},{"./cookie":19,"./memory":23,"./store":28,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"@segment/isodate-traverse":48,"debug":30}],21:[function(require,module,exports){
+},{"./cookie":22,"./memory":26,"./store":31,"@ndhoule/clone":9,"@ndhoule/defaults":10,"@ndhoule/extend":14,"@segment/isodate-traverse":52,"debug":33}],24:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3248,7 +3942,7 @@ module.exports = bindAll(new Group());
 
 module.exports.Group = Group;
 
-},{"./entity":20,"bind-all":56,"debug":30,"inherits":73}],22:[function(require,module,exports){
+},{"./entity":23,"bind-all":61,"debug":33,"inherits":79}],25:[function(require,module,exports){
 'use strict';
 
 /**
@@ -3275,7 +3969,7 @@ analytics.VERSION = require('../package.json').version;
 
 module.exports = analytics;
 
-},{"../package.json":32,"./analytics":18}],23:[function(require,module,exports){
+},{"../package.json":35,"./analytics":21}],26:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3341,7 +4035,7 @@ Memory.prototype.remove = function(key) {
   return true;
 };
 
-},{"@ndhoule/clone":6,"bind-all":56}],24:[function(require,module,exports){
+},{"@ndhoule/clone":9,"bind-all":61}],27:[function(require,module,exports){
 'use strict';
 
 var bindAll = require('bind-all');
@@ -3438,7 +4132,7 @@ module.exports = bindAll(new Metrics());
 
 module.exports.Metrics = Metrics;
 
-},{"@segment/send-json":52,"bind-all":56,"debug":30}],25:[function(require,module,exports){
+},{"@segment/send-json":56,"bind-all":61,"debug":33}],28:[function(require,module,exports){
 'use strict';
 
 var Facade = require('segmentio-facade');
@@ -3504,7 +4198,7 @@ function executeChain(payload, integration, middlewares, index) {
 
 module.exports.Chain = Chain;
 
-},{"segmentio-facade":92}],26:[function(require,module,exports){
+},{"segmentio-facade":98}],29:[function(require,module,exports){
 'use strict';
 
 /**
@@ -3605,7 +4299,7 @@ function normalize(msg, list) {
   }
 }
 
-},{"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/includes":13,"@ndhoule/map":15,"component-type":66,"debug":30,"json3":76,"spark-md5":99,"uuid":106}],27:[function(require,module,exports){
+},{"@ndhoule/defaults":10,"@ndhoule/each":12,"@ndhoule/includes":16,"@ndhoule/map":18,"component-type":71,"debug":33,"json3":82,"spark-md5":105,"uuid":112}],30:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3669,7 +4363,7 @@ function canonicalUrl(search) {
 
 module.exports = pageDefaults;
 
-},{"@ndhoule/includes":13,"@segment/canonical":44,"component-url":67}],28:[function(require,module,exports){
+},{"@ndhoule/includes":16,"@segment/canonical":48,"component-url":72}],31:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3754,7 +4448,7 @@ module.exports = bindAll(new Store());
 
 module.exports.Store = Store;
 
-},{"@ndhoule/defaults":7,"@segment/store":53,"bind-all":56}],29:[function(require,module,exports){
+},{"@ndhoule/defaults":10,"@segment/store":57,"bind-all":61}],32:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3957,7 +4651,7 @@ module.exports = bindAll(new User());
 
 module.exports.User = User;
 
-},{"./cookie":19,"./entity":20,"./store":28,"bind-all":56,"component-cookie":58,"debug":30,"inherits":73,"uuid":106}],30:[function(require,module,exports){
+},{"./cookie":22,"./entity":23,"./store":31,"bind-all":61,"component-cookie":63,"debug":33,"inherits":79,"uuid":112}],33:[function(require,module,exports){
 
 /**
  * Expose `debug()` as the module.
@@ -4096,7 +4790,7 @@ try {
   if (window.localStorage) debug.enable(localStorage.debug);
 } catch(e){}
 
-},{}],31:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 
 var hasOwn = Object.prototype.hasOwnProperty;
@@ -4215,7 +4909,7 @@ module.exports = function extend() {
 	return target;
 };
 
-},{}],32:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -4377,7 +5071,235 @@ module.exports={
   "version": "3.9.0"
 }
 
-},{}],33:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
+'use strict';
+/* global JSON */
+/* eslint no-restricted-globals: [0] */
+
+/**
+ * Module dependencies.
+ */
+
+var integration = require('@segment/analytics.js-integration');
+var each = require('component-each');
+var is = require('is');
+var extend = require('@ndhoule/extend');
+var toISOString = require('@segment/to-iso-string');
+var toString = Object.prototype.toString; // in case this method has been overridden by the user
+
+/**
+ * Expose `Heap` integration.
+ */
+
+var Heap = module.exports = integration('Heap')
+  .global('heap')
+  .option('appId', '')
+  .tag('<script src="//cdn.heapanalytics.com/js/heap-{{ appId }}.js">');
+
+/**
+ * Initialize.
+ *
+ * https://heapanalytics.com/docs/installation#web
+ *
+ * @api public
+ */
+
+Heap.prototype.initialize = function() {
+  window.heap = window.heap || [];
+  window.heap.load = function(appid, config) {
+    window.heap.appid = appid;
+    window.heap.config = config;
+
+    var methodFactory = function(type) {
+      return function() {
+        window.heap.push([type].concat(Array.prototype.slice.call(arguments, 0)));
+      };
+    };
+
+    var heapMethods = ['addEventProperties', 'addUserProperties', 'clearEventProperties', 'identify', 'removeEventProperty', 'setEventProperties', 'track', 'unsetEventProperty', 'resetIdentity'];
+    each(heapMethods, function(method) {
+      window.heap[method] = methodFactory(method);
+    });
+  };
+
+  window.heap.load(this.options.appId);
+  this.load(this.ready);
+};
+
+/**
+ * Loaded?
+ *
+ * @api private
+ * @return {boolean}
+ */
+
+Heap.prototype.loaded = function() {
+  return !!(window.heap && window.heap.appid);
+};
+
+/**
+ * Identify.
+ *
+ * https://heapanalytics.com/docs#identify
+ *
+ * @api public
+ * @param {Identify} identify
+ */
+
+Heap.prototype.identify = function(identify) {
+  var traits = identify.traits({ email: '_email' });
+  var id = identify.userId();
+  if (id) window.heap.identify(id);
+  window.heap.addUserProperties(clean(traits));
+};
+
+/**
+ * Track.
+ *
+ * https://heapanalytics.com/docs#track
+ *
+ * @api public
+ * @param {Track} track
+ */
+
+Heap.prototype.track = function(track) {
+  window.heap.track(track.event(), clean(track.properties()));
+};
+
+/**
+ * Clean all nested objects and arrays.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ * @api private
+ */
+
+function clean(obj) {
+  var ret = {};
+
+  for (var k in obj) {
+    if (obj.hasOwnProperty(k)) {
+      var value = obj[k];
+      // Heap's natively library will drop null and undefined properties anyway
+      // so no need to send these
+      // also prevents uncaught errors since we call .toString() on non objects
+      if (value === null || value === undefined) continue;
+
+      // date
+      if (is.date(value)) {
+        ret[k] = toISOString(value);
+        continue;
+      }
+
+      // leave boolean as is
+      if (is.bool(value)) {
+        ret[k] = value;
+        continue;
+      }
+
+      // leave  numbers as is
+      if (is.number(value)) {
+        ret[k] = value;
+        continue;
+      }
+
+      // arrays of objects (eg. `products` array)
+      if (toString.call(value) === '[object Array]') {
+        ret = extend(ret, trample(k, value));
+        continue;
+      }
+
+      // non objects
+      if (toString.call(value) !== '[object Object]') {
+        ret[k] = value.toString();
+        continue;
+      }
+
+      ret = extend(ret, trample(k, value));
+    }
+  }
+  // json
+  // must flatten including the name of the original trait/property
+  function trample(key, value) {
+    var nestedObj = {};
+    nestedObj[key] = value;
+    var flattenedObj = flatten(nestedObj, { safe: true });
+
+    // stringify arrays inside nested object to be consistent with top level behavior of arrays
+    for (var k in flattenedObj) {
+      if (is.array(flattenedObj[k])) flattenedObj[k] = JSON.stringify(flattenedObj[k]);
+    }
+
+    return flattenedObj;
+  }
+
+  return ret;
+}
+
+/**
+ * Flatten nested objects
+ * taken from https://www.npmjs.com/package/flat
+ * @param {Object} obj
+ * @return {Object} obj
+ * @api public
+ */
+
+function flatten(target, opts) {
+  opts = opts || {};
+
+  var delimiter = opts.delimiter || '.';
+  var maxDepth = opts.maxDepth;
+  var currentDepth = 1;
+  var output = {};
+
+  function step(object, prev) {
+    Object.keys(object).forEach(function(key) {
+      var value = object[key];
+      var isarray = opts.safe && Array.isArray(value);
+      var type = Object.prototype.toString.call(value);
+      var isobject = type === '[object Object]' || type === '[object Array]';
+
+      var newKey = prev
+        ? prev + delimiter + key
+        : key;
+
+      if (!opts.maxDepth) {
+        maxDepth = currentDepth + 1;
+      }
+
+      if (!isarray && isobject && Object.keys(value).length && currentDepth < maxDepth) {
+        ++currentDepth;
+        return step(value, newKey);
+      }
+
+      output[newKey] = value;
+    });
+  }
+
+  step(target);
+
+  return output;
+}
+
+/**
+ * Polyfill Object.keys
+ * // From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+ * Note: Had to do this because for some reason, the above will not work properly without using Object.keys
+ */
+
+if (!Object.keys) {
+  Object.keys = function(o) {
+    if (o !== Object(o)) {
+      throw new TypeError('Object.keys called on a non-object');
+    }
+    var k = [];
+    var p;
+    for (p in o) if (Object.prototype.hasOwnProperty.call(o, p)) k.push(p);
+    return k;
+  };
+}
+
+},{"@ndhoule/extend":14,"@segment/analytics.js-integration":42,"@segment/to-iso-string":58,"component-each":64,"is":81}],37:[function(require,module,exports){
 'use strict';
 
 /**
@@ -4686,7 +5608,7 @@ function hideDefaultLauncher(options) {
   return ret;
 }
 
-},{"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/each":9,"@ndhoule/extend":11,"@ndhoule/pick":16,"@segment/analytics.js-integration":34,"@segment/convert-dates":45,"is":75,"obj-case":84}],34:[function(require,module,exports){
+},{"@ndhoule/clone":9,"@ndhoule/defaults":10,"@ndhoule/each":12,"@ndhoule/extend":14,"@ndhoule/pick":19,"@segment/analytics.js-integration":38,"@segment/convert-dates":49,"is":81,"obj-case":90}],38:[function(require,module,exports){
 'use strict';
 
 /**
@@ -4751,7 +5673,7 @@ function createIntegration(name) {
 
 module.exports = createIntegration;
 
-},{"./protos":35,"./statics":36,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"component-bind":57,"debug":68,"slug-component":98}],35:[function(require,module,exports){
+},{"./protos":39,"./statics":40,"@ndhoule/clone":9,"@ndhoule/defaults":10,"@ndhoule/extend":14,"component-bind":62,"debug":73,"slug-component":104}],39:[function(require,module,exports){
 'use strict';
 
 /**
@@ -5227,7 +6149,7 @@ function render(template, locals) {
   }, {}, template.attrs);
 }
 
-},{"@ndhoule/after":4,"@ndhoule/each":9,"@ndhoule/every":10,"@ndhoule/foldl":12,"@segment/fmt":46,"@segment/load-script":50,"analytics-events":37,"component-emitter":61,"is":75,"load-iframe":78,"next-tick":83,"to-no-case":101}],36:[function(require,module,exports){
+},{"@ndhoule/after":7,"@ndhoule/each":12,"@ndhoule/every":13,"@ndhoule/foldl":15,"@segment/fmt":50,"@segment/load-script":54,"analytics-events":41,"component-emitter":66,"is":81,"load-iframe":84,"next-tick":89,"to-no-case":107}],40:[function(require,module,exports){
 'use strict';
 
 /**
@@ -5392,7 +6314,7 @@ function objectify(str) {
   };
 }
 
-},{"@ndhoule/each":9,"@ndhoule/includes":13,"component-emitter":61,"domify":71}],37:[function(require,module,exports){
+},{"@ndhoule/each":12,"@ndhoule/includes":16,"component-emitter":66,"domify":76}],41:[function(require,module,exports){
 
 module.exports = {
   // Promotions
@@ -5459,9 +6381,9 @@ module.exports = {
   pushNotificationBounced: /^[ _]?push[ _]?notification[ _]?bounced[ _]?$/i
 };
 
-},{}],38:[function(require,module,exports){
-arguments[4][34][0].apply(exports,arguments)
-},{"./protos":39,"./statics":40,"@ndhoule/clone":6,"@ndhoule/defaults":7,"@ndhoule/extend":11,"component-bind":57,"debug":68,"dup":34,"slug-component":98}],39:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
+arguments[4][38][0].apply(exports,arguments)
+},{"./protos":43,"./statics":44,"@ndhoule/clone":9,"@ndhoule/defaults":10,"@ndhoule/extend":14,"component-bind":62,"debug":73,"dup":38,"slug-component":104}],43:[function(require,module,exports){
 'use strict';
 
 /**
@@ -5931,172 +6853,9 @@ function render(template, locals) {
   }, {}, template.attrs);
 }
 
-},{"@ndhoule/after":4,"@ndhoule/each":9,"@ndhoule/every":10,"@ndhoule/foldl":12,"@segment/fmt":46,"@segment/load-script":50,"analytics-events":55,"component-emitter":41,"is":75,"load-iframe":78,"next-tick":83,"to-no-case":42}],40:[function(require,module,exports){
-'use strict';
-
-/**
- * Module dependencies.
- */
-
-var Emitter = require('component-emitter');
-var domify = require('domify');
-var each = require('@ndhoule/each');
-var includes = require('@ndhoule/includes');
-
-/**
- * Mix in emitter.
- */
-
-/* eslint-disable new-cap */
-Emitter(exports);
-/* eslint-enable new-cap */
-
-/**
- * Add a new option to the integration by `key` with default `value`.
- *
- * @api public
- * @param {string} key
- * @param {*} value
- * @return {Integration}
- */
-
-exports.option = function(key, value) {
-  this.prototype.defaults[key] = value;
-  return this;
-};
-
-/**
- * Add a new mapping option.
- *
- * This will create a method `name` that will return a mapping for you to use.
- *
- * @api public
- * @param {string} name
- * @return {Integration}
- * @example
- * Integration('My Integration')
- *   .mapping('events');
- *
- * new MyIntegration().track('My Event');
- *
- * .track = function(track){
- *   var events = this.events(track.event());
- *   each(send, events);
- *  };
- */
-
-exports.mapping = function(name) {
-  this.option(name, []);
-  this.prototype[name] = function(key) {
-    return this.map(this.options[name], key);
-  };
-  return this;
-};
-
-/**
- * Register a new global variable `key` owned by the integration, which will be
- * used to test whether the integration is already on the page.
- *
- * @api public
- * @param {string} key
- * @return {Integration}
- */
-
-exports.global = function(key) {
-  this.prototype.globals.push(key);
-  return this;
-};
-
-/**
- * Mark the integration as assuming an initial pageview, so to defer the first page call, keep track of
- * whether we already nooped the first page call.
- *
- * @api public
- * @return {Integration}
- */
-
-exports.assumesPageview = function() {
-  this.prototype._assumesPageview = true;
-  return this;
-};
-
-/**
- * Mark the integration as being "ready" once `load` is called.
- *
- * @api public
- * @return {Integration}
- */
-
-exports.readyOnLoad = function() {
-  this.prototype._readyOnLoad = true;
-  return this;
-};
-
-/**
- * Mark the integration as being "ready" once `initialize` is called.
- *
- * @api public
- * @return {Integration}
- */
-
-exports.readyOnInitialize = function() {
-  this.prototype._readyOnInitialize = true;
-  return this;
-};
-
-/**
- * Define a tag to be loaded.
- *
- * @api public
- * @param {string} [name='library'] A nicename for the tag, commonly used in
- * #load. Helpful when the integration has multiple tags and you need a way to
- * specify which of the tags you want to load at a given time.
- * @param {String} str DOM tag as string or URL.
- * @return {Integration}
- */
-
-exports.tag = function(name, tag) {
-  if (tag == null) {
-    tag = name;
-    name = 'library';
-  }
-  this.prototype.templates[name] = objectify(tag);
-  return this;
-};
-
-/**
- * Given a string, give back DOM attributes.
- *
- * Do it in a way where the browser doesn't load images or iframes. It turns
- * out domify will load images/iframes because whenever you construct those
- * DOM elements, the browser immediately loads them.
- *
- * @api private
- * @param {string} str
- * @return {Object}
- */
-
-function objectify(str) {
-  // replace `src` with `data-src` to prevent image loading
-  str = str.replace(' src="', ' data-src="');
-
-  var el = domify(str);
-  var attrs = {};
-
-  each(function(attr) {
-    // then replace it back
-    var name = attr.name === 'data-src' ? 'src' : attr.name;
-    if (!includes(attr.name + '=', str)) return;
-    attrs[name] = attr.value;
-  }, el.attributes);
-
-  return {
-    type: el.tagName.toLowerCase(),
-    attrs: attrs
-  };
-}
-
-},{"@ndhoule/each":9,"@ndhoule/includes":13,"component-emitter":41,"domify":71}],41:[function(require,module,exports){
+},{"@ndhoule/after":7,"@ndhoule/each":12,"@ndhoule/every":13,"@ndhoule/foldl":15,"@segment/fmt":50,"@segment/load-script":54,"analytics-events":60,"component-emitter":45,"is":81,"load-iframe":84,"next-tick":89,"to-no-case":46}],44:[function(require,module,exports){
+arguments[4][4][0].apply(exports,arguments)
+},{"@ndhoule/each":12,"@ndhoule/includes":16,"component-emitter":45,"domify":76,"dup":4}],45:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -6261,7 +7020,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],42:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 
 /**
  * Expose `toNoCase`.
@@ -6333,7 +7092,7 @@ function uncamelize (string) {
     return previous + ' ' + uppers.toLowerCase().split('').join(' ');
   });
 }
-},{}],43:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 var utf8Encode = require('utf8-encode');
 var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
@@ -6370,7 +7129,7 @@ function encode(input) {
 
     return output;
 }
-},{"utf8-encode":104}],44:[function(require,module,exports){
+},{"utf8-encode":110}],48:[function(require,module,exports){
 'use strict';
 
 /**
@@ -6394,7 +7153,7 @@ function canonical() {
 
 module.exports = canonical;
 
-},{}],45:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 'use strict';
 
 /*
@@ -6431,7 +7190,7 @@ function convertDates(obj, convert) {
 
 module.exports = convertDates;
 
-},{"@ndhoule/clone":6,"@ndhoule/each":9,"component-type":66}],46:[function(require,module,exports){
+},{"@ndhoule/clone":9,"@ndhoule/each":12,"component-type":71}],50:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -6466,7 +7225,7 @@ fmt.d = parseInt;
 module.exports = fmt;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],47:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 'use strict';
 
 function isMeta(e) {
@@ -6494,7 +7253,7 @@ function isMeta(e) {
 
 module.exports = isMeta;
 
-},{}],48:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 'use strict';
 
 var type = require('component-type');
@@ -6571,7 +7330,7 @@ function array(arr, strict) {
   return arr;
 }
 
-},{"@segment/isodate":49,"component-each":59,"component-type":66}],49:[function(require,module,exports){
+},{"@segment/isodate":53,"component-each":64,"component-type":71}],53:[function(require,module,exports){
 'use strict';
 
 /**
@@ -6649,7 +7408,7 @@ exports.is = function(string, strict) {
   return matcher.test(string);
 };
 
-},{}],50:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 'use strict';
 
 /*
@@ -6721,7 +7480,7 @@ function loadScript(options, cb) {
 
 module.exports = loadScript;
 
-},{"component-type":66,"next-tick":83,"script-onload":86}],51:[function(require,module,exports){
+},{"component-type":71,"next-tick":89,"script-onload":92}],55:[function(require,module,exports){
 'use strict';
 
 /**
@@ -6746,7 +7505,7 @@ function preventDefault(e) {
 
 module.exports = preventDefault;
 
-},{}],52:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 'use strict';
 
 /*
@@ -6864,7 +7623,7 @@ function encode(obj) {
   return encodeURIComponent(str);
 }
 
-},{"@segment/base64-encode":43,"has-cors":72,"json3":76,"jsonp":77}],53:[function(require,module,exports){
+},{"@segment/base64-encode":47,"has-cors":78,"json3":82,"jsonp":83}],57:[function(require,module,exports){
 (function (global){
 "use strict"
 
@@ -7037,7 +7796,46 @@ module.exports = (function() {
 }())
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"json3":76}],54:[function(require,module,exports){
+},{"json3":82}],58:[function(require,module,exports){
+'use strict';
+
+/**
+ * Pad a `number` with a ten's place zero.
+ *
+ * @param {number} number
+ * @return {string}
+ */
+function pad(number) {
+  var n = number.toString();
+  return n.length === 1 ? '0' + n : n;
+}
+
+/**
+ * Turn a `date` into an ISO string.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
+ *
+ * @param {Date} date
+ * @return {string}
+ */
+function toISOString(date) {
+  return date.getUTCFullYear()
+    + '-' + pad(date.getUTCMonth() + 1)
+    + '-' + pad(date.getUTCDate())
+    + 'T' + pad(date.getUTCHours())
+    + ':' + pad(date.getUTCMinutes())
+    + ':' + pad(date.getUTCSeconds())
+    + '.' + String((date.getUTCMilliseconds()/1000).toFixed(3)).slice(2, 5)
+    + 'Z';
+}
+
+/*
+ * Exports.
+ */
+
+module.exports = toISOString;
+
+},{}],59:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7137,7 +7935,7 @@ domain.cookie = cookie;
 
 exports = module.exports = domain;
 
-},{"component-cookie":58,"component-url":67}],55:[function(require,module,exports){
+},{"component-cookie":63,"component-url":72}],60:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7429,7 +8227,7 @@ module.exports = foldl(function transform(ret, pairs, method) {
   return ret;
 }, {}, eventMap);
 
-},{"@ndhoule/foldl":12,"@ndhoule/map":15}],56:[function(require,module,exports){
+},{"@ndhoule/foldl":15,"@ndhoule/map":18}],61:[function(require,module,exports){
 'use strict';
 
 var bind = require('component-bind');
@@ -7447,7 +8245,7 @@ function bindAll(obj) {
 
 module.exports = bindAll;
 
-},{"component-bind":57}],57:[function(require,module,exports){
+},{"component-bind":62}],62:[function(require,module,exports){
 /**
  * Slice reference.
  */
@@ -7472,7 +8270,7 @@ module.exports = function(obj, fn){
   }
 };
 
-},{}],58:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -7605,7 +8403,7 @@ function decode(value) {
   }
 }
 
-},{"debug":68}],59:[function(require,module,exports){
+},{"debug":73}],64:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -7696,7 +8494,7 @@ function array(obj, fn, ctx) {
   }
 }
 
-},{"component-type":60,"to-function":100,"type":60}],60:[function(require,module,exports){
+},{"component-type":65,"to-function":106,"type":65}],65:[function(require,module,exports){
 
 /**
  * toString ref.
@@ -7730,7 +8528,7 @@ module.exports = function(val){
   return typeof val;
 };
 
-},{}],61:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -7907,7 +8705,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],62:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 var bind = window.addEventListener ? 'addEventListener' : 'attachEvent',
     unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent',
     prefix = bind !== 'addEventListener' ? 'on' : '';
@@ -7943,7 +8741,7 @@ exports.unbind = function(el, type, fn, capture){
   el[unbind](prefix + type, fn, capture || false);
   return fn;
 };
-},{}],63:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 /**
  * Global Names
  */
@@ -8030,7 +8828,7 @@ function prefixed(str) {
   };
 }
 
-},{}],64:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -8137,7 +8935,7 @@ exports.stringify = function(obj){
   return pairs.join('&');
 };
 
-},{"trim":102,"type":65}],65:[function(require,module,exports){
+},{"trim":108,"type":70}],70:[function(require,module,exports){
 /**
  * toString ref.
  */
@@ -8173,7 +8971,7 @@ module.exports = function(val){
   return typeof val;
 };
 
-},{}],66:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 /**
  * toString ref.
  */
@@ -8221,7 +9019,7 @@ function isBuffer(obj) {
     ))
 }
 
-},{}],67:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 
 /**
  * Parse the given `url`.
@@ -8305,7 +9103,7 @@ function port (protocol){
   }
 }
 
-},{}],68:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 (function (process){
 /**
  * This is the web browser implementation of `debug()`.
@@ -8494,7 +9292,7 @@ function localstorage() {
 }
 
 }).call(this,require('_process'))
-},{"./debug":69,"_process":85}],69:[function(require,module,exports){
+},{"./debug":74,"_process":91}],74:[function(require,module,exports){
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -8698,7 +9496,7 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":79}],70:[function(require,module,exports){
+},{"ms":85}],75:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -8732,7 +9530,7 @@ function when(condition, fn, interval) {
 
 module.exports = when;
 
-},{"next-tick":83}],71:[function(require,module,exports){
+},{"next-tick":89}],76:[function(require,module,exports){
 
 /**
  * Expose `parse`.
@@ -8846,7 +9644,95 @@ function parse(html, doc) {
   return fragment;
 }
 
-},{}],72:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
+'use strict';
+
+var hasOwn = Object.prototype.hasOwnProperty;
+var toStr = Object.prototype.toString;
+
+var isArray = function isArray(arr) {
+	if (typeof Array.isArray === 'function') {
+		return Array.isArray(arr);
+	}
+
+	return toStr.call(arr) === '[object Array]';
+};
+
+var isPlainObject = function isPlainObject(obj) {
+	if (!obj || toStr.call(obj) !== '[object Object]') {
+		return false;
+	}
+
+	var hasOwnConstructor = hasOwn.call(obj, 'constructor');
+	var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn.call(obj.constructor.prototype, 'isPrototypeOf');
+	// Not own constructor property must be Object
+	if (obj.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
+		return false;
+	}
+
+	// Own properties are enumerated firstly, so to speed up,
+	// if last one is own, then all properties are own.
+	var key;
+	for (key in obj) { /**/ }
+
+	return typeof key === 'undefined' || hasOwn.call(obj, key);
+};
+
+module.exports = function extend() {
+	var options, name, src, copy, copyIsArray, clone;
+	var target = arguments[0];
+	var i = 1;
+	var length = arguments.length;
+	var deep = false;
+
+	// Handle a deep copy situation
+	if (typeof target === 'boolean') {
+		deep = target;
+		target = arguments[1] || {};
+		// skip the boolean and the target
+		i = 2;
+	}
+	if (target == null || (typeof target !== 'object' && typeof target !== 'function')) {
+		target = {};
+	}
+
+	for (; i < length; ++i) {
+		options = arguments[i];
+		// Only deal with non-null/undefined values
+		if (options != null) {
+			// Extend the base object
+			for (name in options) {
+				src = target[name];
+				copy = options[name];
+
+				// Prevent never-ending loop
+				if (target !== copy) {
+					// Recurse if we're merging plain objects or arrays
+					if (deep && copy && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
+						if (copyIsArray) {
+							copyIsArray = false;
+							clone = src && isArray(src) ? src : [];
+						} else {
+							clone = src && isPlainObject(src) ? src : {};
+						}
+
+						// Never move original objects, clone them
+						target[name] = extend(deep, clone, copy);
+
+					// Don't bring in undefined values
+					} else if (typeof copy !== 'undefined') {
+						target[name] = copy;
+					}
+				}
+			}
+		}
+	}
+
+	// Return the modified object
+	return target;
+};
+
+},{}],78:[function(require,module,exports){
 
 /**
  * Module exports.
@@ -8865,7 +9751,7 @@ try {
   module.exports = false;
 }
 
-},{}],73:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -8890,12 +9776,12 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],74:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 
 module.exports = function isEmail (string) {
     return (/.+\@.+\..+/).test(string);
 };
-},{}],75:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 /* globals window, HTMLElement */
 
 'use strict';
@@ -9697,7 +10583,7 @@ is.symbol = function (value) {
 
 module.exports = is;
 
-},{}],76:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 (function (global){
 /*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 ;(function () {
@@ -10603,7 +11489,7 @@ module.exports = is;
 }).call(this);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],77:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 /**
  * Module dependencies
  */
@@ -10702,7 +11588,7 @@ function jsonp(url, opts, fn){
   return cancel;
 }
 
-},{"debug":68}],78:[function(require,module,exports){
+},{"debug":73}],84:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -10764,7 +11650,7 @@ module.exports = function loadIframe(options, fn){
   return iframe;
 };
 
-},{"is":75,"next-tick":83,"script-onload":86}],79:[function(require,module,exports){
+},{"is":81,"next-tick":89,"script-onload":92}],85:[function(require,module,exports){
 /**
  * Helpers.
  */
@@ -10918,7 +11804,7 @@ function plural(ms, n, name) {
   return Math.ceil(ms / n) + ' ' + name + 's';
 }
 
-},{}],80:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 'use strict';
 
 var is = require('is');
@@ -10963,7 +11849,7 @@ function toMs(num) {
   return num;
 }
 
-},{"./milliseconds":81,"./seconds":82,"@segment/isodate":49,"is":75}],81:[function(require,module,exports){
+},{"./milliseconds":87,"./seconds":88,"@segment/isodate":53,"is":81}],87:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10995,7 +11881,7 @@ exports.parse = function(millis) {
   return new Date(millis);
 };
 
-},{}],82:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11027,7 +11913,7 @@ exports.parse = function(seconds) {
   return new Date(millis);
 };
 
-},{}],83:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -11095,7 +11981,7 @@ module.exports = (function () {
 }());
 
 }).call(this,require('_process'))
-},{"_process":85}],84:[function(require,module,exports){
+},{"_process":91}],90:[function(require,module,exports){
 
 var identity = function(_){ return _; };
 
@@ -11249,7 +12135,7 @@ function isFunction(val) {
   return typeof val === 'function';
 }
 
-},{}],85:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -11435,7 +12321,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],86:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 
 // https://github.com/thirdpartyjs/thirdpartyjs-code/blob/master/examples/templates/02/loading-files/index.html
 
@@ -11490,7 +12376,7 @@ function attach(el, fn){
   });
 }
 
-},{}],87:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11529,7 +12415,7 @@ module.exports = function(proto) {
   }
 };
 
-},{"obj-case":84}],88:[function(require,module,exports){
+},{"obj-case":90}],94:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11600,7 +12486,7 @@ Alias.prototype.to = Alias.prototype.userId;
 
 module.exports = Alias;
 
-},{"./facade":89,"./utils":97}],89:[function(require,module,exports){
+},{"./facade":95,"./utils":103}],95:[function(require,module,exports){
 'use strict';
 
 var address = require('./address');
@@ -11914,7 +12800,7 @@ function transform(obj) {
 
 module.exports = Facade;
 
-},{"./address":87,"./is-enabled":93,"./utils":97,"@segment/isodate-traverse":48,"new-date":80,"obj-case":84}],90:[function(require,module,exports){
+},{"./address":93,"./is-enabled":99,"./utils":103,"@segment/isodate-traverse":52,"new-date":86,"obj-case":90}],96:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12035,7 +12921,7 @@ Group.prototype.properties = function() {
 
 module.exports = Group;
 
-},{"./facade":89,"./utils":97,"is-email":74,"new-date":80}],91:[function(require,module,exports){
+},{"./facade":95,"./utils":103,"is-email":80,"new-date":86}],97:[function(require,module,exports){
 'use strict';
 
 var Facade = require('./facade');
@@ -12280,7 +13166,7 @@ Identify.prototype.birthday = Facade.proxy('traits.birthday');
 
 module.exports = Identify;
 
-},{"./facade":89,"./utils":97,"is-email":74,"new-date":80,"obj-case":84,"trim":102}],92:[function(require,module,exports){
+},{"./facade":95,"./utils":103,"is-email":80,"new-date":86,"obj-case":90,"trim":108}],98:[function(require,module,exports){
 'use strict';
 
 var Facade = require('./facade');
@@ -12302,7 +13188,7 @@ Facade.Screen = require('./screen');
 
 module.exports = Facade;
 
-},{"./alias":88,"./facade":89,"./group":90,"./identify":91,"./page":94,"./screen":95,"./track":96}],93:[function(require,module,exports){
+},{"./alias":94,"./facade":95,"./group":96,"./identify":97,"./page":100,"./screen":101,"./track":102}],99:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12325,7 +13211,7 @@ module.exports = function(integration) {
   return !disabled[integration];
 };
 
-},{}],94:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 'use strict';
 
 var inherit = require('./utils').inherit;
@@ -12474,7 +13360,7 @@ Page.prototype.track = function(name) {
 
 module.exports = Page;
 
-},{"./facade":89,"./track":96,"./utils":97,"is-email":74}],95:[function(require,module,exports){
+},{"./facade":95,"./track":102,"./utils":103,"is-email":80}],101:[function(require,module,exports){
 'use strict';
 
 var inherit = require('./utils').inherit;
@@ -12546,7 +13432,7 @@ Screen.prototype.track = function(name) {
 
 module.exports = Screen;
 
-},{"./page":94,"./track":96,"./utils":97}],96:[function(require,module,exports){
+},{"./page":100,"./track":102,"./utils":103}],102:[function(require,module,exports){
 'use strict';
 
 var inherit = require('./utils').inherit;
@@ -12873,14 +13759,14 @@ function currency(val) {
 
 module.exports = Track;
 
-},{"./facade":89,"./identify":91,"./utils":97,"is-email":74,"obj-case":84}],97:[function(require,module,exports){
+},{"./facade":95,"./identify":97,"./utils":103,"is-email":80,"obj-case":90}],103:[function(require,module,exports){
 'use strict';
 
 exports.inherit = require('inherits');
 exports.clone = require('@ndhoule/clone');
 exports.type = require('type-component');
 
-},{"@ndhoule/clone":6,"inherits":73,"type-component":103}],98:[function(require,module,exports){
+},{"@ndhoule/clone":9,"inherits":79,"type-component":109}],104:[function(require,module,exports){
 
 /**
  * Generate a slug from the given `str`.
@@ -12905,7 +13791,7 @@ module.exports = function (str, options) {
     .replace(/ +/g, options.separator || '-')
 };
 
-},{}],99:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 (function (factory) {
     if (typeof exports === 'object') {
         // Node/CommonJS
@@ -13610,7 +14496,7 @@ module.exports = function (str, options) {
     return SparkMD5;
 }));
 
-},{}],100:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 
 /**
  * Module Dependencies
@@ -13764,9 +14650,9 @@ function stripNested (prop, str, val) {
   });
 }
 
-},{"component-props":63,"props":63}],101:[function(require,module,exports){
-arguments[4][42][0].apply(exports,arguments)
-},{"dup":42}],102:[function(require,module,exports){
+},{"component-props":68,"props":68}],107:[function(require,module,exports){
+arguments[4][46][0].apply(exports,arguments)
+},{"dup":46}],108:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -13782,7 +14668,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],103:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 
 /**
  * toString ref.
@@ -13814,7 +14700,7 @@ module.exports = function(val){
   return typeof val;
 };
 
-},{}],104:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = encode;
 
 function encode(string) {
@@ -13842,7 +14728,7 @@ function encode(string) {
 
     return utftext;
 }
-},{}],105:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 (function (global){
 
 var rng;
@@ -13878,7 +14764,7 @@ module.exports = rng;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],106:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -14063,7 +14949,7 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":105}],107:[function(require,module,exports){
+},{"./rng":111}],113:[function(require,module,exports){
 module.exports={
   "name": "@segment/analytics.js",
   "author": "Segment <friends@segment.com>",
@@ -14236,5 +15122,5 @@ module.exports={
   }
 }
 
-},{}]},{},[2])(2)
+},{}]},{},[5])(5)
 });
